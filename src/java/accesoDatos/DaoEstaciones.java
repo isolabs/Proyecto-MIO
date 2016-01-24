@@ -47,7 +47,7 @@ public class DaoEstaciones {
     /* en caso que la ruta no exista se retornara 1
     si se piensa hacer una modificaicon a nombre de estacion tal que el nuevo nombre sea igual a uno ya existente y viole el constrain unique de este campo se retornara 2
     en caso que la consulta se halla ejecutado bien se retornara 0*/
-    public int modificar_ruta(String nombre_estacion_modificar, Estacion nueva_estacion) {
+    public int modificar_estacion(String nombre_estacion_modificar, Estacion nueva_estacion) {
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta WHERE ruta.nombre='" + nombre_estacion_modificar + "';");
        if("-1".equals(consulta.getColumna("nombre").getFila(0)))
        {
@@ -71,7 +71,7 @@ public class DaoEstaciones {
     en caso que la ruta a eliminar no exista, se retornara 1, 
     si la operacion se realizo con exito se retorna 0
      */
-    public int eliminar_ruta(String nombre_estacion_eliminar) {
+    public int eliminar_estacion(String nombre_estacion_eliminar) {
 
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM estacion WHERE estacion.nombre='" +nombre_estacion_eliminar + "';");
         if ("-1".equals(consulta.getColumna("nombre").getFila(0))) {
@@ -102,7 +102,7 @@ public class DaoEstaciones {
     o no lo haga (por que no hallan estaciones registradas en la bd, por lo tanto en caso de que no halla se sabra 
     por el echo de que el array estara vacio.
     */
-    public ArrayList<Estacion> get_rutas()
+    public ArrayList<Estacion> get_estaciones()
     {
         ArrayList<Estacion> estaciones_encontradas = new ArrayList<>();
         Estacion estacion_temporal=new Estacion();

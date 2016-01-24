@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import accesoDatos.DaoBuses;
 import java.util.ArrayList;
 import proyectomio.modelo.Bus;
 import proyectomio.modelo.Consulta;
@@ -14,8 +15,29 @@ import proyectomio.modelo.Consulta;
  * @author root
  */
 public class ControladorBuses {
-     public int adicionar_bus_bd(Bus un_bus) {
-        
+     DaoBuses data_acces_object;
+
+    public ControladorBuses() {
+        this.data_acces_object=new DaoBuses();
+    }
+     
+     
+     
+    /**
+     *
+     * @param placa
+     * @param id_ruta
+     * @param numero_pasajeros
+     * @param tipo
+     * @return
+     */
+    public int adicionar_bus_bd(String placa, int id_ruta, int numero_pasajeros, String tipo) {
+     Bus bus_adicionar = new Bus();
+     bus_adicionar.setPlaca(placa);
+     bus_adicionar.setId_ruta(id_ruta);
+     bus_adicionar.setNumero_pasajeros(numero_pasajeros);
+     bus_adicionar.setTipo(tipo);
+     data_acces_object.adicionar_bus_bd(bus_adicionar);
      return 0;
     }
     

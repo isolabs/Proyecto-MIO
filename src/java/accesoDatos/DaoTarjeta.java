@@ -77,4 +77,156 @@ public class DaoTarjeta {
         }
        
     }
+    
+    /*-----
+    Si la tarjeta tiene el saldo en 0 o menor no se puede descontar el pasaje,
+    de lo contrario se le descontara 1700
+    retorna 1 si el id_tarjeta no existe
+    retorna 2 si el saldo de la tarjeta no le alcanza 
+    retorna 0 si se le desconto el pasaje
+    */
+    public int descontar_pasaje_tarjeta (int id_tarjeta)
+    {
+        String saldo = "";
+        Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT saldo FROM tarjeta WHERE id_tarjeta="+id_tarjeta+";");
+        saldo = consulta1.getColumna("saldo").getFila(0);
+            
+        int saldoTarjeta = Integer.parseInt(saldo);
+        saldoTarjeta = saldoTarjeta - 1700;
+        if("-1".equals(saldo)){
+            return 1;
+        }
+        
+        else if (0 >= saldoTarjeta) {
+            System.out.println("No se puede descontar pasaje");
+            return 2;
+        }
+        else{
+            Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
+            System.out.println("nuevo saldo "+saldoTarjeta);
+            return 0;
+        }
+       
+    }
+    
+    /*
+        Permite hacer un avance de hasta tres pasajes en el caso de que la tarjeta sea
+        personalizada.
+    si retorna 1 no existe numero id_tarjeta
+    si retorna 2 No se puede descontar pasaje
+    si retorna 0 se adiciono un pasaje 
+    */
+    public int tres_pasajes_adicionales (int id_tarjeta)
+       {
+           String saldo = "";
+           Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT tarjeta.saldo FROM tarjeta NATURAL JOIN pasajero WHERE id_tarjeta="+id_tarjeta+";");
+           saldo = consulta1.getColumna("saldo").getFila(0);
+           int saldoTarjeta = Integer.parseInt(saldo);
+        saldoTarjeta = saldoTarjeta - 1700;
+           if ("-1".equals(saldo)) {
+               return 1;
+           }
+        
+           else if (-5100 >= saldoTarjeta) {
+            System.out.println("No se puede descontar pasaje, tiene avance de tres pasajes");
+            return 2;
+        }
+        else{
+            Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
+            System.out.println("nuevo saldo "+saldoTarjeta);
+            return 0;
+        }
+       }
+    
+     public ArrayList<Tarjeta> get_tarjeta()
+    {
+        ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<>();
+        Tarjeta tarjeta_temporal=new Tarjeta();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta");
+        for(int i = 0; i < consulta.getColumna("id_tarjeta").getFilas().size(); i++)
+        {
+            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));
+            tarjeta_temporal.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
+            tarjeta_temporal.setSaldo(Integer.valueOf(consulta.getColumna("saldo").getFila(i)));
+            tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
+            tarjeta_temporal.setFecha_venta(consulta.getColumna("fecha_venta").getFila(i));
+            tarjetas_encontrados.add(tarjeta_temporal);
+            tarjeta_temporal=new Tarjeta();
+        }
+        return tarjetas_encontrados;
+    }
+     
+     /*
+    Recargar la tarjeta
+     si  retorna 1 no existe numero id_tarjeta
+     si retorna 0 se realizo la recarga
+    */
+    public int recargar_tarjeta (int id_tarjeta, int recarga)
+    {
+        String saldo = "";
+        Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT saldo FROM tarjeta WHERE id_tarjeta="+id_tarjeta+";");
+        saldo = consulta1.getColumna("saldo").getFila(0);
+        if ("-1".equals(saldo)) {
+            return 1;
+        }else{
+           
+        int saldoTarjeta = Integer.parseInt(saldo);
+        saldoTarjeta = saldoTarjeta + recarga;
+        Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
+        System.out.println("nuevo saldo "+saldoTarjeta);
+        return 0;
+        }
+    }
+    
+    /*
+    cambiar el estado de la tarjeta
+       
+    si retorna 0 esta activa
+    si retorna 1 esta bloqueada
+    */
+    public int cambiar_estado_tarjeta (int id_tarjeta)
+    {
+        String estado = "";
+        Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT estado FROM tarjeta WHERE id_tarjeta="+id_tarjeta+";");
+        estado = consulta1.getColumna("estado").getFila(0);
+        
+        if ("-1".equals(estado)) {
+            return -1;
+        }
+        else if ("0".equals(estado)) {
+            int bloqueada = 1;
+            Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET estado = "+bloqueada+" where id_tarjeta="+id_tarjeta+";");
+            return 1;
+        }else {
+            int activa = 0;
+            Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET estado = "+activa+" where id_tarjeta="+id_tarjeta+";");
+            return 0;
+        }             
+    }
+    
+    /*
+    El valor en tarjetas vendidas por cada estación durante una fecha especificada. 
+    */
+    
+    public ArrayList<Tarjeta> tarjeta_vendida_estacion (String fecha_desde, String fecha_hasta){
+        ArrayList<Tarjeta> tarjeta_vendidas = new ArrayList<>();
+        Tarjeta tarjeta_temporal=new Tarjeta();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT id_estacion_venta,count(id_tarjeta) AS id_tarjeta FROM tarjeta WHERE fecha_venta BETWEEN '"+fecha_desde+"' AND '"+fecha_hasta+"';");
+        for(int i = 0; i < consulta.getColumna("id_estacion_venta").getFilas().size(); i++)
+        {
+            tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
+            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));
+            tarjeta_vendidas.add(tarjeta_temporal);
+            tarjeta_temporal=new Tarjeta();
+        }
+        return tarjeta_vendidas;
+    }
+    
+    /*
+    Mostrar las rutas que más demanda de pasajeros tienen
+    */
+    public int registrar_uso_tarjeta(int id_ruta, int id_tarjeta){
+        return 0;
+    }
+    
 }

@@ -64,29 +64,63 @@ public class DaoEmpleado {
         }
     }
     
-    /*
+    
+    
+    
+     public boolean login(String email, String nombre)
+   {
+       Consulta consulta = new Consulta();
+       String enunciado_consulta = "Select * from empleado where correo_electronico = '"+email+"' and nombres = '"+nombre+"'";
+       consulta = CONTROLADOR_BD.consultarBD(enunciado_consulta);
+       if(consulta.getColumna("nombre").getFilas().size()>0)
+           return true;
+       return false;
+   }
+     /*
     esta consulta por su naturaleza no presentara errores, los dos unicos casos posibles es uqe retorne algo
     o no lo haga (por que no hallan buses registrados en la bd, por lo tanto en caso de que no halla se sabra 
     por el echo de que el array estara vacio.
     */
-    public ArrayList<Empleado> get_empleados()
-    {
+     
+     public ArrayList<Empleado> get_empleados(int id_empleado) {
         ArrayList<Empleado> empleados_encontrados = new ArrayList<>();
-        Empleado empleado_temporal=new Empleado();
-        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM empleado");
-        for(int i = 0; i < consulta.getColumna("id_empleado").getFilas().size(); i++)
-        {
-            empleado_temporal.setId_empleado(Integer.valueOf(consulta.getColumna("id_empleado").getFila(i)));
-            empleado_temporal.setNombres(consulta.getColumna("nombres").getFila(i));
-            empleado_temporal.setApellidos(consulta.getColumna("apellidos").getFila(i));
-            empleado_temporal.setFecha_nacimiento(consulta.getColumna("fecha_nacimiento").getFila(i));
-            empleado_temporal.setDireccion(consulta.getColumna("direccion").getFila(i));
-            empleado_temporal.setTelefono(consulta.getColumna("telefono").getFila(i));
-            empleado_temporal.setCorreo_electronico(consulta.getColumna("correo_electronico").getFila(i));
-            empleado_temporal.setCargo(consulta.getColumna("cargo").getFila(i));
-            empleados_encontrados.add(empleado_temporal);
-            empleado_temporal=new Empleado();
+
+        if (id_empleado == -1) {
+
+            Empleado empleado_temporal = new Empleado();
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM empleado");
+            for (int i = 0; i < consulta.getColumna("id_empleado").getFilas().size(); i++) {
+                empleado_temporal.setId_empleado(Integer.valueOf(consulta.getColumna("id_empleado").getFila(i)));
+                empleado_temporal.setNombres(consulta.getColumna("nombres").getFila(i));
+                empleado_temporal.setApellidos(consulta.getColumna("apellidos").getFila(i));
+                empleado_temporal.setFecha_nacimiento(consulta.getColumna("fecha_nacimiento").getFila(i));
+                empleado_temporal.setDireccion(consulta.getColumna("direccion").getFila(i));
+                empleado_temporal.setTelefono(consulta.getColumna("telefono").getFila(i));
+                empleado_temporal.setCorreo_electronico(consulta.getColumna("correo_electronico").getFila(i));
+                empleado_temporal.setCargo(consulta.getColumna("cargo").getFila(i));
+                empleados_encontrados.add(empleado_temporal);
+                empleado_temporal = new Empleado();
+            }
+            return empleados_encontrados;
+        } else {
+            
+            Empleado empleado_temporal = new Empleado();
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM empleado WHERE id_empleado = " + id_empleado + ";");
+            for (int i = 0; i < consulta.getColumna("id_empleado").getFilas().size(); i++) {
+                empleado_temporal.setId_empleado(Integer.valueOf(consulta.getColumna("id_empleado").getFila(i)));
+                empleado_temporal.setNombres(consulta.getColumna("nombres").getFila(i));
+                empleado_temporal.setApellidos(consulta.getColumna("apellidos").getFila(i));
+                empleado_temporal.setFecha_nacimiento(consulta.getColumna("fecha_nacimiento").getFila(i));
+                empleado_temporal.setDireccion(consulta.getColumna("direccion").getFila(i));
+                empleado_temporal.setTelefono(consulta.getColumna("telefono").getFila(i));
+                empleado_temporal.setCorreo_electronico(consulta.getColumna("correo_electronico").getFila(i));
+                empleado_temporal.setCargo(consulta.getColumna("cargo").getFila(i));
+                empleados_encontrados.add(empleado_temporal);
+                empleado_temporal = new Empleado();
+            }
+            return empleados_encontrados;
+
         }
-        return empleados_encontrados;
+
     }
 }

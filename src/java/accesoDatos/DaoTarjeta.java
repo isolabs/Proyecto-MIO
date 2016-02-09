@@ -49,7 +49,7 @@ public class DaoTarjeta {
             return 1;
         } else {
 
-            consulta = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET id_tarjeta="+nueva_tarjeta.getId_tarjeta()+",estado="+nueva_tarjeta.getEstado()+", saldo="+nueva_tarjeta.getSaldo()+",id_estacion_tarjeta="+nueva_tarjeta.getId_estacion_venta()+",fecha_venta='"+nueva_tarjeta.getFecha_venta()+"' where id_tarjeta="+id_tarjeta_a_modificar+";");
+            consulta = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET id_tarjeta="+nueva_tarjeta.getId_tarjeta()+",estado="+nueva_tarjeta.getEstado()+", saldo="+nueva_tarjeta.getSaldo()+", id_estacion_venta="+nueva_tarjeta.getId_estacion_venta()+",fecha_venta='"+nueva_tarjeta.getFecha_venta()+"' where id_tarjeta="+id_tarjeta_a_modificar+";");
             
             if (consulta.getColumna("Error").getCodigo_tipo_de_dato() == 1062) {
                 return 2;
@@ -122,12 +122,13 @@ public class DaoTarjeta {
            Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT tarjeta.saldo FROM tarjeta NATURAL JOIN pasajero WHERE id_tarjeta="+id_tarjeta+";");
            saldo = consulta1.getColumna("saldo").getFila(0);
            int saldoTarjeta = Integer.parseInt(saldo);
-        saldoTarjeta = saldoTarjeta - 1700;
+           saldoTarjeta = saldoTarjeta - 1800;
+        
            if ("-1".equals(saldo)) {
                return 1;
            }
         
-           else if (-5100 >= saldoTarjeta) {
+           else if (-5400 > saldoTarjeta) {
             System.out.println("No se puede descontar pasaje, tiene avance de tres pasajes");
             return 2;
         }
@@ -143,6 +144,24 @@ public class DaoTarjeta {
         ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<>();
         Tarjeta tarjeta_temporal=new Tarjeta();
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta");
+        for(int i = 0; i < consulta.getColumna("id_tarjeta").getFilas().size(); i++)
+        {
+            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));
+            tarjeta_temporal.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
+            tarjeta_temporal.setSaldo(Integer.valueOf(consulta.getColumna("saldo").getFila(i)));
+            tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
+            tarjeta_temporal.setFecha_venta(consulta.getColumna("fecha_venta").getFila(i));
+            tarjetas_encontrados.add(tarjeta_temporal);
+            tarjeta_temporal=new Tarjeta();
+        }
+        return tarjetas_encontrados;
+    }
+     
+     public ArrayList<Tarjeta> get_una_tarjeta(int id_tarjeta)
+    {
+        ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<>();
+        Tarjeta tarjeta_temporal=new Tarjeta();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta WHERE id_tarjeta="+id_tarjeta +";");
         for(int i = 0; i < consulta.getColumna("id_tarjeta").getFilas().size(); i++)
         {
             tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));
@@ -211,11 +230,13 @@ public class DaoTarjeta {
     public ArrayList<Tarjeta> tarjeta_vendida_estacion (String fecha_desde, String fecha_hasta){
         ArrayList<Tarjeta> tarjeta_vendidas = new ArrayList<>();
         Tarjeta tarjeta_temporal=new Tarjeta();
-        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT id_estacion_venta,count(id_tarjeta) AS id_tarjeta FROM tarjeta WHERE fecha_venta BETWEEN '"+fecha_desde+"' AND '"+fecha_hasta+"';");
+        //Estacion estacion_temporal = new Estacion();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT id_estacion_venta,count(id_tarjeta), nombre  FROM tarjeta INNER JOIN estacion ON estacion.id_estacion = tarjeta.id_estacion_venta WHERE fecha_venta BETWEEN '"+fecha_desde+"' AND '"+fecha_hasta+"'GROUP BY id_estacion_venta;");
         for(int i = 0; i < consulta.getColumna("id_estacion_venta").getFilas().size(); i++)
         {
             tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
-            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));
+            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i)));
+            tarjeta_temporal.setFecha_venta(consulta.getColumna("nombre").getFila(i));
             tarjeta_vendidas.add(tarjeta_temporal);
             tarjeta_temporal=new Tarjeta();
         }
@@ -225,8 +246,38 @@ public class DaoTarjeta {
     /*
     Mostrar las rutas que más demanda de pasajeros tienen
     */
-    public int registrar_uso_tarjeta(int id_ruta, int id_tarjeta){
-        return 0;
+    public ArrayList<Ruta> rutas_demanda_pasajero (){
+        ArrayList<Ruta> rutas = new ArrayList<>();
+        Ruta ruta_temporal = new Ruta();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT id_ruta, count(id_tarjeta), nombre FROM ruta NATURAL JOIN reg_uso_tarjeta GROUP BY id_ruta ;");
+        for(int i = 0; i < consulta.getColumna("id_ruta").getFilas().size(); i++)
+        {
+            ruta_temporal.setId_ruta(Integer.valueOf(consulta.getColumna("id_ruta").getFila(i)));
+            ruta_temporal.setNombre(consulta.getColumna("nombre").getFila(i));
+            ruta_temporal.setDescripcion(consulta.getColumna("count(id_tarjeta)").getFila(i));
+            rutas.add(ruta_temporal);
+            ruta_temporal = new Ruta();
+        }
+        return rutas;
     }
     
+    /*
+    registra el uso de las tarjeta en las rutas
+    */
+    public int registrar_uso_tarjeta(Reg_uso_tarjeta reg_uso_tarjeta){
+               
+        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO reg_uso_tarjeta VALUES ("+reg_uso_tarjeta.getId_ruta()+","+reg_uso_tarjeta.getId_tarjeta()+",'"+ reg_uso_tarjeta.getFecha()+"');");
+        int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
+        switch (codigo_error) {
+            case -1:
+                return 0;
+            case 1062:
+                return 1;
+            default:
+                return -1;
+        }
+    }
+    
+    
 }
+

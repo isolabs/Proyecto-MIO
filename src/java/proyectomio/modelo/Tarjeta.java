@@ -10,6 +10,7 @@ package proyectomio.modelo;
  * @author Alejandro
  */
 public class Tarjeta {
+
     private int id_tarjeta;
     private int estado;
     private int saldo;
@@ -66,5 +67,5 @@ public class Tarjeta {
     public void setFecha_venta(String fecha_venta) {
         this.fecha_venta = fecha_venta;
     }
-    
+
 }

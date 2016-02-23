@@ -5,17 +5,15 @@
  */
 package proyectomio.modelo;
 
-import java.sql.Date;
-
 /**
  *
  * @author jeisonOS
  */
 public class Reclamo {
-    
+
     private int id_tiquete;
-    private Date fecha;
-    private String motico;
+    private String fecha;
+    private String motivo;
     private String descripcion;
     private int estado;
     private int id_pasajero_interpone;
@@ -25,10 +23,10 @@ public class Reclamo {
     public Reclamo() {
     }
 
-    public Reclamo(int id_tiquete, Date fecha, String motico, String descripcion, int estado, int id_pasajero_interpone, int id_empleado_anota, int id_empleado_resuelve) {
+    public Reclamo(int id_tiquete, String fecha, String motivo, String descripcion, int estado, int id_pasajero_interpone, int id_empleado_anota, int id_empleado_resuelve) {
         this.id_tiquete = id_tiquete;
         this.fecha = fecha;
-        this.motico = motico;
+        this.motivo = motivo;
         this.descripcion = descripcion;
         this.estado = estado;
         this.id_pasajero_interpone = id_pasajero_interpone;
@@ -44,20 +42,20 @@ public class Reclamo {
         this.id_tiquete = id_tiquete;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public String getMotico() {
-        return motico;
+    public String getMotivo() {
+        return motivo;
     }
 
-    public void setMotico(String motico) {
-        this.motico = motico;
+    public void setMotivo(String motico) {
+        this.motivo = motico;
     }
 
     public String getDescripcion() {
@@ -99,8 +97,5 @@ public class Reclamo {
     public void setId_empleado_resuelve(int id_empleado_resuelve) {
         this.id_empleado_resuelve = id_empleado_resuelve;
     }
-    
-    
-    
-    
+
 }

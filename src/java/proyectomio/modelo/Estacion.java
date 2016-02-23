@@ -22,7 +22,7 @@ public class Estacion {
     }
     public Estacion(int id_estacion, String nombre, String direccion, int id_empleado_a_cargo)
     {
-        this.id_estacion=this.id_estacion;
+        this.id_estacion=id_estacion;
         this.nombre=nombre;
         this.direccion=direccion;
         this.id_empleado_a_cargo=id_empleado_a_cargo;

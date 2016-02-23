@@ -10,6 +10,7 @@ package proyectomio.modelo;
  * @author Alejandro
  */
 public class Pasajero {
+
     private int id_pasajero;
     private int id_tarjeta;
     private String nombres;
@@ -96,5 +97,5 @@ public class Pasajero {
     public void setCorreo_electronico(String correo_electronico) {
         this.correo_electronico = correo_electronico;
     }
-    
+
 }

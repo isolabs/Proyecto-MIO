@@ -10,6 +10,7 @@ package proyectomio.modelo;
  * @author Alejandro
  */
 public class Empleado {
+
     private int id_empleado;
     private String nombres;
     private String apellidos;
@@ -96,5 +97,5 @@ public class Empleado {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    
+
 }

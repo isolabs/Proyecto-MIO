@@ -4,7 +4,19 @@
     Author     : jeisonOS
 --%>
 
+<%@page import="proyectomio.controlador.Controlador_Rutas"%>
+<%@page import="proyectomio.modelo.Bus"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="proyectomio.controlador.Controlador_Buses"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="verificadorLogin.jsp" %>
+<%
+    
+    Controlador_Buses controlador_buses = new Controlador_Buses();
+    ArrayList <Bus> buses = controlador_buses.get_buses();
+    Controlador_Rutas controlador_rutas = new Controlador_Rutas();
+    
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,31 +34,69 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!-- TABLE STYLES-->
         <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+        
+        <script>
+            
+            function seleccionar(id){
+                
+                document.getElementById('seleccion_placa').innerHTML =  document.getElementById ( "placa_" + id ).innerText;
+                document.getElementById('seleccion_tipo').innerHTML = document.getElementById ( "tipo_" + id ).innerText;
+                document.getElementById('seleccion_ruta').innerHTML = document.getElementById ( "ruta_" + id ).innerText;
+                
+            }
+            
+        </script>
+        
     </head>
     <body>
+        
+        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Selecci&oacute;n
+                        </div>
+            <div class="panel-body">
+                <table>
+                    <tr><td align="right"><b>Placa:&nbsp;</b> </td><td id="seleccion_placa" name="seleccion_placa"></td></tr>
+                    <tr><td align="right"><b>Tipo:&nbsp;</b></td><td id="seleccion_tipo" name="seleccion_tipo"></td></tr>
+                    <tr><td align="right"><b>Ruta:&nbsp;</b></td><td id="seleccion_ruta" name="seleccion_ruta"></td></tr>
+                    
+                </table>
+                
+                
+                
+            </div>
+        </div>
+        
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                Empleados
+                Buses
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
-                                <th>Identificaci&oacute;n</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Cargo</th>
+                                <th>Placa</th>
+                                <th>Tipo</th>
+                                <th>Ruta</th>
+                                <th>Capacidad</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd gradeX">
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td class="center">4</td>
-                            </tr>
+                            <%
+                                for(int i = 0; i < buses.size(); i++){
+                                    
+                                    out.println("<tr class=\"odd gradeX\">");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"placa_" + i + "\">" + buses.get(i).getPlaca()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"tipo_" + i + "\">" + buses.get(i).getTipo()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"ruta_" + i + "\">" + controlador_rutas.getRuta(Integer.valueOf(buses.get(i).getId_ruta())).getNombre()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" class=\"center\">" + buses.get(i).getNumero_pasajeros()+ "</td>");
+                                    out.println("</tr>");
+                                    
+                                };
+                            
+                            %>
                             
                         </tbody>
                     </table>

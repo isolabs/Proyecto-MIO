@@ -38,18 +38,34 @@
             
             function seleccionar(id){
                 
-                document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_empleado_" + id ).innerText;
-                document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombres_" + id ).innerText + " " + document.getElementById ( "apellidos_" + id ).innerText ;
+                document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_estacion_" + id ).innerText;
+                document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombre_" + id ).innerText ;
                 
             }
             
         </script>
     </head>
     <body>
+        
+        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Selecci&oacute;n
+                        </div>
+            <div class="panel-body">
+                <table>
+                    <tr><td align="right"><b>Identificaci&oacute;n:&nbsp;</b> </td><td id="seleccion_id" name="seleccion_id"></td></tr>
+                    <tr><td align="right"><b>Nombre:&nbsp;</b></td><td id="seleccion_nombre" name="seleccion_nombre"></td></tr>
+                </table>
+                
+                
+                
+            </div>
+        </div>
+        
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                Empleados
+                Estaciones
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
@@ -72,8 +88,7 @@
                                     out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"nombre_" + i + "\">" + estaciones.get(i).getNombre()+ "</td>");
                                     out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"direccion_" + i + "\">" + estaciones.get(i).getDireccion()+ "</td>");                                 
                                     out.println("<td onClick=\"seleccionar(" + i + ");\">" + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getId_empleado()+ "</td>");
-                                    
-                                    out.println("<td onClick=\"seleccionar(" + i + ");\">" + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getNombres() + " " + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getApellidos()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" class=\"center\">" + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getNombres() + " " + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getApellidos()+ "</td>");
                                     out.println("</tr>");
                                     
                                 };

@@ -92,8 +92,8 @@
                                 
                                 out.print("<li><a  href=\"#\" onClick=\"goEmpleados();\">Empleados</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goEstaciones();\">Estaciones</a> </li>");
-                                out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goBuses();\">Buses</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
                                 
                             }
                         %>

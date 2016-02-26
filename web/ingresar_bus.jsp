@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+<%@page import="java.util.ArrayList"%>
+<%@page import="proyectomio.controlador.Controlador_Rutas"%>
+<%@page import="proyectomio.modelo.Ruta"%>
+<!DOCTYPE html>
 
 <!--  Bus( placa, tipo, id_ruta,  numero_pasajeros); -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,7 +19,7 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h5>Ingreso de nuevos buses. </h5><br>
+    <h5>Ingreso de nuevos buses. </h5>
     
         
         <form action="procesador_ingreso_bus.jsp" class="form-group" method="post" >
@@ -26,26 +29,37 @@
                <label for="Placa">
                    Placa:
                </label>
-            <input type="text" name="placa"  placeholder="Ejemplo: ABC-123" title="Debe ingresar un dato correcto" id="placa" class ="form-control" required="required">
+            <input type="text" name="placa"  pattern="[^<>]+"placeholder="Ejemplo: ABC-123" title="Debe ingresar un dato correcto" id="placa" class ="form-control" required="required"></input>
          
                <label for="id_ruta">
-                   N&uacute;mero de ruta a la que pertenece:
+                   Ruta a la que pertenece:
                </label>
-               <input type="text" name="id_ruta"   id="id_ruta" class ="form-control" required="required">
+               <%
+                   Controlador_Rutas controlador_rutas = new Controlador_Rutas();
+                   ArrayList<Ruta> rutas = controlador_rutas.get_rutas();
+                   
+                   %>
+                  <select class="form-control" name="id_ruta" id="id_ruta"  required="required">
+                      <% 
+                          for(int i = 0; i < rutas.size(); i++)
+                          {%>
+                          <option value="<% out.print(rutas.get(i).getId_ruta()) ;%>"> <% out.print(rutas.get(i).getNombre());%></option>
+                          <%} %>
+                                                </select>
                 
                <label for="num_pasajeros">
                    N&uacute;mero de pasajeros:
                </label>
-               <input type="text" name="num_pasajeros" id="num_pasajeros" class ="form-control" required="required">
+               <input type="text" pattern="[^<>][0-9].{0,2}" name="num_pasajeros" id="num_pasajeros" class ="form-control" required="required"></input>
                    
               
                <label for="tipo_bus">
                     Tipo de bus:
                </label>
-                   
-                  <select class="form-control" name="tipo_bus" id="tipo_bus" multiple required="required">
+           
+                  <select class="form-control" name="tipo_bus" id="tipo_bus" required="required">
                                                 <option>Articulado</option>
-                                                <option>Padrone</option>
+                                                <option>Padron</option>
                                                 <option>Complementario</option>
                                                 </select>
              

@@ -22,18 +22,30 @@
 
             <div class="wrapper">
                 <div class="wrap">
-                    
-                    <div class="btn-big red">
-                        <i class="fa fa-envelope fa-2x"></i>
-                        <span class="label bottom">Mail</span> </div>
 
-                    <div class="btn-big blue">
-                        <i class="fa fa-calendar fa-2x"></i>
-                        <span class="label bottom">Calendar</span> </div>
+                    <div class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span class="label bottom">Programar viaje</span> </div>
+                    <div class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span class="label bottom">Consultar rutas</span> </div>
+                    <div class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span class="label bottom">Mi perfil</span> </div>
+                    <div class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span class="label bottom">Consultar saldo</span> </div>
+                    <div class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span class="label bottom">Recargar</span> </div>
+                    <div class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span class="label bottom">Abordar</span> </div>
 
-                    <div class="btn-small orange">
-                        <i class="fa fa-windows fa-2x"></i>
-                        <span class="label bottom">Store</span> </div>
+
+
+
+
 
 
                 </div>

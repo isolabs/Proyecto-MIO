@@ -1,6 +1,6 @@
-<%@page import="ObjetosdeTransferencia.ConexionBD"%>
-<%@page import="ObjetosdeTransferencia.Bus"%>
-<%@page import="ObjetosdeNegocio.ControladorBuses"%>
+<%@page import="proyectomio.modelo.ConexionBD"%>
+<%@page import="proyectomio.modelo.Bus"%>
+<%@page import="proyectomio.controlador.Controlador_Buses"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -22,7 +22,7 @@
     <%
         
        
-       ControladorBuses uncontrolador = new ControladorBuses();
+       Controlador_Buses uncontrolador = new Controlador_Buses();
        Bus unbus = new Bus();
     
       String placa = request.getParameter("placa");

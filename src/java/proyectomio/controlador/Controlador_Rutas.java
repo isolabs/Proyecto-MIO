@@ -16,7 +16,11 @@ import proyectomio.modelo.Ruta;
 public class Controlador_Rutas {
 
     private final DaoRutas DATA_ACCES_OBJECT = new DaoRutas();
-
+    
+    public Ruta getRuta(int id_ruta){
+        Ruta ruta = DATA_ACCES_OBJECT.getRuta(id_ruta);
+        return ruta;
+    }
     /*
     en caso que la llave primaria sea duplicada retorna 1
     en caso que la operacion se termine exitosamente retorna 0

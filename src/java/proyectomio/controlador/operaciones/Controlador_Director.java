@@ -9,6 +9,6 @@ package proyectomio.controlador.operaciones;
  *
  * @author jeisonOS
  */
-public class Controlador_Usuario {
+public class Controlador_Director {
     
 }

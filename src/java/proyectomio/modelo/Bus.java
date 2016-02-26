@@ -15,6 +15,21 @@ public class Bus {
     private int id_ruta;
     private int numero_pasajeros;
     private String tipo;/*0 alimentador,  1 bus de un solo bagon, 2 bus de doble bagon*/
+    
+    public Bus(String placa, int id_ruta, int numero_pasajeros, String tipo)
+    {
+        this.placa=placa;
+        this.id_ruta=id_ruta;
+        this.numero_pasajeros=numero_pasajeros;
+        this.tipo = tipo;
+    }
+    
+    public Bus(){
+         this.placa="";
+        this.id_ruta=0;
+        this.numero_pasajeros=0;
+        this.tipo = "";
+    }
 
     /**
      * @return the placa

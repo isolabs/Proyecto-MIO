@@ -14,11 +14,13 @@ public class Estacion {
     private String nombre;
     private String direccion;
     private int id_empleado_a_cargo;
-
     
     public Estacion()
     {
-        
+        id_estacion = 0;
+        nombre ="";
+        direccion = "";
+        id_empleado_a_cargo=0;
     }
     public Estacion(int id_estacion, String nombre, String direccion, int id_empleado_a_cargo)
     {

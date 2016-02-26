@@ -25,8 +25,8 @@ public class Ruta {
 
     public Ruta() {
         this.id_ruta = 0;
-        this.nombre = new String();
-        this.descripcion = new String();
+        this.nombre = "";
+        this.descripcion = "";
     }
 
     /**

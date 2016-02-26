@@ -16,6 +16,31 @@ import proyectomio.modelo.Consulta;
 public class DaoBuses {
 
     private final Controlador_BD CONTROLADOR_BD = new Controlador_BD();
+    /*recibe una placa, consulta la base de datos y si existe un bus con dicha placa en esta
+    construye y retorna un bus, de no ser asi, retorna un bus vacio.
+    */
+    public Bus get_bus(String placa)
+    {
+   int id_ruta=0;
+   int numero_pasajeros=0;
+   String tipo="";/*0 alimentador,  1 bus de un solo bagon, 2 bus de doble bagon*/
+   Bus un_bus = new Bus();
+   Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM bus WHERE bus.placa = '"+placa+"'");
+   if(consulta.getColumna("placa").getFilas().size()==0)
+   {
+       return un_bus;
+   }
+   else
+   {
+       id_ruta=Integer.parseInt(consulta.getColumna("id_ruta").getFila(0));
+       numero_pasajeros=Integer.parseInt(consulta.getColumna("numero_pasajeros").getFila(0));
+       tipo = consulta.getColumna("tipo").getFila(0);
+       un_bus = new Bus(placa,id_ruta,numero_pasajeros,tipo);
+       return un_bus;
+   }
+    }
+    
+    
     
     /*  en caso que se ingrese correctamente se retornara 0
         en caso que la llave primaria se duplique se retornara 1,

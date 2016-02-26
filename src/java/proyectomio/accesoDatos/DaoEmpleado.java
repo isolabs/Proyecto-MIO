@@ -20,7 +20,7 @@ public class DaoEmpleado {
     public int adicionar_empleado(Empleado un_empleado)
     { 
          Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO empleado VALUES "
-                 + "(" + un_empleado.getId_empleado()+",'"+un_empleado.getNombres()+"','"+ un_empleado.getApellidos()+ "','" +un_empleado.getFecha_nacimiento()+"','"+un_empleado.getDireccion()+"','"+un_empleado.getTelefono()+"','"+un_empleado.getCorreo_electronico()+"','"+ un_empleado.getCargo()+"');");
+                 + "(" + un_empleado.getId_empleado()+",'"+un_empleado.getNombres()+"','"+ un_empleado.getApellidos()+ "','" +un_empleado.getFecha_nacimiento()+"','"+un_empleado.getDireccion()+"','"+un_empleado.getTelefono()+"','"+un_empleado.getCorreo_electronico()+"','"+ un_empleado.getCargo()+"','"+ un_empleado.getPassword() +"');");
          int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
         switch (codigo_error) {
             case -1:
@@ -42,7 +42,7 @@ public class DaoEmpleado {
         if (consulta.getColumnas().get(0).getFila(0).equals("-1")) {
             return 1;
         }else{
-        Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE empleado SET id_empleado="+nuevo_empleado.getId_empleado()+",nombres='"+nuevo_empleado.getNombres()+"', apellidos='"+nuevo_empleado.getApellidos()+"', fecha_nacimiento='"+nuevo_empleado.getFecha_nacimiento()+"', direccion='"+nuevo_empleado.getDireccion()+"', telefono='"+nuevo_empleado.getTelefono()+"', correo_electronico='"+nuevo_empleado.getCorreo_electronico()+"', cargo='"+nuevo_empleado.getCargo()+"' where id_empleado="+id_empleado_a_modificar+";");
+        CONTROLADOR_BD.consultarBD("UPDATE empleado SET nombres='"+nuevo_empleado.getNombres()+"', apellidos='"+nuevo_empleado.getApellidos()+"', fecha_nacimiento='"+nuevo_empleado.getFecha_nacimiento()+"', direccion='"+nuevo_empleado.getDireccion()+"', telefono='"+nuevo_empleado.getTelefono()+"', correo_electronico='"+nuevo_empleado.getCorreo_electronico()+"', cargo='"+nuevo_empleado.getCargo()+"', password='"+nuevo_empleado.getPassword()+"' where id_empleado="+id_empleado_a_modificar+";");
 
         return 0;
         }
@@ -59,23 +59,13 @@ public class DaoEmpleado {
         if (consulta.getColumnas().get(0).getFila(0).equals("-1")) {
             return 1;
         }else{ 
-       Consulta consulta1 = CONTROLADOR_BD.consultarBD("DELETE FROM empleado WHERE id_empleado="+id_empleado+";");  
+       CONTROLADOR_BD.consultarBD("DELETE FROM empleado WHERE id_empleado="+id_empleado+";");  
        return 0;
         }
     }
     
     
     
-    
-     public boolean login(String email, String nombre)
-   {
-       Consulta consulta = new Consulta();
-       String enunciado_consulta = "Select * from empleado where correo_electronico = '"+email+"' and nombres = '"+nombre+"'";
-       consulta = CONTROLADOR_BD.consultarBD(enunciado_consulta);
-       if(consulta.getColumna("nombre").getFilas().size()>0)
-           return true;
-       return false;
-   }
      /*
     esta consulta por su naturaleza no presentara errores, los dos unicos casos posibles es uqe retorne algo
     o no lo haga (por que no hallan buses registrados en la bd, por lo tanto en caso de que no halla se sabra 
@@ -98,6 +88,9 @@ public class DaoEmpleado {
                 empleado_temporal.setTelefono(consulta.getColumna("telefono").getFila(i));
                 empleado_temporal.setCorreo_electronico(consulta.getColumna("correo_electronico").getFila(i));
                 empleado_temporal.setCargo(consulta.getColumna("cargo").getFila(i));
+                Consulta consulta_cargo = CONTROLADOR_BD.consultarBD("SELECT cargo FROM cargos WHERE id_cargo = '" + consulta.getColumna("cargo").getFila(i) +  "'");
+                empleado_temporal.setCargo_String(consulta_cargo.getColumna("cargo").getFila(0));
+                empleado_temporal.setPassword(consulta.getColumna("password").getFila(i));
                 empleados_encontrados.add(empleado_temporal);
                 empleado_temporal = new Empleado();
             }
@@ -115,6 +108,9 @@ public class DaoEmpleado {
                 empleado_temporal.setTelefono(consulta.getColumna("telefono").getFila(i));
                 empleado_temporal.setCorreo_electronico(consulta.getColumna("correo_electronico").getFila(i));
                 empleado_temporal.setCargo(consulta.getColumna("cargo").getFila(i));
+                Consulta consulta_cargo = CONTROLADOR_BD.consultarBD("SELECT cargo FROM cargos WHERE id_cargo = '" + consulta.getColumna("cargo").getFila(i) +  "'");
+                empleado_temporal.setCargo_String(consulta_cargo.getColumna("cargo").getFila(0));
+                empleado_temporal.setPassword(consulta.getColumna("password").getFila(i));
                 empleados_encontrados.add(empleado_temporal);
                 empleado_temporal = new Empleado();
             }

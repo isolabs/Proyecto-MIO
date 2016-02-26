@@ -17,6 +17,24 @@ public class DaoRutas {
 
     private final Controlador_BD CONTROLADOR_BD = new Controlador_BD();
 
+    public Ruta getRuta(int id_ruta) {
+        String nombre;
+        String descripcion;
+        Ruta ruta = new Ruta();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM ruta where id_ruta = "+id_ruta);
+        if(consulta.getColumna("id_ruta").getFilas().isEmpty())
+        {
+            return ruta;
+        }
+        else
+        {
+        nombre = consulta.getColumna("nombre").getFila(0);
+        descripcion = consulta.getColumna("descripcion").getFila(0);
+        ruta = new Ruta(id_ruta,nombre,descripcion);
+        
+        return ruta;
+        }
+    }
 
     /*
     en caso que la llave primaria sea duplicada retorna 1
@@ -41,7 +59,7 @@ public class DaoRutas {
             return 1;
         } else {
 
-            consulta = CONTROLADOR_BD.consultarBD("UPDATE ruta SET id_ruta=" + nueva_ruta.getId_ruta() + ",nombre='" + nueva_ruta.getNombre() + "', descripcion='" + nueva_ruta.getDescripcion() + "' where nombre='" + nombre_ruta_modificar + "';");
+            consulta = CONTROLADOR_BD.consultarBD("UPDATE ruta SET nombre='" + nueva_ruta.getNombre() + "', descripcion='" + nueva_ruta.getDescripcion() + "' where nombre='" + nombre_ruta_modificar + "';");
             System.out.println(consulta.getColumna("Error").getCodigo_tipo_de_dato());
             if (consulta.getColumna("Error").getCodigo_tipo_de_dato() == 1062) {
                 return 2;
@@ -49,29 +67,26 @@ public class DaoRutas {
             return 0;
         }
     }
-    
-    
+
     /*
     esta consulta por su naturaleza no presentara errores, los dos unicos casos posibles es que retorne algo
     o no lo haga (por que no hallan rutas registrados en la bd, por lo tanto en caso de que no halla se sabra 
     por el echo de que el array estara vacio.
-    */
-    public ArrayList<Ruta> get_rutas()
-    {
+     */
+    public ArrayList<Ruta> get_rutas() {
         ArrayList<Ruta> rutas_encontradas = new ArrayList<>();
-        Ruta ruta_temporal=new Ruta();
+        Ruta ruta_temporal = new Ruta();
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM ruta");
-        for(int i = 0; i < consulta.getColumna("placa").getFilas().size(); i++)
-        {
+        for (int i = 0; i < consulta.getColumna("id_ruta").getFilas().size(); i++) {
             ruta_temporal.setDescripcion(consulta.getColumna("descripcion").getFila(i));
             ruta_temporal.setId_ruta(Integer.valueOf(consulta.getColumna("id_ruta").getFila(i)));
             ruta_temporal.setNombre(consulta.getColumna("nombre").getFila(i));
             rutas_encontradas.add(ruta_temporal);
-            ruta_temporal=new Ruta();
+            ruta_temporal = new Ruta();
         }
         return rutas_encontradas;
     }
-    
+
 
     /*
     en caso que la ruta a eliminar no exista, se retornara 1, 
@@ -87,20 +102,17 @@ public class DaoRutas {
         CONTROLADOR_BD.consultarBD("DELETE FROM ruta WHERE nombre='" + nombre_ruta_eliminar + "';");
         return 0;
     }
-     public ArrayList <String> get_nombre_rutas()
-    {
-      ArrayList<String> lista_rutas = new ArrayList<>();
-      Consulta consulta = CONTROLADOR_BD.consultarBD
-        ("SELECT *  FROM ruta;");
+
+    public ArrayList<String> get_nombre_rutas() {
+        ArrayList<String> lista_rutas = new ArrayList<>();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta;");
         if ("-1".equals(consulta.getColumna("id_ruta").getFila(0))) {
             return lista_rutas;
-        } 
-        else
-        {
-           lista_rutas=consulta.getColumna("nombre").getFilas();
-           return lista_rutas;
+        } else {
+            lista_rutas = consulta.getColumna("nombre").getFilas();
+            return lista_rutas;
         }
-      
+
     }
 
 }

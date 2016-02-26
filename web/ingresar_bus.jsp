@@ -19,14 +19,14 @@
     <h5>Ingreso de nuevos buses. </h5><br>
     
         
-        <form action="procesador_formulario_test.jsp" class="form-group" method="post" >
+        <form action="procesador_ingreso_bus.jsp" class="form-group" method="post" >
            
            
           
                <label for="Placa">
                    Placa:
                </label>
-            <input type="text" name="placa"  placeholder="Ejemplo: ABC-123" title="<br> </br> Debe ingresar <br> </br>  un dato correcto" id="placa" class ="form-control" required="required">
+            <input type="text" name="placa"  placeholder="Ejemplo: ABC-123" title="Debe ingresar un dato correcto" id="placa" class ="form-control" required="required">
          
                <label for="id_ruta">
                    N&uacute;mero de ruta a la que pertenece:

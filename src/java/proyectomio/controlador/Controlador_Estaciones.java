@@ -20,6 +20,12 @@ public class Controlador_Estaciones {
         DATA_ACCES_OBJECT = new DaoEstaciones();
     }
     
+    public Estacion getEstacion(int id_estacion)
+    {
+        Estacion estacion = DATA_ACCES_OBJECT.getEstacion(id_estacion);
+        return estacion;
+    }
+    
     /*
     en caso que la llave primaria sea duplicada retorna 1
     en caso que la llave fornaea a id_empleado_acargo no se cumpla se retorna 2

@@ -19,8 +19,10 @@ public class Empleado {
     private String telefono;
     private String correo_electronico;
     private String cargo;
+    private String password;
+    private String cargo_String;
 
-    public Empleado(int id_empleado, String nombres, String apellidos, String fecha_nacimiento, String direccion, String telefono, String correo_electronico, String cargo) {
+    public Empleado(int id_empleado, String nombres, String apellidos, String fecha_nacimiento, String direccion, String telefono, String correo_electronico, String cargo, String password) {
         this.id_empleado = id_empleado;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -29,6 +31,7 @@ public class Empleado {
         this.telefono = telefono;
         this.correo_electronico = correo_electronico;
         this.cargo = cargo;
+        this.password = password;
     }
 
     public Empleado() {
@@ -98,4 +101,23 @@ public class Empleado {
         this.cargo = cargo;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getCargo_String() {
+        return cargo_String;
+    }
+
+    public void setCargo_String(String cargo_String) {
+        this.cargo_String = cargo_String;
+    }
+    
+    
+
+    
 }

@@ -54,5 +54,10 @@ public class Controlador_Reclamo {
     public int resolverReclamo(int id_tiquete, int id_empleado_resuelve) {
         return DATA_ACCES_OBJECT.resolverReclamo(id_tiquete, id_empleado_resuelve);
     }
+    
+    public int ingresarMedida(int id_tiquete, String descripcion){
+        
+        return 0;
+    }
 
 }

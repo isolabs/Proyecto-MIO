@@ -143,7 +143,7 @@ public class DaoTarjeta {
     
      public ArrayList<Tarjeta> get_tarjeta()
     {
-        ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<>();
+        ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<Tarjeta>();
         Tarjeta tarjeta_temporal=new Tarjeta();
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta");
         for(int i = 0; i < consulta.getColumna("id_tarjeta").getFilas().size(); i++)
@@ -161,7 +161,7 @@ public class DaoTarjeta {
      
      public ArrayList<Tarjeta> get_una_tarjeta(int id_tarjeta)
     {
-        ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<>();
+        ArrayList<Tarjeta> tarjetas_encontrados = new ArrayList<Tarjeta>();
         Tarjeta tarjeta_temporal=new Tarjeta();
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta WHERE id_tarjeta="+id_tarjeta +";");
         for(int i = 0; i < consulta.getColumna("id_tarjeta").getFilas().size(); i++)
@@ -229,14 +229,14 @@ public class DaoTarjeta {
     */
     
     public ArrayList<Tarjeta> tarjeta_vendida_estacion (String fecha_desde, String fecha_hasta){
-        ArrayList<Tarjeta> tarjeta_vendidas = new ArrayList<>();
+        ArrayList<Tarjeta> tarjeta_vendidas = new ArrayList<Tarjeta>();
         Tarjeta tarjeta_temporal=new Tarjeta();
         //Estacion estacion_temporal = new Estacion();
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT id_estacion_venta,count(id_tarjeta), nombre  FROM tarjeta INNER JOIN estacion ON estacion.id_estacion = tarjeta.id_estacion_venta WHERE fecha_venta BETWEEN '"+fecha_desde+"' AND '"+fecha_hasta+"'GROUP BY id_estacion_venta;");
         for(int i = 0; i < consulta.getColumna("id_estacion_venta").getFilas().size(); i++)
         {
             tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
-            tarjeta_temporal.setId_tarjeta(calcular_valor_total_tarjeta_estacion(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i))));
+            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i)));
             tarjeta_temporal.setFecha_venta(consulta.getColumna("nombre").getFila(i));
             tarjeta_vendidas.add(tarjeta_temporal);
             tarjeta_temporal=new Tarjeta();
@@ -248,7 +248,7 @@ public class DaoTarjeta {
     Mostrar las rutas que más demanda de pasajeros tienen
     */
     public ArrayList<Ruta> rutas_demanda_pasajero (){
-        ArrayList<Ruta> rutas = new ArrayList<>();
+        ArrayList<Ruta> rutas = new ArrayList<Ruta>();
         Ruta ruta_temporal = new Ruta();
         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT id_ruta, count(id_tarjeta), nombre FROM ruta NATURAL JOIN reg_uso_tarjeta GROUP BY id_ruta ;");
         for(int i = 0; i < consulta.getColumna("id_ruta").getFilas().size(); i++)
@@ -279,15 +279,6 @@ public class DaoTarjeta {
         }
     }
     
-     /*
-    valor total de tarjetas (una tarjeta cuesta 3200)  vendidas en una estacion
-    
-    */
-    
-    public int calcular_valor_total_tarjeta_estacion(int cantidad){
-        int calcular = 3200 * cantidad;
-        return calcular;
-    }
     
 }
 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import proyectomio.controlador.Controlador_Empleado;
 import proyectomio.modelo.Consulta;
 import proyectomio.modelo.Reclamo;
+import proyectomio.modelo.Reclamo_medida;
 
 /**
  *
@@ -72,6 +73,73 @@ public class DaoReclamo {
                 + "'"+ reclamo.getId_pasajero_interpone()+"',"
                 + "'"+ reclamo.getId_empleado_anota()+"')");
         
+        switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
+            case -1:
+                return 0;
+            case 1062:
+                return 1;
+            case 1452:
+                return 2;
+            default:
+                return -1;
+        }
+    }
+
+    public ArrayList<Reclamo_medida> obtenerMedida(int id_reclamo, String hora_fecha_registro) {
+        ArrayList<Reclamo_medida> medidas = new ArrayList<>();
+        if (hora_fecha_registro.equals("")) {
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM medida_reclamo "
+                    + "WHERE id_reclamo = '" + id_reclamo + "'");
+            int cantidad_filas = consulta.getColumnas().get(0).getFilas().size();
+            for (int i = 0; i < cantidad_filas; i++) {
+                Reclamo_medida tmp = new Reclamo_medida();
+                tmp.setId_reclamo(Integer.valueOf(consulta.getColumna("id_reclamo").getFila(i)));
+                tmp.setDescripcion(consulta.getColumna("descripcion").getFila(i));
+                tmp.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
+                tmp.setFecha_hora(consulta.getColumna("hora_fecha_registro").getFila(i));
+                medidas.add(tmp);
+            }
+
+        }else{
+        
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM medida_reclamo "
+                    + "WHERE id_reclamo = '" + id_reclamo + "' AND hora_fecha_registro = '"
+                    + hora_fecha_registro + "'");
+            int cantidad_filas = consulta.getColumnas().get(0).getFilas().size();
+            for (int i = 0; i < cantidad_filas; i++) {
+                Reclamo_medida tmp = new Reclamo_medida();
+                tmp.setId_reclamo(Integer.valueOf(consulta.getColumna("id_reclamo").getFila(i)));
+                tmp.setDescripcion(consulta.getColumna("descripcion").getFila(i));
+                tmp.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
+                tmp.setFecha_hora(consulta.getColumna("hora_fecha_registro").getFila(i));
+                medidas.add(tmp);
+            }
+            
+        }
+
+        return medidas;
+    }
+
+    public int ingresarMedida(int id_tiquete, String descripcion){
+        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO medida_reclamo"
+                + "(id_reclamo,descripcion,estado)"
+                + "VALUES( '" + id_tiquete + "','" + descripcion + "','0' )");
+        switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
+            case -1:
+                return 0;
+            case 1062:
+                return 1;
+            case 1452:
+                return 2;
+            default:
+                return -1;
+        }
+    }
+    
+    public int resolverMedida(int id_reclamo, String hora_fecha_registro){
+        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE medida_reclamo "
+                + "SET estado = 1 WHERE id_reclamo = '" + id_reclamo + "' AND "
+                + "hora_fecha_registro = '" + hora_fecha_registro + "'");
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:
                 return 0;

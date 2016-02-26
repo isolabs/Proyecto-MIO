@@ -236,7 +236,7 @@ public class DaoTarjeta {
         for(int i = 0; i < consulta.getColumna("id_estacion_venta").getFilas().size(); i++)
         {
             tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
-            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i)));
+            tarjeta_temporal.setId_tarjeta(calcular_valor_total_tarjeta_estacion(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i))));
             tarjeta_temporal.setFecha_venta(consulta.getColumna("nombre").getFila(i));
             tarjeta_vendidas.add(tarjeta_temporal);
             tarjeta_temporal=new Tarjeta();
@@ -279,6 +279,15 @@ public class DaoTarjeta {
         }
     }
     
+     /*
+    valor total de tarjetas (una tarjeta cuesta 3200)  vendidas en una estacion
+    
+    */
+    
+    public int calcular_valor_total_tarjeta_estacion(int cantidad){
+        int calcular = 3200 * cantidad;
+        return calcular;
+    }
     
 }
 

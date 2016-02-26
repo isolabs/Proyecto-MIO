@@ -16,8 +16,10 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h5>Ingreso de nuevas rutas. </h5>
-    
+     <div class="panel panel-primary">
+        <div class ="panel-heading">
+    Ingreso de nuevas rutas
+        </div>
 
    
         
@@ -30,7 +32,7 @@
                <label for="Nombre">
                    Nombre de la ruta:
                </label>
-            <input type="text" name="nombre"   id="nombre" class ="form-control" required="required"></input>
+            <input type="text" name="nombre" pattern="[0-9A-Z]"  id="nombre" class ="form-control" required="required"></input>
                 
                <label for="descripcion">
                    Descripci&oacute;n:
@@ -41,7 +43,7 @@
              
              
                <center>
-                   <input type="submit" class="btn btn-default" value="Registrar ruta"></center>
+                   <input type="submit" class="btn btn-primary" value="Registrar ruta"></center>
                                 
            
           

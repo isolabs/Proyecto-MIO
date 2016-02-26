@@ -21,8 +21,10 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h5>Ingreso de estaciones. </h5>
-    
+     <div class="panel panel-primary">
+        <div class ="panel-heading">
+            Ingreso de estaciones
+        </div>
         
         <form action="procesador_ingreso_estacion.jsp" class="form-group" method="post" >
            

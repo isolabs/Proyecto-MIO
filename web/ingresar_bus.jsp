@@ -19,8 +19,10 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h5>Ingreso de nuevos buses. </h5>
-    
+    <div class="panel panel-primary">
+        <div class ="panel-heading">
+    Ingreso de nuevos buses
+        </div>
         
         <form action="procesador_ingreso_bus.jsp" class="form-group" method="post" >
            
@@ -64,7 +66,7 @@
                                                 </select>
              
                <center>
-                   <input   style="margin-top: 10px"  type="submit" class="btn btn-default" value="Registrar bus"></center>
+                   <input   style="margin-top: 10px"  type="submit" class="btn btn-primary" value="Registrar bus"></center>
                                 
            
           

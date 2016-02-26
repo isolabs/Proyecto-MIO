@@ -47,9 +47,14 @@
     </head>
     <body>
         
-        <div class="panel panel-default">
+        <div class="panel panel-info">
                         <div class="panel-heading">
-                            Selecci&oacute;n
+                            <b>Selecci&oacute;n</b>
+                            
+                            <button type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</button>
+                            <button type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</button>
+                            <button type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</button>
+                            
                         </div>
             <div class="panel-body">
                 <table>
@@ -63,7 +68,7 @@
         </div>
         
         <!-- Advanced Tables -->
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
             <div class="panel-heading">
                 Estaciones
             </div>

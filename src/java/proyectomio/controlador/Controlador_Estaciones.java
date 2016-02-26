@@ -31,11 +31,10 @@ public class Controlador_Estaciones {
     en caso que la llave fornaea a id_empleado_acargo no se cumpla se retorna 2
     en caso que la operacion se termine exitosamente retorna 0
      */
-    public int adicionar_estacion( int id_estacion, String nombre, String direccion, int id_empleado_a_cargo) {
+    public int adicionar_estacion(String nombre, String direccion, int id_empleado_a_cargo) {
         Estacion estacion_adicionar = new Estacion();
         estacion_adicionar.setDireccion(direccion);;
         estacion_adicionar.setId_empleado_a_cargo(id_empleado_a_cargo);
-        estacion_adicionar.setId_estacion(id_estacion);
         estacion_adicionar.setNombre(nombre);
         int resultado = DATA_ACCES_OBJECT.adicionar_estacion(estacion_adicionar);
         return resultado;

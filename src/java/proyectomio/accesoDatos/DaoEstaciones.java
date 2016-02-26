@@ -41,8 +41,7 @@ public class DaoEstaciones {
     en caso que la operacion se termine exitosamente retorna 0
      */
     public int adicionar_estacion(Estacion una_estacion) {
-        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO estacion VALUES ("
-                + una_estacion.getId_estacion() + ",'"
+        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO estacion (nombre, direccion, id_empleado_a_cargo) VALUES ('"
                 + una_estacion.getNombre() + "','"
                 + una_estacion.getDireccion() + "',"
                 + una_estacion.getId_empleado_a_cargo() + ");");

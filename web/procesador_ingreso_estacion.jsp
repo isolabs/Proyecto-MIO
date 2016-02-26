@@ -1,0 +1,68 @@
+<%@page import="proyectomio.modelo.Estacion"%>
+<%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Procesador de ingreso de buses</title>
+	<!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <h5>
+        <center>
+    <%
+        
+       
+       Controlador_Estaciones uncontrolador = new Controlador_Estaciones();
+       Estacion unaEstacion = new Estacion();
+    
+      String nombre = request.getParameter("nombre");
+      String direccion = request.getParameter("direccion");
+      int id_empleado_a_cargo = Integer.valueOf(request.getParameter("id_empleado_a_cargo"));
+       
+       
+       int resultado = uncontrolador.adicionar_estacion(nombre,direccion,id_empleado_a_cargo);
+       
+       switch(resultado){
+           case 0: out.println("La estacion "+nombre+" ha sido ingresado con exito");break;
+           case 1: out.println("La estacion "+nombre+" ya existe en nuestros registros");break;
+           case 2: out.println("El empleado con id "+ id_empleado_a_cargo+" no existe");break;
+           default: out.println("Se ha generado un error inesperado en el programa");
+       }
+       
+    
+    %>
+     <br></br>
+     
+        <button class="btn btn-default" onclick="goBack()">Go Back</button> </center>
+    </center>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+        </h5><br>
+</div>
+    
+    
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.10.2.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="assets/js/jquery.metisMenu.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+    
+   
+</body>
+</html>

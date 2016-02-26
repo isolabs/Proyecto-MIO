@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.web.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/web-project/3">
+            <name>Proyecto-MIO</name>
+            <minimum-ant-version>1.6.5</minimum-ant-version>
+            <web-module-libraries>
+                <library dirs="200">
+                    <file>${libs.MySQLDriver.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
+                </library>
+            </web-module-libraries>
+            <web-module-additional-libraries/>
+            <source-roots>
+                <root id="src.dir" name="Source Packages"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.src.dir" name="Test Packages"/>
+            </test-roots>
+        </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>base</word>
+            <word>Consulta</word>
+            <word>consultar</word>
+            <word>cuando</word>
+            <word>datos</word>
+            <word>de</word>
+            <word>del</word>
+            <word>dentro</word>
+            <word>el</word>
+            <word>en</word>
+            <word>encuentren</word>
+            <word>es</word>
+            <word>Identificador</word>
+            <word>igual</word>
+            <word>la</word>
+            <word>los</word>
+            <word>objeto</word>
+            <word>obtener</word>
+            <word>parametro</word>
+            <word>que</word>
+            <word>Reclamo</word>
+            <word>Reclamos</word>
+            <word>registrados</word>
+            <word>retorna</word>
+            <word>retornará</word>
+            <word>se</word>
+            <word>si</word>
+            <word>sistema</word>
+            <word>tipo</word>
+            <word>tiquete</word>
+            <word>tiquetes</word>
+            <word>todos</word>
+            <word>un</word>
+            <word>uno</word>
+        </spellchecker-wordlist>
+    </configuration>
+</project>

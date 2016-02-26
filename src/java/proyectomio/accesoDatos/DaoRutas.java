@@ -41,7 +41,7 @@ public class DaoRutas {
     en caso que la operacion se termine exitosamente retorna 0
      */
     public int adicionar_ruta(Ruta una_ruta) {
-        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO ruta VALUES (" + una_ruta.getId_ruta() + ",'" + una_ruta.getNombre() + "','" + una_ruta.getDescripcion() + "');");
+        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO ruta (nombre, descripcion) VALUES ('" + una_ruta.getNombre() + "','" + una_ruta.getDescripcion() + "');");
         int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
         if (codigo_error == 1062) {
             return 1;

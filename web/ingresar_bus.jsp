@@ -45,7 +45,7 @@
                    
                   <select class="form-control" name="tipo_bus" id="tipo_bus" multiple required="required">
                                                 <option>Articulado</option>
-                                                <option>Padrones</option>
+                                                <option>Padrone</option>
                                                 <option>Complementario</option>
                                                 </select>
              

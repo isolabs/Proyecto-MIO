@@ -25,9 +25,9 @@ public class Controlador_Rutas {
     en caso que la llave primaria sea duplicada retorna 1
     en caso que la operacion se termine exitosamente retorna 0
      */
-    public int adicionar_ruta(int id_ruta, String nombre, String descripcion) {
+    public int adicionar_ruta(String nombre, String descripcion) {
         Ruta ruta_adicionar = new Ruta();
-        ruta_adicionar.setId_ruta(id_ruta);
+        ruta_adicionar.setId_ruta(0);
         ruta_adicionar.setNombre(nombre);
         ruta_adicionar.setDescripcion(descripcion);
         int resultado = DATA_ACCES_OBJECT.adicionar_ruta(ruta_adicionar);

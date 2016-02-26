@@ -14,6 +14,7 @@
     
     Controlador_Estaciones controlador_estaciones = new Controlador_Estaciones();
     ArrayList <Estacion> estaciones = controlador_estaciones.get_estaciones();
+    
     Controlador_Empleado controlador_empleado = new Controlador_Empleado();
     
 %>

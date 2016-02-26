@@ -4,7 +4,18 @@
     Author     : jeisonOS
 --%>
 
+<%@page import="proyectomio.controlador.Controlador_Empleado"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<%@page import="proyectomio.modelo.Estacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="verificadorLogin.jsp" %>
+<%
+    
+    Controlador_Estaciones controlador_estaciones = new Controlador_Estaciones();
+    ArrayList <Estacion> estaciones = controlador_estaciones.get_estaciones();
+    Controlador_Empleado controlador_empleado = new Controlador_Empleado();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,17 +47,27 @@
                             <tr>
                                 <th>Identificaci&oacute;n</th>
                                 <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Cargo</th>
+                                <th>Direcci&oacute;n</th>
+                                <th>ID del empleado a cargo</th>
+                                <th>Nombre del empleado a cargo</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="odd gradeX">
-                                <td>Trident</td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td class="center">4</td>
-                            </tr>
+                            <%
+                                for(int i = 0; i < estaciones.size(); i++){
+                                    
+                                    out.println("<tr class=\"odd gradeX\">");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"id_estacion_" + i + "\">" + estaciones.get(i).getId_estacion()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"nombre_" + i + "\">" + estaciones.get(i).getNombre()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"direccion_" + i + "\">" + estaciones.get(i).getDireccion()+ "</td>");                                 
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\">" + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getId_empleado()+ "</td>");
+                                    
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\">" + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getNombres() + " " + controlador_empleado.get_empleados(Integer.valueOf(estaciones.get(i).getId_empleado_a_cargo())).get(0).getApellidos()+ "</td>");
+                                    out.println("</tr>");
+                                    
+                                };
+                            
+                            %>
                             
                         </tbody>
                     </table>

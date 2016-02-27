@@ -70,6 +70,7 @@ public class DaoEmpleado {
     esta consulta por su naturaleza no presentara errores, los dos unicos casos posibles es uqe retorne algo
     o no lo haga (por que no hallan buses registrados en la bd, por lo tanto en caso de que no halla se sabra 
     por el echo de que el array estara vacio.
+    Si se ingresa -1 a esta funcion, retornara la lista de todos los empleados
     */
      
      public ArrayList<Empleado> get_empleados(int id_empleado) {

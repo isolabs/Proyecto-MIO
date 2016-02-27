@@ -104,14 +104,6 @@ public class Controlador_Buses {
         return resultado;
     }
 
-    /*
-    este metodo permite asignar un bus a un conductor en determinado turno
-    en caso que la llave primaria se duplique y se quiera asignar el mismo bus en el mismo turno al mismo conductor se retornara 1
-    en el caso que se viole la llave foranea de empleado o de placa bus se retornara 2
-    si la operacion se realiza correcamente se retornara 0
-     */
-    public int asignar_bus_conductor(int id_conductor, String placa_bus, int turno) {
-        int resultado = data_acces_object.asignar_bus_conductor(id_conductor, placa_bus, turno);
-        return resultado;
-    }
+
+
 }

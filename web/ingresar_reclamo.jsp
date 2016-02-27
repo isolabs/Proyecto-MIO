@@ -47,7 +47,7 @@
                    ArrayList<Estacion> estaciones = controlador_estaciones.get_estaciones();
                    
                    %>
-                  <select class="form-control" name="id_estacion" id="id_estacion"  required="required">
+                  <select class="form-control" name="id_estacion_interpone" id="id_estacion_interpone"  required="required">
                       <% 
                           for(int i = 0; i < estaciones.size(); i++)
                           {%>

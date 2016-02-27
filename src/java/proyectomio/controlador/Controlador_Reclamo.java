@@ -36,7 +36,8 @@ public class Controlador_Reclamo {
                                 String descripcion, int estado,
                                 int id_pasajero_interpone,
                                 int id_empleado_anota,
-                                int id_empleado_resuelve) {
+                                int id_empleado_resuelve,
+                                int id_estacion_interpone) {
                                 
         Reclamo reclamo = new Reclamo();
         reclamo.setFecha(fecha);
@@ -46,7 +47,7 @@ public class Controlador_Reclamo {
         reclamo.setId_pasajero_interpone(id_pasajero_interpone);
         reclamo.setId_empleado_anota(id_empleado_anota);
         reclamo.setId_empleado_resuelve(id_empleado_resuelve);
-
+        reclamo.setId_estacion_interpone(id_estacion_interpone);
         return DATA_ACCES_OBJECT.ingresarReclamo(reclamo);
     }
 

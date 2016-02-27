@@ -1,27 +1,24 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="proyectomio.modelo.Reclamo"%>
 <%@page import="proyectomio.controlador.Controlador_Reclamo"%>
+<%@page import="proyectomio.controlador.Controlador_Empleado"%> 
 
 <%
-    
-    java.util.Date today = new java.util.Date();
-Timestamp s = java.sql.Timestamp(today.getTime());
-out.print(s.toString());
-Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
-      Reclamo unReclamo = new Reclamo();
-    
-      int id_empleado = Integer.valueOf(request.getParameter("id_empleado"));
-      String nombres = request.getParameter("nombres");
-      String apellidos = request.getParameter("apellidos");
-      String fecha_nacimiento = request.getParameter("fecha_nacimiento");
-      String direccion =  request.getParameter("direccion");
-      String telefono = request.getParameter("telefono");
-      String correo_electronico = request.getParameter("correo_electronico");
-      String cargo = request.getParameter("cargo");
-      String password = request.getParameter("password");       
-       
-       int resultado = uncontrolador.adicionar_empleado(id_empleado, nombres, apellidos, fecha_nacimiento,  direccion,  telefono,  correo_electronico,  cargo,  password);
-       %>
+  
+        java.util.Date today = new java.util.Date();
+        Timestamp s = new java.sql.Timestamp(today.getTime());
+        String fecha = s.toString();
+        out.print(s.toString());
+        Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
+        Controlador_Empleado controlador_empleado = new Controlador_Empleado();
+        Reclamo unReclamo = new Reclamo();
+
+        String motivo = request.getParameter("motivo");
+        String descripcion = request.getParameter("descripcion");
+        int id_pasajero_interpone = Integer.valueOf(request.getParameter("id_pasajero_interpone"));
+        int id_estacion_interpone = Integer.valueOf(request.getParameter("id_estacion_interpone"));
+        int id_empleado_anota=controlador_empleado.get_empleados(Integer.valueOf(session.getAttribute("userid").toString())).get(0).getId_empleado();
+        int resultado = uncontrolador.ingresarReclamo(fecha, motivo, descripcion, 0,id_pasajero_interpone,id_empleado_anota , 0, id_estacion_interpone);     %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -68,8 +65,8 @@ Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
        
        
        switch(resultado){
-           case 0: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ha sido ingresado con exito");break;
-           case 1: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ya existe en nuestros registros");break;
+           case 0: out.println("El reclamo interpuesto por el usuario con identifiaci&oacute;n "+id_pasajero_interpone+"  ha sido ingresado con exito");break;
+           case 2: out.println("El usuario con n&uacute;mero de identifiaci&oacute;n "+id_pasajero_interpone+" no es un pasajero registrado");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        

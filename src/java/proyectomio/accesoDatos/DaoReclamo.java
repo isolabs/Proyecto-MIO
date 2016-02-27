@@ -72,13 +72,14 @@ public class DaoReclamo {
     public int ingresarReclamo(Reclamo reclamo) {
         Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO reclamo "
                 + "(fecha,motivo,descripcion,estado,"
-                + "id_pasajero_interpone,id_empleado_anota)"
+                + "id_pasajero_interpone,id_empleado_anota, id_estacion_interpone)"
                 + " VALUES ('"+ reclamo.getFecha()+"',"
                 + "'"+ reclamo.getMotivo()+"',"
                 + "'"+ reclamo.getDescripcion()+"',"
                 + "'"+ 0 +"',"
-                + "'"+ reclamo.getId_pasajero_interpone()+"',"
-                + "'"+ reclamo.getId_empleado_anota()+"')");
+                + "'"+ reclamo.getId_pasajero_interpone()+"','"
+                + reclamo.getId_empleado_anota()+"',"
+                + "'"+ reclamo.getId_estacion_interpone()+"')");
         
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:

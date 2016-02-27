@@ -18,13 +18,15 @@ public class DaoPasajero {
     private final Controlador_BD CONTROLADOR_BD = new Controlador_BD();
 
     public int adicionar_pasajero(Pasajero un_pasajero) {
+        Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta WHERE id_tarjeta ="+un_pasajero.getId_tarjeta());
+        if(consulta1.getColumnas().get(0).getFila(0).equals("-1")){
+            return 2;
+        }
+        else{
         Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO pasajero VALUES "
                 + "(" + un_pasajero.getId_pasajero() + "," + un_pasajero.getId_tarjeta() + ",'" + un_pasajero.getNombres() + "','" + un_pasajero.getApellidos() + "','" + un_pasajero.getFecha_nacimiento() + "','" + un_pasajero.getDireccion() + "','" + un_pasajero.getTelefono() + "','" + un_pasajero.getCorreo_electronico() + "');");
 
-        /*Extracción del mensaje de error*/
-        //System.out.println(consulta.getColumna("Error").getTipo_de_dato());
-        /*Extracción del codigo numerico del error*/
-        //System.out.println(consulta.getColumna("Error").getCodigo_tipo_de_dato());
+        
         int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
         switch (codigo_error) {
             case -1:
@@ -33,6 +35,7 @@ public class DaoPasajero {
                 return 1;
             default:
                 return -1;
+        }
         }
     }
 

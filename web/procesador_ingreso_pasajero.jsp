@@ -68,8 +68,9 @@ Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
        
        
        switch(resultado){
-           case 0: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_pasajero +" ha sido ingresado con exito");break;
-           case 1: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_pasajero +" o el numero de la identificacion de la tarjeta " + id_tarjeta+" ya existe en nuestros registros");break;
+           case 0: out.println("El pasajero "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_pasajero +" ha sido ingresado con exito");break;
+           case 1: out.println("El pasajero "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_pasajero +" o el numero de la identificacion de la tarjeta " + id_tarjeta+" ya existe en nuestros registros");break;
+           case 2: out.println("la identificaci&oacute;n de la tarjeta "+id_tarjeta+" no existe");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        

@@ -1,5 +1,14 @@
 <%@page import="proyectomio.modelo.Estacion"%>
 <%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<% Controlador_Estaciones uncontrolador = new Controlador_Estaciones();
+       Estacion unaEstacion = new Estacion();
+    
+      String nombre = request.getParameter("nombre");
+      String direccion = request.getParameter("direccion");
+      int id_empleado_a_cargo = Integer.valueOf(request.getParameter("id_empleado_a_cargo"));
+       
+       
+       int resultado = uncontrolador.adicionar_estacion(nombre,direccion,id_empleado_a_cargo);%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,9 +27,23 @@
 <body>
     
    
-        <div class="panel panel-primary">
+    <div class="<% 
+         if(resultado==0){      
+          out.print("panel panel-primary");
+                   }
+         else{
+             out.print("panel panel-danger");
+         }
+
+          %>">
         <div class ="panel-heading">
-        Mensaje
+            <% if(resultado ==0){
+        out.print("Mensaje");
+            }
+            else
+            {
+                out.print("Error");
+            }%>
         </div>
             <div class="panel-body">
                 
@@ -29,15 +52,7 @@
     <%
         
        
-       Controlador_Estaciones uncontrolador = new Controlador_Estaciones();
-       Estacion unaEstacion = new Estacion();
-    
-      String nombre = request.getParameter("nombre");
-      String direccion = request.getParameter("direccion");
-      int id_empleado_a_cargo = Integer.valueOf(request.getParameter("id_empleado_a_cargo"));
-       
-       
-       int resultado = uncontrolador.adicionar_estacion(nombre,direccion,id_empleado_a_cargo);
+      
        
        switch(resultado){
            case 0: out.println("La estacion "+nombre+" ha sido ingresado con exito");break;
@@ -48,12 +63,15 @@
        
     
     %>
-     <br></br>
-     
-        <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
-       
-        </div>
-    </center>
+      <br></br>
+        <button class="<%
+            if(resultado==0){
+                out.print("btn btn-primary");
+            }
+            else
+            {
+                out.print("btn btn-danger");
+            }%>" onclick="goBack()">Volver</button> </center>
 <script>
 function goBack() {
     window.history.back();

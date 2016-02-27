@@ -1,5 +1,16 @@
 <%@page import="proyectomio.modelo.Bus"%>
 <%@page import="proyectomio.controlador.Controlador_Buses"%>
+<%
+  Controlador_Buses uncontrolador = new Controlador_Buses();
+       Bus unbus = new Bus();
+    
+      String placa = request.getParameter("placa");
+      int numero_pasajeros = Integer.valueOf(request.getParameter("num_pasajeros"));
+      String tipo = request.getParameter("tipo_bus");
+      int id_ruta = Integer.valueOf(request.getParameter("id_ruta"));
+       
+       
+       int resultado = uncontrolador.adicionar_bus_bd(placa,id_ruta,numero_pasajeros,tipo);%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,25 +27,33 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-     <div class="panel panel-primary">
+    
+    <div class="<% 
+         if(resultado==0){      
+          out.print("panel panel-primary");
+                   }
+         else{
+             out.print("panel panel-danger");
+         }
+
+          %>">
         <div class ="panel-heading">
-        Mensaje
+            <% if(resultado ==0){
+        out.print("Mensaje");
+            }
+            else
+            {
+                out.print("Error");
+            }%>
         </div>
-          <div class="panel-body">
+            <div class="panel-body">
+                
+      
         <center>
     <%
         
        
-       Controlador_Buses uncontrolador = new Controlador_Buses();
-       Bus unbus = new Bus();
-    
-      String placa = request.getParameter("placa");
-      int numero_pasajeros = Integer.valueOf(request.getParameter("num_pasajeros"));
-      String tipo = request.getParameter("tipo_bus");
-      int id_ruta = Integer.valueOf(request.getParameter("id_ruta"));
-       
-       
-       int resultado = uncontrolador.adicionar_bus_bd(placa,id_ruta,numero_pasajeros,tipo);
+     
        
        switch(resultado){
            case 0: out.println("El bus con placa "+placa+" ha sido ingresado con exito");break;
@@ -45,17 +64,29 @@
        
     
     %>
-     <br></br>
-     
-        <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
-    </center>
+    <br></br>
+        <button class="<%
+            if(resultado==0){
+                out.print("btn btn-primary");
+            }
+            else
+            {
+                out.print("btn btn-danger");
+            }%>" onclick="goBack()">Volver</button> </center>
 
         </h5<br>
         </div>
 </div> 
   <script>
 function goBack() {
-    window.history.back();
+    <%if(resultado ==0){
+    out.print("window.history.back()");
+    }
+    else
+    {%>
+       location.href="<%out.print("http://www.google.com");}%>";
+    
+    
 }
 </script>  
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->

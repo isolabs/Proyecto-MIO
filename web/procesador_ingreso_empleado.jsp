@@ -1,5 +1,21 @@
 <%@page import="proyectomio.modelo.Empleado"%>
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
+<%
+Controlador_Empleado uncontrolador = new Controlador_Empleado();
+       Empleado unEmpleado = new Empleado();
+    
+      int id_empleado = Integer.valueOf(request.getParameter("id_empleado"));
+      String nombres = request.getParameter("nombres");
+      String apellidos = request.getParameter("apellidos");
+      String fecha_nacimiento = request.getParameter("fecha_nacimiento");
+      String direccion =  request.getParameter("direccion");
+      String telefono = request.getParameter("telefono");
+      String correo_electronico = request.getParameter("correo_electronico");
+      String cargo = request.getParameter("cargo");
+      String password = request.getParameter("password");       
+       
+       int resultado = uncontrolador.adicionar_empleado(id_empleado, nombres, apellidos, fecha_nacimiento,  direccion,  telefono,  correo_electronico,  cargo,  password);
+       %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,32 +31,35 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
-<body>
-      <div class="panel panel-primary">
+ <body>
+    <div class="<% 
+         if(resultado==0){      
+          out.print("panel panel-primary");
+                   }
+         else{
+             out.print("panel panel-danger");
+         }
+
+          %>">
         <div class ="panel-heading">
-    Mensaje
+            <% if(resultado ==0){
+        out.print("Mensaje");
+            }
+            else
+            {
+                out.print("Error");
+            }%>
         </div>
-          <div class="panel-body">
-    <center>
+            <div class="panel-body">
+                
+      
+        <center>
     <h5>
  
     <%
         
        
-       Controlador_Empleado uncontrolador = new Controlador_Empleado();
-       Empleado unEmpleado = new Empleado();
-    
-      int id_empleado = Integer.valueOf(request.getParameter("id_empleado"));
-      String nombres = request.getParameter("nombres");
-      String apellidos = request.getParameter("apellidos");
-      String fecha_nacimiento = request.getParameter("fecha_nacimiento");
-      String direccion =  request.getParameter("direccion");
-      String telefono = request.getParameter("telefono");
-      String correo_electronico = request.getParameter("correo_electronico");
-      String cargo = request.getParameter("cargo");
-      String password = request.getParameter("password");       
        
-       int resultado = uncontrolador.adicionar_empleado(id_empleado, nombres, apellidos, fecha_nacimiento,  direccion,  telefono,  correo_electronico,  cargo,  password);
        
        switch(resultado){
            case 0: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ha sido ingresado con exito");break;
@@ -51,10 +70,14 @@
     
     %>
      <br></br>
-     
-        <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
-          </div>
-      </center>
+        <button class="<%
+            if(resultado==0){
+                out.print("btn btn-primary");
+            }
+            else
+            {
+                out.print("btn btn-danger");
+            }%>" onclick="goBack()">Volver</button> </center>
 <script>
 function goBack() {
     window.history.back();

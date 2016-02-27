@@ -1,5 +1,17 @@
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page import="proyectomio.controlador.Controlador_Rutas"%>
+<%
+        
+     
+       Controlador_Rutas uncontrolador = new Controlador_Rutas();
+       Ruta una_ruta = new Ruta();
+    
+      String nombre = request.getParameter("nombre");
+      String descripcion = request.getParameter("descripcion");
+
+       
+       
+       int resultado = uncontrolador.adicionar_ruta(nombre,descripcion);%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,25 +28,28 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <center>
-     <div class="panel panel-primary">
+  
+     <div class="<% 
+         if(resultado==0){      
+          out.print("panel panel-primary");
+                   }
+         else{
+             out.print("panel panel-danger");
+         }
+
+          %>">
         <div class ="panel-heading">
-        Mensaje
+            <% if(resultado ==0){
+        out.print("Mensaje");
+            }
+            else
+            {
+                out.print("Error");
+            }%>
         </div>
             <div class="panel-body">
-       
+         <center>
     <%
-        
-     
-       Controlador_Rutas uncontrolador = new Controlador_Rutas();
-       Ruta una_ruta = new Ruta();
-    
-      String nombre = request.getParameter("nombre");
-      String descripcion = request.getParameter("descripcion");
-
-       
-       
-       int resultado = uncontrolador.adicionar_ruta(nombre,descripcion);
        
        switch(resultado){
            case 0: out.println("La ruta '"+nombre+"' ha sido ingresada con exito");break;
@@ -46,7 +61,14 @@
     %>
    
       <br></br>
-        <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
+        <button class="<%
+            if(resultado==0){
+                out.print("btn btn-primary");
+            }
+            else
+            {
+                out.print("btn btn-danger");
+            }%>" onclick="goBack()">Volver</button> </center>
      </div>
      </div>
 </center>

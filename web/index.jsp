@@ -51,6 +51,12 @@
                           document.getElementById("contenedor").setAttribute('data', "buses.jsp");
                         }
                         
+                        function goRecarga() {
+                          if(!document.getElementById("contenedor")) 
+                          return false;
+                          document.getElementById("contenedor").setAttribute('data', "recargar.jsp");
+                        }
+                        
                   
                <%}%>
             
@@ -94,6 +100,7 @@
                                 out.print("<li><a  href=\"#\" onClick=\"goEstaciones();\">Estaciones</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goBuses();\">Buses</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goRecarga();\">Recargar tarjetas</a> </li>");
                                 
                             }
                         %>

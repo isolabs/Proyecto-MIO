@@ -46,7 +46,7 @@
             <div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
-                        <div Style="width: 50%;margin: 0 auto;"><h2>Recargar</h2> 
+                        <h2>Recargar</h2> 
                             <div class="<%                            if (resultado == 0) {
                                     out.print("panel panel-primary");
                                 } else {
@@ -84,7 +84,7 @@
                                             } else {
                                                 out.print("btn btn-danger");
                                             }%>" onclick="goBack()">Volver</button> </center>
-                            </div>
+                           
 
                         </div>
                     </div>

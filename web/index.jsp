@@ -110,7 +110,7 @@
                         <div class="col-md-12">
                             <h2>Panel de trabajo</h2>   
 
-                            <object id="contenedor" name="contenedor" data="formulario_test.jsp" frameborder="0" height="900px" width="100%" type="text/html"><p></p></object>
+                            <object id="contenedor" name="contenedor" data="empleados.jsp" frameborder="0" height="900px" width="100%" type="text/html"><p></p></object>
                         </div>
                     </div>
                     <!-- /. ROW  -->

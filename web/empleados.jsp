@@ -49,9 +49,9 @@
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
-                            <button type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</button>
-                            <button type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</button>
-                            <button type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</button>
+                            <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
+                            <a href="#" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
+                            <a href="ingresar_empleado.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             
                         </div>
             <div class="panel-body">

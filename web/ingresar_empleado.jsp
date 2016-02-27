@@ -68,7 +68,7 @@
                                         </div>
 
                <center>
-                   <input type="submit" class="btn btn-default" value="Registrar empleado"></center>
+                   <input type="submit" class="btn btn-primary" value="Registrar empleado"></center>
                                 
            
           

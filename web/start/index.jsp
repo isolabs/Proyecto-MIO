@@ -11,19 +11,21 @@
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/component.css" />
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+       
+        
         <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
     <body>
+       
         <div class="container">
 
 
             <div class="wrapper">
                 <div class="wrap">
-
-                    <div class="btn-big white">
+                    
+                    <div  class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Programar viaje</span> </div>
                     <div class="btn-big white">
@@ -35,9 +37,9 @@
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Consultar saldo</span> </div>
-                    <div class="btn-big white">
+                    <a href="recargar.jsp"><div class="btn-big white">
                         <i class="fa fa-2x"></i>
-                        <span class="label bottom">Recargar</span> </div>
+                        <span class="label bottom">Recargar</span> </div></a>
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Abordar</span> </div>

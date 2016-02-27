@@ -78,11 +78,18 @@ Controlador_Empleado uncontrolador = new Controlador_Empleado();
             {
                 out.print("btn btn-danger");
             }%>" onclick="goBack()">Volver</button> </center>
-<script>
+  <script>
 function goBack() {
-    window.history.back();
+    <%if(resultado == 0) {%>
+       location.href="<%out.print("ingresar_empleado.jsp");%> "<%}
+    else{
+    out.print("window.history.back()");
+    }
+   %>;
+    
+    
 }
-</script>
+</script>  
         </h5>
 </div>
     

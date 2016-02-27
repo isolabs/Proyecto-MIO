@@ -72,11 +72,18 @@
             {
                 out.print("btn btn-danger");
             }%>" onclick="goBack()">Volver</button> </center>
-<script>
+  <script>
 function goBack() {
-    window.history.back();
+    <%if(resultado == 0) {%>
+       location.href="<%out.print("ingresar_estacion.jsp");%> "<%}
+    else{
+    out.print("window.history.back()");
+    }
+   %>;
+    
+    
 }
-</script>
+</script>  
         </h5><br>
 </div>
     

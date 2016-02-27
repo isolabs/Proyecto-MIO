@@ -72,11 +72,18 @@
      </div>
      </div>
 </center>
-<script>
+  <script>
 function goBack() {
-    window.history.back();
+    <%if(resultado == 0) {%>
+       location.href="<%out.print("ingresar_ruta.jsp");%> "<%}
+    else{
+    out.print("window.history.back()");
+    }
+   %>;
+    
+    
 }
-</script>
+</script>  
         </h5><br>
 </div>
     

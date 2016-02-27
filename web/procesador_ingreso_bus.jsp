@@ -79,12 +79,12 @@
 </div> 
   <script>
 function goBack() {
-    <%if(resultado ==0){
+    <%if(resultado == 0) {%>
+       location.href="<%out.print("ingresar_bus.jsp");%> "<%}
+    else{
     out.print("window.history.back()");
     }
-    else
-    {%>
-       location.href="<%out.print("http://www.google.com");}%>";
+   %>;
     
     
 }

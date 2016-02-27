@@ -8,7 +8,6 @@
         java.util.Date today = new java.util.Date();
         Timestamp s = new java.sql.Timestamp(today.getTime());
         String fecha = s.toString();
-        out.print(s.toString());
         Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
         Controlador_Empleado controlador_empleado = new Controlador_Empleado();
         Reclamo unReclamo = new Reclamo();
@@ -17,7 +16,7 @@
         String descripcion = request.getParameter("descripcion");
         int id_pasajero_interpone = Integer.valueOf(request.getParameter("id_pasajero_interpone"));
         int id_estacion_interpone = Integer.valueOf(request.getParameter("id_estacion_interpone"));
-        int id_empleado_anota=controlador_empleado.get_empleados(Integer.valueOf(session.getAttribute("userid").toString())).get(0).getId_empleado();
+        int id_empleado_anota=Integer.valueOf(session.getAttribute("userid").toString());
         int resultado = uncontrolador.ingresarReclamo(fecha, motivo, descripcion, 0,id_pasajero_interpone,id_empleado_anota , 0, id_estacion_interpone);     %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -84,7 +83,7 @@
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("ingresar_empleado.jsp");%> "<%}
+       location.href="<%out.print("ingresar_reclamo.jsp");%> "<%}
     else{
     out.print("window.history.back()");
     }

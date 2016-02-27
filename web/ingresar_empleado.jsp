@@ -19,55 +19,64 @@
     Registro de empleados<br>
         </div>
          <div class="panel-body">
-        <form action="procesador_formulario_test.jsp" class="form-group" method="post" >
+        <form action="procesador_ingreso_empleado.jsp" class="form-group" method="post" >
            
            
-          
-               <label for="nombre">
-                    Nombre:
+          <label for="id_empleado">
+              N&uacute;mero de identificaci&oacute;n:
                </label>
-               <input type="text" name="nombre" id="nombre" class ="form-control" required="required">
+               <input type="text" name="id_empleado" pattern="[0-9]{4,}" id="id_empleado" class ="form-control" required="required">
+               
+                   <label for="nombres">
+                    Nombres:
+               </label>
+               <input type="text" name="nombres" pattern="[a-z ñ A-Z]{4,}" id="nombres" class ="form-control" required="required">
          
-               <label for="apellido">
+               <label for="apellidos">
                     Apellidos:
                </label>
-               <input type="text" name="apellido" id="apellido" class ="form-control" required="required">
+               <input type="text" name="apellidos" pattern="[a-z ñ A-Z]{4,}"  id="apellidos" class ="form-control" required="required">
                 
-               <label for="fecha">
+               <label for="fecha_nacimiento">
                     Fecha de nacimiento:
                </label>
-               <input type="date" name="fecha" id="fecha" class ="form-control" required="required">
+               <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class ="form-control" required="required">
                    
                <label for="direccion">
                    Direcci&oacute;n:
                </label>
-               <input type="text" name="direccion" id="direccion" class ="form-control" required="required">
+               <input type="text" name="direccion" id="direccion" class ="form-control">
                    
                <label for="telefono">
                    Tel&eacute;fono:
                </label>
-               <input type="text" name="telefono" id="telefono" class ="form-control" required="required">
+               <input type="text" name="telefono"  pattern="[0-9]{4,}" id="telefono" class ="form-control" >
                    
-               <label for="correo">
+               <label for="correo_electronico">
                    Correo electr&oacute;nico:
                </label>
-               <input type="text" name="correo" id="correo" class ="form-control" required="required">
+               <input type="email" name="correo_electronico" id="correo_electronico" class ="form-control" >
                    
                <label for="cargo">
                     Cargo:
                </label>
-               <div class="form-group" name="cargo" id="cargo">
+               <div class="form-group" >
                                             
-                                            <select class="form-control">
-                                                <option>Gerente</option>
-                                                <option>Administrador</option>
-                                                <option>Motorista</option>
-                                                <option>Cajero</option>
-                                                <option>Oficios varios</option>
+                                            <select  name="cargo" id="cargo" class="form-control">
+                                                <option value="0">Gerente</option>
+                                                <option value="1">Director</option>
+                                                <option value="2">Auxiliar</option>
+                                               
                                             </select>
                                         </div>
 
-               <center>
+             
+            <label for="password">
+                   Contraseña del sistema:
+               </label>
+               <input type="password" name="password"  id="password" class ="form-control" required="required">        
+                   <br></br>
+                     <center>
                    <input type="submit" class="btn btn-primary" value="Registrar empleado"></center>
                                 
            

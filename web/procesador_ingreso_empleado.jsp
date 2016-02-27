@@ -1,5 +1,5 @@
-<%@page import="proyectomio.modelo.Estacion"%>
-<%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<%@page import="proyectomio.modelo.Empleado"%>
+<%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,33 +16,35 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    
-   
-        <div class="panel panel-primary">
+      <div class="panel panel-primary">
         <div class ="panel-heading">
-        Mensaje
+    Mensaje
         </div>
-            <div class="panel-body">
-                
-      
-        <center>
+          <div class="panel-body">
+    <center>
+    <h5>
+ 
     <%
         
        
-       Controlador_Estaciones uncontrolador = new Controlador_Estaciones();
-       Estacion unaEstacion = new Estacion();
+       Controlador_Empleado uncontrolador = new Controlador_Empleado();
+       Empleado unEmpleado = new Empleado();
     
-      String nombre = request.getParameter("nombre");
-      String direccion = request.getParameter("direccion");
-      int id_empleado_a_cargo = Integer.valueOf(request.getParameter("id_empleado_a_cargo"));
+      int id_empleado = Integer.valueOf(request.getParameter("id_empleado"));
+      String nombres = request.getParameter("nombres");
+      String apellidos = request.getParameter("apellidos");
+      String fecha_nacimiento = request.getParameter("fecha_nacimiento");
+      String direccion =  request.getParameter("direccion");
+      String telefono = request.getParameter("telefono");
+      String correo_electronico = request.getParameter("correo_electronico");
+      String cargo = request.getParameter("cargo");
+      String password = request.getParameter("password");       
        
-       
-       int resultado = uncontrolador.adicionar_estacion(nombre,direccion,id_empleado_a_cargo);
+       int resultado = uncontrolador.adicionar_empleado(id_empleado, nombres, apellidos, fecha_nacimiento,  direccion,  telefono,  correo_electronico,  cargo,  password);
        
        switch(resultado){
-           case 0: out.println("La estacion "+nombre+" ha sido ingresado con exito");break;
-           case 1: out.println("La estacion "+nombre+" ya existe en nuestros registros");break;
-           case 2: out.println("El empleado con id "+ id_empleado_a_cargo+" no existe");break;
+           case 0: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ha sido ingresado con exito");break;
+           case 1: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ya existe en nuestros registros");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        
@@ -51,15 +53,14 @@
      <br></br>
      
         <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
-       
-        </div>
-    </center>
+          </div>
+      </center>
 <script>
 function goBack() {
     window.history.back();
 }
 </script>
-        </h5><br>
+        </h5>
 </div>
     
     

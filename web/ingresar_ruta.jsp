@@ -32,7 +32,7 @@
                <label for="Nombre">
                    Nombre de la ruta:
                </label>
-            <input type="text" name="nombre" pattern="[0-9A-Z]"  id="nombre" class ="form-control" required="required"></input>
+            <input type="text" name="nombre" pattern="[^<>]+"  id="nombre" class ="form-control" required="required"></input>
                 
                <label for="descripcion">
                    Descripci&oacute;n:

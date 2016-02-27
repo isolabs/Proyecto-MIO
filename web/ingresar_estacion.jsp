@@ -61,7 +61,7 @@
               
              
                <center>
-                   <input   style="margin-top: 10px"  type="submit" class="btn btn-default" value="Registrar bus"></center>
+                   <input   style="margin-top: 10px"  type="submit" class="btn btn-default" value="Registrar estacion"></center>
                                 
            
           

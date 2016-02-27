@@ -16,7 +16,11 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h5>
+     <div class="panel panel-primary">
+        <div class ="panel-heading">
+        Mensaje
+        </div>
+          <div class="panel-body">
         <center>
     <%
         
@@ -43,17 +47,17 @@
     %>
      <br></br>
      
-        <button class="btn btn-default" onclick="goBack()">Go Back</button> </center>
-      
-<script>
+        <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
+    </center>
+
+        </h5<br>
+        </div>
+</div> 
+  <script>
 function goBack() {
     window.history.back();
 }
-</script>
-        </h5><br>
-</div>
-    
-    
+</script>  
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <script src="assets/js/jquery-1.10.2.js"></script>

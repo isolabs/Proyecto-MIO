@@ -17,11 +17,15 @@
 </head>
 <body>
     <center>
-    <h5>
+     <div class="panel panel-primary">
+        <div class ="panel-heading">
+        Mensaje
+        </div>
+            <div class="panel-body">
        
     <%
         
-       out.println(request.getParameter("nombre"));
+     
        Controlador_Rutas uncontrolador = new Controlador_Rutas();
        Ruta una_ruta = new Ruta();
     
@@ -41,8 +45,10 @@
     
     %>
    
-     
-        <button class="btn btn-default" onclick="goBack()">Go Back</button> </center>
+      <br></br>
+        <button class="btn btn-primary" onclick="goBack()">Volver</button> </center>
+     </div>
+     </div>
 </center>
 <script>
 function goBack() {

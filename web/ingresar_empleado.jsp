@@ -14,9 +14,11 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-    <h5>Registro de empleado. </h5><br>
-    
-        
+    <div class="panel panel-primary">
+        <div class ="panel-heading">
+    Registro de empleados<br>
+        </div>
+         <div class="panel-body">
         <form action="procesador_formulario_test.jsp" class="form-group" method="post" >
            
            
@@ -72,7 +74,7 @@
           
      </form>
 </div>
-    
+</div>
     
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->

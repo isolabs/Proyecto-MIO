@@ -1,4 +1,3 @@
-<%@page import="proyectomio.modelo.ConexionBD"%>
 <%@page import="proyectomio.modelo.Bus"%>
 <%@page import="proyectomio.controlador.Controlador_Buses"%>
 <!DOCTYPE html>
@@ -35,7 +34,7 @@
        
        switch(resultado){
            case 0: out.println("El bus con placa "+placa+" ha sido ingresado con exito");break;
-           case 1: out.println("El bus con placa "+placa+"ya existe en nuestros registros");break;
+           case 1: out.println("El bus con placa "+placa+" ya existe en nuestros registros");break;
            case 2: out.println("La ruta con id "+id_ruta+" no existe");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }

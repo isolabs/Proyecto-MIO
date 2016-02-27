@@ -21,9 +21,9 @@
 <body>
     <div class="panel panel-primary">
         <div class ="panel-heading">
-    Ingreso de nuevos buses
+    Registro de nuevos buses
         </div>
-        
+        <div class="panel-body">
         <form action="procesador_ingreso_bus.jsp" class="form-group" method="post" >
            
            
@@ -65,12 +65,12 @@
                                                 <option>Complementario</option>
                                                 </select>
              
-               <center>
-                   <input   style="margin-top: 10px"  type="submit" class="btn btn-primary" value="Registrar bus"></center>
-                                
-           
+            
+                  <center>    <input   style="margin-top: 10px"  type="submit" class="btn btn-primary" value="Registrar bus"></center>
+            
           
      </form>
+        </div>
 </div>
     
     

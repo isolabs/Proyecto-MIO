@@ -1,4 +1,3 @@
-<%@page import="proyectomio.modelo.ConexionBD"%>
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page import="proyectomio.controlador.Controlador_Rutas"%>
 <!DOCTYPE html>

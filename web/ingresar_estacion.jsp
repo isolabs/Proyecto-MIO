@@ -23,9 +23,9 @@
 <body>
      <div class="panel panel-primary">
         <div class ="panel-heading">
-            Ingreso de estaciones
+            Registro de estaciones
         </div>
-        
+        <div class="panel-body">
         <form action="procesador_ingreso_estacion.jsp" class="form-group" method="post" >
            
            
@@ -65,9 +65,9 @@
                                 
            
           
-     </form>
-</div>
-    
+         </form>
+    </div>
+</div>  
     
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->

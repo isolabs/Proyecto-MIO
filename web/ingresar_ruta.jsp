@@ -18,11 +18,11 @@
 <body>
      <div class="panel panel-primary">
         <div class ="panel-heading">
-    Ingreso de nuevas rutas
+    Registro de rutas
         </div>
 
    
-        
+        <div class="panel-body">
         <form action="procesador_ingreso_ruta.jsp" class="form-group" method="post" >
            
            
@@ -47,7 +47,8 @@
                                 
            
           
-     </form>
+             </form>
+        </div>
 </div>
     
     

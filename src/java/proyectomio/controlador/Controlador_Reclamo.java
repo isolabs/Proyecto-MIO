@@ -32,14 +32,13 @@ public class Controlador_Reclamo {
         return DATA_ACCES_OBJECT.obtenerReclamo(id_tiquete);
     }
 
-    public int ingresarReclamo(int id_tiquete,String fecha,String motivo,
+    public int ingresarReclamo(String fecha,String motivo,
                                 String descripcion, int estado,
                                 int id_pasajero_interpone,
                                 int id_empleado_anota,
                                 int id_empleado_resuelve) {
                                 
         Reclamo reclamo = new Reclamo();
-        reclamo.setId_tiquete(id_tiquete);
         reclamo.setFecha(fecha);
         reclamo.setMotivo(motivo);
         reclamo.setDescripcion(descripcion);

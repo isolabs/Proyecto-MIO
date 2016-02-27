@@ -60,13 +60,20 @@ public class DaoReclamo {
         }
         return reclamos;
     }
+    /*  en caso que se ingrese correctamente se retornara 0
+        en caso que la llave primaria se duplique se retornara 1,
+        en caso que el id de el usuario que la interpone no exista se retorna 2, no puede suceder que 
+        el id del empleado que la interpone no exista, ya que para hacer esta operacion se debe 
+       ser un empleado y estar logueado, por lo tanto se garantiza que no se violara la llave foranea a empleado
+       que interpone 
+        cualquier otro error sera retornado un -1.
     
+     */
     public int ingresarReclamo(Reclamo reclamo) {
         Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO reclamo "
-                + "(id_tiquete,fecha,motivo,descripcion,estado,"
+                + "(fecha,motivo,descripcion,estado,"
                 + "id_pasajero_interpone,id_empleado_anota)"
-                + " VALUES ('"+ reclamo.getId_tiquete() +"',"
-                + "'"+ reclamo.getFecha()+"',"
+                + " VALUES ('"+ reclamo.getFecha()+"',"
                 + "'"+ reclamo.getMotivo()+"',"
                 + "'"+ reclamo.getDescripcion()+"',"
                 + "'"+ 0 +"',"

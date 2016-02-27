@@ -1,5 +1,4 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="proyectomio.controlador.operaciones.Controlador_Director"%>
 <%@page import="proyectomio.controlador.Controlador_Buses"%>
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <%@page import="proyectomio.modelo.Bus"%>
@@ -31,39 +30,36 @@
 
 
 
-                    <label for="Placa">
-                        Placa:
+                    <label for="id_empleado">
+                        Id empleado:
                     </label>
-                    <input type="text" name="placa"  pattern="[^<>]+"placeholder="Ejemplo: ABC-123" title="Debe ingresar un dato correcto" id="placa" class ="form-control" required="required"></input>
+                    <input type="text" name="id_empleado"  pattern="[0-9]{2,}" title="Debe ingresar un dato correcto" id="id_empleado" class ="form-control" required="required"></input>
 
-                    <label for="lista_empleados:">
-                        Lista de empleados:
+                    <label for="lista_buses">
+                        Bus:
                     </label>
                     <%
-                        Controlador_Empleado controlador_empleados = new Controlador_Empleado();
-                        ArrayList<Empleado> empleados = controlador_empleados.get_empleados(-1);
+                        Controlador_Buses controlador_buses = new Controlador_Buses();
+                        ArrayList<Bus> buses = controlador_buses.get_buses();
 
                     %>
-                    <select class="form-control" name="id_empleado" id="id_empleado"  required="required">
-                        <%                          for (int i = 0; i < empleados.size(); i++) {%>
-                        <option value="<% out.print(empleados.get(i).getId_empleado());%>"> <% out.print(empleados.get(i).getNombres());%></option>
+                    <select class="form-control" name="placa_bus" id="placa_bus"  required="required">
+                        <%  for (int i = 0; i < buses.size(); i++) {%>
+                        <option value="<% out.print(buses.get(i).getPlaca());%>"> <% out.print(buses.get(i).getPlaca());%></option>
                         <%}%>
                     </select>
 
-                    <label for="num_pasajeros">
-                        N&uacute;mero de pasajeros:
-                    </label>
-                    <input type="text" pattern="[^<>][0-9].{0,2}" name="num_pasajeros" id="num_pasajeros" class ="form-control" required="required"></input>
-
-
-                    <label for="tipo_bus">
-                        Tipo de bus:
+                    <label for="turno">
+                        Turno:
                     </label>
 
-                    <select class="form-control" name="tipo_bus" id="tipo_bus" required="required">
-                        <option>Articulado</option>
-                        <option>Padron</option>
-                        <option>Complementario</option>
+                    <select class="form-control" name="turno" id="turno" required="required">
+                        <option value = "0"> Lun - Vie (Mañana) [05:00 am - 11:59 am]</option>
+                        <option value = "1"> Lun - Vie (Tarde)  [12:00 pm - 05:59 pm]</option>
+                        <option value = "2"> Lun - Vie (Noche)  [06:00 pm - 10:59 pm]</option>
+                        <option value = "3"> Sab - Dom (Mañana) [05:00 am - 11:59 am]</option>
+                        <option value = "4"> Sab - Dom (Tarde)  [12:00 pm - 05:59 pm]</option>
+                        <option value = "5"> Sab - Dom (Noche)  [06:00 pm - 10:59 pm]</option>
                     </select>
 
 

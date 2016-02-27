@@ -74,7 +74,7 @@
                 out.print("btn btn-danger");
             }%>" onclick="goBack()">Volver</button> </center>
 
-        </h5<br>
+       <br>
         </div>
 </div> 
   <script>

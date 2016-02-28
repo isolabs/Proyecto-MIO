@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Ingresar Bus</title>
+        <title>Asignar bus a conductor</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -62,7 +62,7 @@
                     </select>
 
 
-                    <center>    <input   style="margin-top: 10px"  type="submit" class="btn btn-primary" value="Registrar bus"></center>
+                    <center>    <input   style="margin-top: 10px"  type="submit" class="btn btn-primary" value="Asignar Bus"></center>
 
 
                 </form>

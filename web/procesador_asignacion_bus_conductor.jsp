@@ -1,11 +1,29 @@
 <%@page import="proyectomio.controlador.operaciones.Controlador_Director"%>
+<%@page import="proyectomio.controlador.Controlador_Empleado"%>
+
 <%
-  Controlador_Director uncontrolador = new Controlador_Director();
     
+  Controlador_Director uncontrolador = new Controlador_Director();
+   Controlador_Empleado controlador_empleado = new Controlador_Empleado();
       int  id_empleado = Integer.parseInt(request.getParameter("id_empleado"));
       String placa_bus = request.getParameter("placa_bus");
       int turno = Integer.valueOf(request.getParameter("turno"));
-       int resultado = uncontrolador.asignar_bus_conductor(id_empleado,placa_bus,turno);%>
+      int resultado = 0;
+      if(controlador_empleado.get_empleados(id_empleado).isEmpty())
+      {
+      resultado =2;
+      }
+      else
+      {
+          if(!controlador_empleado.get_empleados(id_empleado).get(0).getCargo().equals("3"))
+          {
+           resultado =3;
+          }
+          else{
+              resultado = uncontrolador.asignar_bus_conductor( id_empleado, placa_bus, turno);
+          }
+      }
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -51,9 +69,10 @@
      
        
        switch(resultado){
-           case 0: out.println("El bus con placa "+placa_bus +" ha sido asignado al conductor con id "+id_empleado);break;
+           case 0: out.println("El bus con placa "+placa_bus +" ha sido asignado al conductor con id "+id_empleado +".");break;
            case 1: out.println("El bus con placa "+placa_bus+" ya ha sido asignado al conductor con id "+id_empleado+" en el turno seleccionado.");break;
-           case 2: out.println("El empleado con id "+ id_empleado +" no existe");break;
+           case 2: out.println("El empleado con id "+ id_empleado +" no existe.");break;
+           case 3: out.println("El empleado con id "+ id_empleado + " no es un conductor.");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        

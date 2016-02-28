@@ -53,9 +53,11 @@
                   <select class="form-control" name="id_empleado_a_cargo" id="id_empleado_a_cargo"  required="required">
                       <% 
                           for(int i = 0; i < empleados.size(); i++)
-                          {%>
+                          {
+      if(empleados.get(i).getCargo().equals("1")){%>
+                          
                           <option value="<% out.print(empleados.get(i).getId_empleado()) ;%>"> <% out.print(empleados.get(i).getNombres()+" "+empleados.get(i).getApellidos());%></option>
-                          <%} %>
+                          <%}} %>
                                                 </select>
                 
               

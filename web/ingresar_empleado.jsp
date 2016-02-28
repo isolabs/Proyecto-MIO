@@ -66,7 +66,7 @@
                                                 <option value="0">Gerente</option>
                                                 <option value="1">Director</option>
                                                 <option value="2">Auxiliar</option>
-                                               
+                                                <option value="3">Conductor</option>
                                             </select>
                                         </div>
 

@@ -1,8 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="proyectomio.controlador.Controlador_Buses"%>
-<%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <%@page import="proyectomio.modelo.Bus"%>
-<%@page import="proyectomio.modelo.Empleado"%>
+
 <!DOCTYPE html>
 
 <!--  Bus( placa, tipo, id_ruta,  numero_pasajeros); -->
@@ -31,7 +30,7 @@
 
 
                     <label for="id_empleado">
-                        Id empleado:
+                        Id conductor:
                     </label>
                     <input type="text" name="id_empleado"  pattern="[0-9]{2,}" title="Debe ingresar un dato correcto" id="id_empleado" class ="form-control" required="required"></input>
 

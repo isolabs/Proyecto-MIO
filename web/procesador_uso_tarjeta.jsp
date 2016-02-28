@@ -19,6 +19,8 @@
        Controlador_Rutas controlador_rutas = new Controlador_Rutas();
        Ruta ruta = controlador_rutas.getRuta(id_ruta);
        String nombre_ruta = ruta.getNombre();
+       
+       int saldo = uncontrolador.ver_saldo_tarjeta(id_tarjeta);
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,8 +68,11 @@
       
        
        switch(resultado){
-           case 0: out.println("El pasajero con la tarjeta numero "+id_tarjeta+" abordo la ruta "+nombre_ruta);break;
+           case 0: out.print("El pasajero con la tarjeta numero "+id_tarjeta+" abordo la ruta "+nombre_ruta);
+                   out.print(", se le desconto 1800 y su saldo es "+saldo);break;
            case 2: out.println("la tarjeta con el id "+id_tarjeta+" no existe en nuestro registro");break;
+           case 3: out.println("Su saldo es "+saldo+" por favor recargue la tarjeta");break;
+           
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        

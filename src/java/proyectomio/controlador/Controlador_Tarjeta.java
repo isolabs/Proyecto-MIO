@@ -118,5 +118,10 @@ public class Controlador_Tarjeta {
         int resultado = data_acces_object.registrar_uso_tarjeta(reg_uso_tarjeta);
         return resultado;
     }
+    
+    public int ver_saldo_tarjeta(int id_tarjeta){
+        int resultado = data_acces_object.ver_saldo_tarjeta(id_tarjeta);
+        return resultado;
+    }
 }
 

@@ -53,13 +53,13 @@
                             <b>Selecci&oacute;n</b>
                             
                             <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
-                            <a href="#" id="boton_editar" name="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
+                            <a href="#" onclick="goEdicion();" id="boton_editar" name="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
                             <a href="ingresar_empleado.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             
                         </div>
             <div class="panel-body">
                 <table>
-                    <tr><td align="right"><b>Identificaci&oacute;n:&nbsp;</b> </td><td id="seleccion_id" value ="" name="seleccion_id"></td></tr>
+                    <tr><td align="right"><b>Identificaci&oacute;n:&nbsp;</b> </td><td id="seleccion_id" value = "" name="seleccion_id"></td></tr>
                     <tr><td align="right"><b>Nombre:&nbsp;</b></td><td id="seleccion_nombre" name="seleccion_nombre"></td></tr>
                 </table>
                 
@@ -132,9 +132,9 @@
                 $('#dataTables-example').dataTable();
             });
             function goEdicion() {
-        
-                          window.locationf='editar_empleado.jsp?id_empleado=4';
-                        }
+                      if (document.getElementById("seleccion_id").getAttribute("value")=="") {
+                         alert("No ha seleccionado un empleado");
+                     }                        };
         </script>
         <!-- CUSTOM SCRIPTS -->
         <script src="assets/js/custom.js"></script>

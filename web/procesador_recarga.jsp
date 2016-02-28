@@ -17,57 +17,45 @@
 
 %>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Procesador de ingreso de buses</title>
         <!-- BOOTSTRAP STYLES-->
-        <link href="../assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
-        <link href="../assets/css/font-awesome.css" rel="stylesheet" />
+        <link href="assets/css/font-awesome.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-        <link href="../assets/css/custom.css" rel="stylesheet" />
+        <link href="assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
     </head>
     <body>
 
-        <div id="wrapper">
-            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
+       <div class="<%
+            if (resultado == 0) {
+                out.print("panel panel-primary");
+            } else {
+                out.print("panel panel-danger");
+            }
 
-                    <a class="navbar-brand" href="index.jsp">Men&uacute;</a> 
-                </div>
-            </nav>   
-
-            <!-- /. NAV SIDE  -->
-
-            <div id="page-inner">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2>Recargar</h2> 
-                            <div class="<%                            if (resultado == 0) {
-                                    out.print("panel panel-primary");
-                                } else {
-                                    out.print("panel panel-danger");
-                                }
-
-                                 %>" >
-
-                                <div class ="panel-heading">
-                                    <% if (resultado == 0) {
-                                            out.print("Mensaje");
-                                        } else {
-                                            out.print("Error");
-                                        }%>
-                                </div><center>
+             %>">
+            <div class ="panel-heading">
+                <% if (resultado == 0) {
+                        out.print("Mensaje");
+                    } else {
+                        out.print("Error");
+                }%>
+            </div>
+            <div class="panel-body">
+                <center>
                                     <div class="panel-body">
                                         <%
 
                                             switch (resultado) {
                                                 case 0:
-                                                    out.println("Se recarg&oacute; la tarjeta n&uacute;umero: '" + id_tarjeta + "' con $" + valor_Recargar);
+                                                    out.println("Se recarg&oacute; la tarjeta n&uacute;mero: '" + id_tarjeta + "' con $" + valor_Recargar);
                                                     break;
                                                 case 1:
                                                     out.println("No existe la tarjeta n&uacute;mero '" + id_tarjeta + "' en nuestros registros");

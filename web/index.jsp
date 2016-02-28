@@ -56,7 +56,16 @@
                           return false;
                           document.getElementById("contenedor").setAttribute('data', "recargar.jsp");
                         }
-                        
+                         function goPasajeros() {
+                          if(!document.getElementById("contenedor")) 
+                          return false;
+                          document.getElementById("contenedor").setAttribute('data', "pasajeros.jsp");
+                        }
+                         function goAsignarBusConductor() {
+                          if(!document.getElementById("contenedor")) 
+                          return false;
+                          document.getElementById("contenedor").setAttribute('data', "asignar_bus_conductor.jsp");
+                        }
                   
                <%}%>
             
@@ -97,11 +106,12 @@
                             if(empleado.get(0).getCargo_String().equals("Director")){
                                 
                                 out.print("<li><a  href=\"#\" onClick=\"goEmpleados();\">Empleados</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goPasajeros();\">Pasajeros</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goEstaciones();\">Estaciones</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goBuses();\">Buses</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goRecarga();\">Recargar tarjetas</a> </li>");
-                                
+                                out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
                             }
                         %>
                        

@@ -52,7 +52,7 @@
        
        switch(resultado){
            case 0: out.println("El bus con placa "+placa_bus +" ha sido asignado al conductor con id "+id_empleado);break;
-           case 1: out.println("El bus con placa "+placa_bus+" ya ha sido asignado al conductor con id "+id_empleado);break;
+           case 1: out.println("El bus con placa "+placa_bus+" ya ha sido asignado al conductor con id "+id_empleado+" en el turno seleccionado.");break;
            case 2: out.println("El empleado con id "+ id_empleado +" no existe");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }

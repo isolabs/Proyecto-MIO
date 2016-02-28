@@ -26,7 +26,7 @@
                 Asignacion de buses
             </div>
             <div class="panel-body">
-                <form action="procesador_asignacion_buses.jsp" class="form-group" method="post" >
+                <form action="procesador_asignacion_bus_conductor.jsp" class="form-group" method="post" >
 
 
 

@@ -266,7 +266,11 @@ public class DaoTarjeta {
     registra el uso de las tarjeta en las rutas
     */
     public int registrar_uso_tarjeta(Reg_uso_tarjeta reg_uso_tarjeta){
-               
+        
+        Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT * FROM tarjeta WHERE id_tarjeta="+reg_uso_tarjeta.getId_tarjeta());
+        if ("-1".equals(consulta1.getColumna("id_tarjeta").getFila(0))) {
+            return 2;
+        }else{
         Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO reg_uso_tarjeta VALUES ("+reg_uso_tarjeta.getId_ruta()+","+reg_uso_tarjeta.getId_tarjeta()+",'"+ reg_uso_tarjeta.getFecha()+"');");
         int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
         switch (codigo_error) {
@@ -277,6 +281,7 @@ public class DaoTarjeta {
             default:
                 return -1;
         }
+    }
     }
     
     

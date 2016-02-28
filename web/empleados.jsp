@@ -132,9 +132,7 @@
                 $('#dataTables-example').dataTable();
             });
             function goEdicion() {
-                          var direccion="editar_empleado.jsp"
-                          var id_empleado = document.getElementById("seleccion_id").value;                         
-                          var hrefcompleta= direccion.concat("?id_empleado=4");
+        
                           window.locationf='editar_empleado.jsp?id_empleado=4';
                         }
         </script>

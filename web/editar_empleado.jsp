@@ -23,6 +23,7 @@
    Empleado empleado = new Empleado();
    empleado = controlador.get_empleados(Integer.parseInt(request.getParameter("id_empleado"))).get(0);
    %>
+    
     <div class="panel panel-primary">
         <div class ="panel-heading">
             Edici&oacute;n de empleados<br>
@@ -49,7 +50,7 @@
                <label for="fecha_nacimiento">
                     Fecha de nacimiento:
                </label>
-               <input type="date" name="fecha_nacimiento" value="<%out.println(empleado.getFecha_nacimiento());%>"id="fecha_nacimiento" class ="form-control" required="required">
+               <input type="date" name="fecha_nacimiento" value="<%out.print(empleado.getFecha_nacimiento());%>"id="fecha_nacimiento" class ="form-control" required="required">
                    
                <label for="direccion">
                    Direcci&oacute;n:
@@ -71,7 +72,7 @@
                </label>
                <div class="form-group" >
                                             
-                                            <select  name="cargo" id="cargo" class="form-control">
+                                            <select selectedIndex = "3"  name="cargo" id="cargo" class="form-control">
                                                 <option value="0">Gerente</option>
                                                 <option value="1">Director</option>
                                                 <option value="2">Auxiliar</option>
@@ -88,7 +89,10 @@
                      <center>
                    <input type="submit" class="btn btn-primary" value="Modificar empleado"></center>
                     <input type="hidden" name="accion" id="accion"  value="1">            
-           
+            <script>
+
+    document.getElementById("cargo").selectedIndex = "<%out.print(empleado.getCargo());%>";
+</script>
           
      </form>
 </div>
@@ -103,7 +107,7 @@
     <script src="assets/js/jquery.metisMenu.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-    
+  
    
 </body>
 </html>

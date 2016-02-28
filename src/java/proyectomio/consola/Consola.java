@@ -44,9 +44,7 @@ public class Consola {
             System.out.println(controlador_estaciones.getEstacion(1).getId_estacion());
             Controlador_Rutas controlador_Rutas=new Controlador_Rutas();
             System.out.println(controlador_Rutas.getRuta(2).getDescripcion());*/
-            Controlador_Director controlador=new Controlador_Director();
-            int c = controlador.asignar_estacion_ruta(0, 0);
-            System.out.println(c);
+            
         }
 
     

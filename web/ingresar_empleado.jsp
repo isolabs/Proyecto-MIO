@@ -78,7 +78,7 @@
                    <br></br>
                      <center>
                    <input type="submit" class="btn btn-primary" value="Registrar empleado"></center>
-                                
+                         <input type="hidden" name="accion" id="accion"  value="0">         
            
           
      </form>

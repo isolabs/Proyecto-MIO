@@ -14,7 +14,8 @@ Controlador_Empleado uncontrolador = new Controlador_Empleado();
       String correo_electronico = request.getParameter("correo_electronico");
       String cargo = request.getParameter("cargo");
       String password = request.getParameter("password");
-       int resultado = uncontrolador.adicionar_empleado(id_empleado, nombres, apellidos, fecha_nacimiento,  direccion,  telefono,  correo_electronico,  cargo,  password);
+      
+       int resultado = uncontrolador.modificar_empleado(id_empleado, nombres, apellidos, fecha_nacimiento,  direccion,  telefono,  correo_electronico,  cargo,  password);
        %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -62,7 +63,7 @@ Controlador_Empleado uncontrolador = new Controlador_Empleado();
        
    
        switch(resultado){
-           case 0: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ha sido ingresado con exito");break;
+           case 0: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ha sido modificado");break;
            case 1: out.println("El empleado "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_empleado +" ya existe en nuestros registros");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
@@ -81,11 +82,10 @@ Controlador_Empleado uncontrolador = new Controlador_Empleado();
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("ingresar_empleado.jsp");%> "<%}
+       location.href="<%out.print("empleados.jsp");%> "<%}
     else{
     out.print("window.history.back()");
-    }
-   %>;
+    }%>;
     
     
 }

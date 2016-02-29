@@ -104,12 +104,12 @@ public class DaoTarjeta {
             return 5;
         }
         
-        else if (0 >= saldoTarjeta) {
+        else if (0 > saldoTarjeta) {
             System.out.println("No se puede descontar pasaje");
             return 6;
         }
         else{
-            Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
+            CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
             System.out.println("nuevo saldo "+saldoTarjeta);
             return 7;
         }
@@ -140,7 +140,7 @@ public class DaoTarjeta {
             return 2;
         }
         else{
-            Consulta consulta2 = CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
+            CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
             System.out.println("nuevo saldo "+saldoTarjeta);
             return 0;
         }

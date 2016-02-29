@@ -4,29 +4,36 @@
 <%
 
     String id_tarjeta = request.getParameter("id_tarjeta");
-    
+
     Controlador_Tarjeta c_tarjeta = new Controlador_Tarjeta();
     Controlador_Pasajero c_pasajero = new Controlador_Pasajero();
-    
-    int resultado = 0;
-    out.print(c_pasajero.get_pasajerosTarjeta(Integer.valueOf(id_tarjeta)).size());
-    if(c_pasajero.get_pasajerosTarjeta(Integer.valueOf(id_tarjeta)).size() == 1){
-        
-        int saldo = c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).get(0).getSaldo();
-        out.print(saldo);
-        
-    }else{
-        /*
-        if(c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).get(0).getSaldo() == 0){
-        
+
+    int resultado = -1; // -1 = no existe; 0 - descontado; 1 - No se puede escontar
+
+    if (c_pasajero.get_pasajerosTarjeta(Integer.valueOf(id_tarjeta)).size() == 1) {
+
+         
+         
+         resultado = c_tarjeta.tres_pasajes_adicionales(Integer.valueOf(id_tarjeta));
+        if (resultado == 0){
+            resultado = 0;
+        }else{
+            resultado = 1;
         }
         
-        int saldo = c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).get(0).getSaldo();
-        out.print(saldo);*/
-        
-    }
-    
 
+    } else if (c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).size() == 1) {
+
+        resultado = c_tarjeta.descontar_pasaje_tarjeta(Integer.valueOf(id_tarjeta));
+        if (resultado == 7){
+            resultado = 0;
+        }else{
+            resultado = 1;
+        }
+        
+    } 
+
+    out.print(resultado);
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

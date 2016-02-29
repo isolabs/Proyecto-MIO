@@ -44,7 +44,7 @@
             </div>
             <div class="panel-body">
                 <form action="procesador_abordar.jsp" class="form-group" method="post"  >
-
+                    <label>Costo del pasaje: $1800</label><br><br>
 
                     <label for="id_tarjeta">
                         N&uacute;mero de tarjeta:

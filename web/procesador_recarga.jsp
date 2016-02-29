@@ -55,7 +55,8 @@
 
                                             switch (resultado) {
                                                 case 0:
-                                                    out.println("Se recarg&oacute; la tarjeta n&uacute;mero: <b>" + id_tarjeta + "</b> con <b>$" + valor_Recargar + "</b>");
+                                                    out.println("Se recarg&oacute; la tarjeta n&uacute;mero: <b>" + id_tarjeta + "</b> con <b>$" + valor_Recargar + "</b><br>");
+                                                    out.println("Nuevo saldo: <b>$" + controlador_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).get(0).getSaldo() + "</b>");
                                                     break;
                                                 case 1:
                                                     out.println("No existe la tarjeta n&uacute;mero: <b>" + id_tarjeta + "</b> en nuestros registros");

@@ -112,7 +112,7 @@ public class DaoPasajero {
         ArrayList<Pasajero> pasajeros_encontrados = new ArrayList<>();
 
         Pasajero pasajero_temporal = new Pasajero();
-        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM pasajero WHERE id_tarjeta = " + id_tarjeta);
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM pasajero WHERE id_tarjeta = " + id_tarjeta + ";");
         for (int i = 0; i < consulta.getColumna("id_pasajero").getFilas().size(); i++) {
             pasajero_temporal.setId_pasajero(Integer.valueOf(consulta.getColumna("id_pasajero").getFila(i)));
             pasajero_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));

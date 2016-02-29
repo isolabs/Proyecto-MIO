@@ -43,16 +43,15 @@ public class Controlador_Estaciones {
     /* en caso que la estacion no exista se retornara 1
     si se piensa hacer una modificaicon a nombre de estacion tal que el nuevo nombre sea igual a uno ya existente y viole el constrain unique de este campo se retornara 2
     en caso que la consulta se halla ejecutado bien se retornara 0*/
-    public int modificar_estacion(String nombre_estacion_modificar, 
-                                  int nueva_id_estacion, 
+    public int modificar_estacion(int id_estacion_modificar, 
                                   String nuevo_nombre, String nueva_direccion, 
                                   int nuevo_id_empleado_a_cargo) {
        Estacion nueva_estacion = new Estacion();
        nueva_estacion.setDireccion(nueva_direccion);
        nueva_estacion.setId_empleado_a_cargo(nuevo_id_empleado_a_cargo);
-       nueva_estacion.setId_estacion(nueva_id_estacion);
+       nueva_estacion.setId_estacion(id_estacion_modificar);
        nueva_estacion.setNombre(nuevo_nombre);
-       int resultado = DATA_ACCES_OBJECT.modificar_estacion(nombre_estacion_modificar, nueva_estacion);
+       int resultado = DATA_ACCES_OBJECT.modificar_estacion(id_estacion_modificar, nueva_estacion);
        return resultado;
         
     }

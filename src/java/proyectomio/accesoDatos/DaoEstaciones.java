@@ -63,8 +63,8 @@ public class DaoEstaciones {
     /* en caso que la ruta no exista se retornara 1
     si se piensa hacer una modificaicon a nombre de estacion tal que el nuevo nombre sea igual a uno ya existente y viole el constrain unique de este campo se retornara 2
     en caso que la consulta se halla ejecutado bien se retornara 0*/
-    public int modificar_estacion(String nombre_estacion_modificar, Estacion nueva_estacion) {
-        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta WHERE ruta.nombre='" + nombre_estacion_modificar + "';");
+    public int modificar_estacion(int id_estacion_modificar, Estacion nueva_estacion) {
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM estacion WHERE estacion.id_estacion=" + id_estacion_modificar + ";");
         if ("-1".equals(consulta.getColumna("nombre").getFila(0))) {
             return 1;
         }
@@ -73,7 +73,7 @@ public class DaoEstaciones {
                 + "nombre='" + nueva_estacion.getNombre()
                 + "', direccion='" + nueva_estacion.getDireccion()
                 + "', id_empleado_a_cargo = " + nueva_estacion.getId_empleado_a_cargo()
-                + " where nombre='" + nombre_estacion_modificar + "';");
+                + " where id_estacion=" + id_estacion_modificar + ";");
         System.out.println(consulta.getColumna("Error").getCodigo_tipo_de_dato());
         if (consulta.getColumna("Error").getCodigo_tipo_de_dato() == 1062) {
             return 2;

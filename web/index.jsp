@@ -69,7 +69,7 @@
                     return false;
                 document.getElementById("contenedor").setAttribute('data', "ingresar_tarjeta.jsp");
             }
-
+             
 
             <%}%>
 

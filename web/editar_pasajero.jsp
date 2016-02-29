@@ -33,7 +33,7 @@
             Edici&oacute;n de pasajeros<br>
         </div>
          <div class="panel-body">
-        <form action="procesador_editar_pasajero.jsp?id_pasajero=<%out.println(request.getParameter("id_pasajero"));%>" class="form-group" method="post" >
+        <form action="procesador_editar_pasajero.jsp?id_pasajero=<%out.println(request.getParameter("id_pasajero"));%>&id_tarjeta=<%out.println(pasajero.getId_tarjeta());%>" class="form-group" method="post" >
            
            
           <label for="id_pasajero">

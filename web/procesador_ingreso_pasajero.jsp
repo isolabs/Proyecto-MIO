@@ -10,7 +10,7 @@
 Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
        Pasajero unEmpleado = new Pasajero();
     
-      int id_pasajero = Integer.valueOf(request.getParameter("id_empleado"));
+      int id_pasajero = Integer.valueOf(request.getParameter("id_pasajero"));
       int id_tarjeta = Integer.valueOf(request.getParameter("id_tarjeta"));
       String nombres = request.getParameter("nombres");
       String apellidos = request.getParameter("apellidos");
@@ -68,7 +68,7 @@ Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
        
        
        switch(resultado){
-           case 0: out.println("El pasajero "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_pasajero +" ha sido ingresado con exito");break;
+           case 0: out.println("El pasajero "+nombres+" con n&uacute;mero de identificaci&oacute;n <b>"+ id_pasajero +"</b> ha sido ingresado con exito. Tarjeta #: <b>" + id_tarjeta + "</b> asociada.");break;
            case 1: out.println("El pasajero "+nombres+" con n&uacute;mero de identificaci&oacute;n "+ id_pasajero +" o el numero de la identificacion de la tarjeta " + id_tarjeta+" ya existe en nuestros registros");break;
            case 2: out.println("la tarjeta con el id "+id_tarjeta+" no existe en nuestro registro");break;
            default: out.println("Se ha generado un error inesperado en el programa");
@@ -84,11 +84,11 @@ Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
             else
             {
                 out.print("btn btn-danger");
-            }%>" onclick="goBack()">Volver</button> </center>
+            }%>" onclick="goBack()">Ok</button> </center>
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("ingresar_pasajero.jsp");%> "<%}
+       location.href="<%out.print("pasajeros.jsp");%> "<%}
     else{
     out.print("window.history.back()");
     }

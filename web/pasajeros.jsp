@@ -54,7 +54,7 @@
                             
                             <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
                             <a href="#" onclick="goEdicion();" id="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
-                            <a href="ingresar_pasajero.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
+                            <a href="ingresar_tarjeta.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             
                         </div>
             <div class="panel-body">

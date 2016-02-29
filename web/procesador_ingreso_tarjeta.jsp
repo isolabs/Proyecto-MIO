@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="proyectomio.controlador.Controlador_Pasajero"%>
+<%@page import="proyectomio.modelo.Pasajero"%>
 <%@page import="proyectomio.controlador.Controlador_Tarjeta"%>
 <% Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
        
@@ -12,7 +14,25 @@
        int id_estacion =  Integer.valueOf(request.getParameter("id_estacion"));
        int id_usuario = Integer.valueOf(request.getParameter("id_usuario"));
        
-       int resultado = uncontrolador.adicionar_tarjeta(id_estacion);
+       int resultado = -1;
+       
+       if(id_usuario != -1){
+           
+           Controlador_Pasajero c_pasajero = new Controlador_Pasajero();
+           
+           if(c_pasajero.get_pasajeros(id_usuario).size() == 0){
+               
+               resultado = uncontrolador.adicionar_tarjeta(id_estacion);
+               response.sendRedirect("ingresar_pasajero.jsp?id_usuario=" + id_usuario + "&id_tarjeta=" + resultado);
+           }else{
+               resultado = -3;
+           }
+       }else{
+           
+           resultado = uncontrolador.adicionar_tarjeta(id_estacion);
+       }
+       
+       
        int aux_error = -1;
 %>
 <!DOCTYPE html>
@@ -34,11 +54,12 @@
     
    
     <div class="<% 
-         if((resultado != 0)||(resultado != 1)||(resultado != -1)){ 
+         if((resultado != 0)&&(resultado != 1)&&(resultado != -1)&&(resultado != -3)){ 
              aux_error = 0;    
           out.print("panel panel-primary");
                    }
          else{
+             aux_error = resultado;
              out.print("panel panel-danger");
          }
 
@@ -63,8 +84,8 @@
       
        
        switch(aux_error){
-           case 0: out.println("Felicitaciones ha comprado una tarjeta");break;
-           
+           case 0: out.println("Felicitaciones ha comprado una tarjeta, el n&uacute;mero es: <b>" + resultado + "</b>");break;
+           case -3: out.println("Error, ya existe un pasajero con el n&uacute;mero: <b>" + id_usuario + "</b> en el sistema.");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        

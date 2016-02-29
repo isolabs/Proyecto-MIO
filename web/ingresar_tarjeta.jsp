@@ -21,6 +21,22 @@
         <link href="assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+        <script>
+            function go() {
+
+
+                var id = document.getElementById("id_usuario").value;
+
+                if (id == "") {
+                    document.getElementById("id_usuario").value = "-1";
+
+                }
+            }
+
+
+        </script>
+
     </head>
     <body>
         <div class="panel panel-primary">
@@ -28,7 +44,7 @@
                 Registro de la tarjeta<br>
             </div>
             <div class="panel-body">
-                <form action="procesador_ingreso_tarjeta.jsp" class="form-group" method="post" >
+                <form action="procesador_ingreso_tarjeta.jsp" class="form-group" method="post" onsubmit="go();" >
 
                     <label for="">
                         Precio de la tarjeta: $3200
@@ -54,10 +70,10 @@
 
 
 
-                    <label for="nombres">
-                        Identificaci&oacute;n del usuario(Solo si es perzonalizada):
+                    <label for="id_usuario">
+                        Identificaci&oacute;n del pasajero (Solo si decea crear un pasajero asociado a esta tarjeta):
                     </label>
-                    <input type="text" name="id_usuario" pattern="[0-9]{3,}" id="nombres" class ="form-control" >
+                    <input type="text" name="id_usuario" pattern="[0-9]{3,}" id="id_usuario" class ="form-control" >
 
 
                         <br></br>

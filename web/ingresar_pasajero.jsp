@@ -3,7 +3,12 @@
     Created on : 27-feb-2016, 12:39:59
     Author     : Alejandro
 --%>
+<%
+    int id_usuario = Integer.valueOf(request.getParameter("id_usuario"));
+    int id_tarjeta = Integer.valueOf(request.getParameter("id_tarjeta"));
 
+
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -28,15 +33,15 @@
         <form action="procesador_ingreso_pasajero.jsp" class="form-group" method="post" >
            
            
-          <label for="id_empleado">
+          <label for="id_pasajero">
               N&uacute;mero de identificaci&oacute;n:
                </label>
-               <input type="text" name="id_empleado" pattern="[0-9]{4,}" id="id_empleado" class ="form-control" required="required">
+               <input type="text" name="id_pasajero" pattern="[0-9]{4,}" id="id_pasajero" value="<% out.print(id_usuario);  %>" class ="form-control" required="required">
                
                     <label for="id_tarjeta">
               N&uacute;mero de identificaci&oacute;n de la tarjeta:
                </label>
-               <input type="text" name="id_tarjeta" pattern="[0-9]{4,}" id="id_tarjeta" class ="form-control" required="required">
+                   <input type="text" name="id_tarjeta" pattern="[0-9]{4,}" id="id_tarjeta" value="<% out.print(id_tarjeta);  %>" class ="form-control" required="required" readonly>
                
                    
                    <label for="nombres">

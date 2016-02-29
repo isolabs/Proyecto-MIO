@@ -53,13 +53,13 @@ public class DaoRutas {
     /* en caso que la ruta no exista se retornara 1
     si se piensa hacer una modificaicon a nombre ruta tal que el nuevo nombre sea igual a uno ya existente y viole el constrain unique de este campo se retornara 2
     en caso que la consulta se halla ejecutado bien se retornara 0*/
-    public int modificar_ruta(String nombre_ruta_modificar, Ruta nueva_ruta) {
-        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta WHERE ruta.nombre='" + nombre_ruta_modificar + "';");
+    public int modificar_ruta(int id_ruta_modificar, Ruta nueva_ruta) {
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta WHERE ruta.id_ruta=" + id_ruta_modificar + ";");
         if ("-1".equals(consulta.getColumna("id_ruta").getFila(0))) {
             return 1;
         } else {
 
-            consulta = CONTROLADOR_BD.consultarBD("UPDATE ruta SET nombre='" + nueva_ruta.getNombre() + "', descripcion='" + nueva_ruta.getDescripcion() + "' where nombre='" + nombre_ruta_modificar + "';");
+            consulta = CONTROLADOR_BD.consultarBD("UPDATE ruta SET nombre='" + nueva_ruta.getNombre() + "', descripcion='" + nueva_ruta.getDescripcion() + "' where id_ruta=" + id_ruta_modificar + ";");
             System.out.println(consulta.getColumna("Error").getCodigo_tipo_de_dato());
             if (consulta.getColumna("Error").getCodigo_tipo_de_dato() == 1062) {
                 return 2;

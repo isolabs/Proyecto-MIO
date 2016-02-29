@@ -38,7 +38,56 @@ this.turno = turno;
 this.numero = numero;
 }
 
+public String get_string_desde_int(int numero)
+{
+    String turno = "";
+    if(numero == SemanaManiana.numero)
+        return SemanaManiana.turno;
+    if(numero == SemanaTarde.numero)
+        return SemanaTarde.turno;
+     if(numero == SemanaNoche.numero)
+        return SemanaNoche.turno;
+     if(numero == FinSemanaManiana.numero)
+        return FinSemanaManiana.turno;
+     if(numero == FinSemanaTarde.numero)
+        return FinSemanaTarde.turno;
+     if(numero == FinSemanaNoche.numero)
+        return FinSemanaNoche.turno;
+     else
+         return turno;
+}
 
+public int get_int_desde_string(String turno)
+{
+    int res =-1;
+   if(turno.equals(SemanaTarde.turno)) 
+   {
+       res =  SemanaTarde.numero;
+   }
+   if(turno.equals(SemanaManiana.turno)) 
+   {
+       res =  SemanaManiana.numero;
+   }
+      if(turno.equals(SemanaNoche.turno)) 
+   {
+       res =  SemanaNoche.numero;
+   }
+         if(turno.equals(FinSemanaManiana.turno)) 
+   {
+      res =  FinSemanaManiana.numero;
+   }
+          if(turno.equals(FinSemanaTarde.turno)) 
+   {
+       res =  FinSemanaTarde.numero;
+   }
+                if(turno.equals(FinSemanaNoche.turno)) 
+   {
+       res =  FinSemanaNoche.numero;
+   }
+            
+        
+    return res;
+}
     public int getNumero() {
         return numero;
     }

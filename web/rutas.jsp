@@ -38,8 +38,11 @@
             function seleccionar(id){
                 
                 document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_ruta_" + id ).innerText;
+                document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_ruta_" + id ).innerText);
                 document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombre_" + id ).innerText ;
-                
+                   var editar_completo = "editar_ruta.jsp?id_ruta=";
+                var editar_con_id=editar_completo.concat(document.getElementById("seleccion_id").getAttribute("value"));
+                document.getElementById("boton_editar").setAttribute("href",editar_con_id);
             }
             
         </script>
@@ -52,13 +55,13 @@
                             <b>Selecci&oacute;n</b>
                             
                             <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
-                            <a href="#" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
+                            <a href="#" id="boton_editar" name="boton_editar" onclick="goEdicion();"type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
                             <a href="ingresar_ruta.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             
                         </div>
             <div class="panel-body">
                 <table>
-                    <tr><td align="right"><b>Identificaci&oacute;n:&nbsp;</b> </td><td id="seleccion_id" name="seleccion_id"></td></tr>
+                    <tr><td align="right"><b>Identificaci&oacute;n:&nbsp;</b> </td><td value ="" id="seleccion_id" name="seleccion_id"></td></tr>
                     <tr><td align="right"><b>Nombre:&nbsp;</b></td><td id="seleccion_nombre" name="seleccion_nombre"></td></tr>
                     
                 </table>
@@ -117,6 +120,10 @@
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
+                 function goEdicion() {
+                      if (document.getElementById("seleccion_id").getAttribute("value")=="") {
+                         alert("No ha seleccionado una ruta de la tabla");
+                     }                        };
         </script>
         <!-- CUSTOM SCRIPTS -->
         <script src="assets/js/custom.js"></script>

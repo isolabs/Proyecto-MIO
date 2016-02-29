@@ -44,7 +44,7 @@
                 <label for="id_tarjeta">
               N&uacute;mero de identificaci&oacute;n de la tarjeta:
                </label>
-              <input type="text" value="<%out.println(request.getParameter("id_tarjeta"));%>" name="id_tarjeta" pattern="[0-9]{4,}" id="id_tarjeta" class ="form-control" disabled>
+              <input type="text" value="<%out.println(pasajero.getId_tarjeta());%>" name="id_tarjeta" pattern="[0-9]{4,}" id="id_tarjeta" class ="form-control" disabled>
 
                 
                    <label for="nombres">

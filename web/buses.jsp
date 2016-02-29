@@ -128,7 +128,7 @@
             });
             function goEdicion() {
                       if (document.getElementById("seleccion_placa").getAttribute("value")=="") {
-                         alert("No ha seleccionado un empleado de la tabla");
+                         alert("No ha seleccionado un bus de la tabla");
                      }                        };
         </script>
         <!-- CUSTOM SCRIPTS -->

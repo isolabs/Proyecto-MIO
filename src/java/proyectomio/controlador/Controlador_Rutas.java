@@ -37,12 +37,12 @@ public class Controlador_Rutas {
     /* en caso que la ruta no exista se retornara 1
     si se piensa hacer una modificaicon a nombre ruta tal que el nuevo nombre sea igual a uno ya existente y viole el constrain unique de este campo se retornara 2
     en caso que la consulta se halla ejecutado bien se retornara 0*/
-    public int modificar_ruta(String nombre_ruta_modificar, int nuevo_id_ruta, String nuevo_nombre, String nueva_descripcion) {
+    public int modificar_ruta(int id_ruta_modificar, String nuevo_nombre, String nueva_descripcion) {
         Ruta ruta_nueva = new Ruta();
         ruta_nueva.setDescripcion(nueva_descripcion);
         ruta_nueva.setNombre(nuevo_nombre);
-        ruta_nueva.setId_ruta(nuevo_id_ruta);
-        int resultado = DATA_ACCES_OBJECT.modificar_ruta(nombre_ruta_modificar, ruta_nueva);
+        ruta_nueva.setId_ruta(id_ruta_modificar);
+        int resultado = DATA_ACCES_OBJECT.modificar_ruta( id_ruta_modificar, ruta_nueva);
         return resultado;
     }
 

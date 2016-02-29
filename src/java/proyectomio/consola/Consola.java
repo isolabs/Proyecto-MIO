@@ -23,9 +23,11 @@ public class Consola {
     public static void main(String [] args)
 	{
             
-           
-            Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
-            controlador_poperaciones.getRuta(100001, 100002);
+           Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
+            int resultado = uncontrolador.adicionar_tarjeta(100001);
+            System.out.println(resultado);
+            /*Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
+            controlador_poperaciones.getRuta(100001, 100002);/
            
             
             

@@ -9,10 +9,12 @@
 <% Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
        
     
-      int id_estacion =  Integer.valueOf(request.getParameter("id_estacion"));
-           
+       int id_estacion =  Integer.valueOf(request.getParameter("id_estacion"));
+       int id_usuario = Integer.valueOf(request.getParameter("id_usuario"));
        
-       int resultado = uncontrolador.adicionar_tarjeta(id_estacion);%>
+       int resultado = uncontrolador.adicionar_tarjeta(id_estacion);
+       int aux_error = -1;
+%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -32,7 +34,8 @@
     
    
     <div class="<% 
-         if(resultado==0){      
+         if((resultado != 0)||(resultado != 1)||(resultado != -1)){ 
+             aux_error = 0;    
           out.print("panel panel-primary");
                    }
          else{
@@ -41,8 +44,9 @@
 
           %>">
         <div class ="panel-heading">
-            <% if(resultado ==0){
-        out.print("Mensaje");
+            <% if(aux_error==0){
+               
+                out.print("Mensaje");
             }
             else
             {
@@ -58,7 +62,7 @@
        
       
        
-       switch(resultado){
+       switch(aux_error){
            case 0: out.println("Felicitaciones ha comprado una tarjeta");break;
            
            default: out.println("Se ha generado un error inesperado en el programa");
@@ -68,7 +72,7 @@
     %>
       <br></br>
         <button class="<%
-            if(resultado==0){
+            if(aux_error==0){
                 out.print("btn btn-primary");
             }
             else
@@ -77,7 +81,7 @@
             }%>" onclick="goBack()">Volver</button> </center>
   <script>
 function goBack() {
-    <%if(resultado == 0) {%>
+    <%if(aux_error == 0) {%>
        location.href="<%out.print("ingresar_tarjeta.jsp");%> "<%}
     else{
     out.print("window.history.back()");

@@ -37,6 +37,24 @@ public class Controlador_BD {
             stmt = conn.createStatement();
             String sql;
             sql = consulta;
+
+            if (sql.contains("INSERT INTO tarjeta")) {
+                
+                int rs = stmt.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+                
+                ResultSet rss = stmt.getGeneratedKeys();
+                if (rss.next()) {
+                    rs = rss.getInt(1);
+                }
+
+                Consulta retorno = new Consulta();
+                Columna tmp = new Columna("ID", "0", 0);
+                tmp.insertarFila(String.valueOf(rs));
+                retorno.insertarColumna(tmp);
+                
+                return retorno;
+
+            }
             
             if (!sql.contains("SELECT")) {
 
@@ -50,6 +68,9 @@ public class Controlador_BD {
                 return retorno;
 
             }
+            
+            
+            
             ResultSet rs = stmt.executeQuery(sql);
             ResultSetMetaData rsmd = rs.getMetaData();
             int cantidadColumnas = rsmd.getColumnCount();

@@ -25,8 +25,12 @@ public class DaoTarjeta {
     */
     public int adicionar_tarjeta(Tarjeta una_tarjeta)
     { 
-         Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO tarjeta VALUES (" + una_tarjeta.getId_tarjeta()+","+una_tarjeta.getEstado()+","+una_tarjeta.getSaldo()+","+una_tarjeta.getId_estacion_venta()+",'"+una_tarjeta.getFecha_venta()+"');");
-         int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO tarjeta VALUES (" + una_tarjeta.getId_tarjeta()+","+una_tarjeta.getEstado()+","+una_tarjeta.getSaldo()+","+una_tarjeta.getId_estacion_venta()+",'"+una_tarjeta.getFecha_venta()+"');");
+        if (consulta.getColumnas().get(0).getNombre().equals("ID")){
+            System.err.println(consulta.getColumnas().get(0).getFila(0));
+            return Integer.valueOf(consulta.getColumnas().get(0).getFila(0));
+        }
+        int codigo_error = consulta.getColumna("Error").getCodigo_tipo_de_dato();
         switch (codigo_error) {
             case -1:
                 return 0;

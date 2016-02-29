@@ -66,6 +66,12 @@
                           return false;
                           document.getElementById("contenedor").setAttribute('data', "asignar_bus_conductor.jsp");
                         }
+                         function goVenderTarjeta() {
+                          if(!document.getElementById("contenedor")) 
+                          return false;
+                          document.getElementById("contenedor").setAttribute('data', "ingresar_tarjeta.jsp");
+                        }
+                        
                   
                <%}%>
             
@@ -112,6 +118,8 @@
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goRecarga();\">Recargar tarjetas</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goVenderTarjeta();\">Vender tarjeta</a> </li>");
+                                
                             }
                         %>
                        

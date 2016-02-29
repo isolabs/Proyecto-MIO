@@ -206,8 +206,8 @@ public class DaoTarjeta {
     /*
     cambiar el estado de la tarjeta
        
-    si retorna 0 esta activa
-    si retorna 1 esta bloqueada
+    si retorna 0 cambia de estado
+    si retorna -1 no existe
     */
     public int cambiar_estado_tarjeta (int id_tarjeta)
     {
@@ -221,7 +221,7 @@ public class DaoTarjeta {
         else if ("0".equals(estado)) {
             int bloqueada = 1;
             CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET estado = "+bloqueada+" where id_tarjeta="+id_tarjeta+";");
-            return 1;
+            return 0;
         }else {
             int activa = 0;
             CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET estado = "+activa+" where id_tarjeta="+id_tarjeta+";");

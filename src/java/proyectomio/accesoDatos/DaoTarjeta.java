@@ -195,7 +195,7 @@ public class DaoTarjeta {
         if ("-1".equals(saldo)) {
             return 1;
         }else{
-            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT estado FROM tarjeta id_tarjeta="+id_tarjeta);
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT estado FROM tarjeta WHERE id_tarjeta="+id_tarjeta);
             String estado = consulta.getColumna("estado").getFila(0);
             int estadoTarjeta = Integer.parseInt(estado);
             if (estadoTarjeta == 1) {

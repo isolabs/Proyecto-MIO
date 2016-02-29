@@ -61,6 +61,9 @@
                                                 case 1:
                                                     out.println("No existe la tarjeta n&uacute;mero: <b>" + id_tarjeta + "</b> en nuestros registros");
                                                     break;
+                                                case 2:
+                                                    out.println("la tarjeta n&uacute;mero: <b>"+ id_tarjeta +"</b> esta bloqueada");
+                                                    break;
                                                 default:
                                                     out.println("Se ha generado un error inesperado en el programa");
                                             }

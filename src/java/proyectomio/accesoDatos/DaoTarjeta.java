@@ -182,10 +182,11 @@ public class DaoTarjeta {
         return tarjetas_encontrados;
     }
      
-     /*
+      /*
     Recargar la tarjeta
      si  retorna 1 no existe numero id_tarjeta
      si retorna 0 se realizo la recarga
+     si retorna 2 no se puede hacer la recarga porque la tarjeta esta bloqueada
     */
     public int recargar_tarjeta (int id_tarjeta, int recarga)
     {
@@ -194,12 +195,18 @@ public class DaoTarjeta {
         if ("-1".equals(saldo)) {
             return 1;
         }else{
-           
-        int saldoTarjeta = Integer.parseInt(saldo);
-        saldoTarjeta = saldoTarjeta + recarga;
-        CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
-        System.out.println("nuevo saldo "+saldoTarjeta);
-        return 0;
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT estado FROM tarjeta id_tarjeta="+id_tarjeta);
+            String estado = consulta.getColumna("estado").getFila(0);
+            int estadoTarjeta = Integer.parseInt(estado);
+            if (estadoTarjeta == 1) {
+                return 2;
+            }else{
+                int saldoTarjeta = Integer.parseInt(saldo);
+                saldoTarjeta = saldoTarjeta + recarga;
+                CONTROLADOR_BD.consultarBD("UPDATE tarjeta SET saldo = "+saldoTarjeta+" where id_tarjeta="+id_tarjeta+";");
+                System.out.println("nuevo saldo "+saldoTarjeta);
+                return 0;
+            }
         }
     }
     
@@ -241,7 +248,7 @@ public class DaoTarjeta {
         for(int i = 0; i < consulta.getColumna("id_estacion_venta").getFilas().size(); i++)
         {
             tarjeta_temporal.setId_estacion_venta(Integer.valueOf(consulta.getColumna("id_estacion_venta").getFila(i)));
-            tarjeta_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i)));
+            tarjeta_temporal.setId_tarjeta(calcular_valor_total_tarjeta_estacion(Integer.valueOf(consulta.getColumna("count(id_tarjeta)").getFila(i))));
             tarjeta_temporal.setFecha_venta(consulta.getColumna("nombre").getFila(i));
             tarjeta_vendidas.add(tarjeta_temporal);
             tarjeta_temporal=new Tarjeta();
@@ -308,6 +315,16 @@ public class DaoTarjeta {
            int saldo = Integer.parseInt(consulta1.getColumna("saldo").getFila(0));
            return saldo;
        }
+       
+    /*
+    valor total de tarjetas (una tarjeta cuesta 3200)  vendidas en una estacion
+    
+    */
+    
+    public int calcular_valor_total_tarjeta_estacion(int cantidad){
+        int calcular = 3200 * cantidad;
+        return calcular;
+    }
     
 }
 

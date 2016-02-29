@@ -36,7 +36,7 @@ public class Controlador_Pasajero {
         return resultado;
     }
     
-    public int modificar_pasajero(int id_pasajero_a_modificar, int id_pasajero, int id_tarjeta, String nombres, String apellidos, String fecha_nacimiento, String direccion, String telefono, String correo_electronico)
+    public int modificar_pasajero(int id_pasajero, int id_tarjeta, String nombres, String apellidos, String fecha_nacimiento, String direccion, String telefono, String correo_electronico)
     {
         Pasajero pasajero_adicionar = new Pasajero();
         pasajero_adicionar.setId_pasajero(id_pasajero);
@@ -47,7 +47,7 @@ public class Controlador_Pasajero {
         pasajero_adicionar.setDireccion(direccion);
         pasajero_adicionar.setTelefono(telefono);
         pasajero_adicionar.setCorreo_electronico(correo_electronico);
-        int resultado = data_acces_object.modificar_pasajero(id_pasajero_a_modificar, pasajero_adicionar);
+        int resultado = data_acces_object.modificar_pasajero(id_pasajero, pasajero_adicionar);
         return resultado;
     }
     

@@ -49,7 +49,13 @@
         <link href="../assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        <script>
+            function goBack() {
+            
+                location.href = "abordar.jsp";
 
+            }
+        </script>
 
     </head>
     <body>
@@ -68,12 +74,46 @@
             </nav>   
         </div>
         <!-- /. WRAPPER  -->
-        <div class="panel panel-primary" style="margin: auto;width: 50%; margin-top: 10%;">
+        <div class="<%
+            if (resultado == 0) {
+                out.print("panel panel-primary");
+            } else {
+                out.print("panel panel-danger");
+            }
+
+             %>" style="margin: auto;width: 50%; margin-top: 10%;">
             <div class ="panel-heading">
-                Abordar
+                <% if (resultado == 0) {
+                        out.print("Mensaje");
+                    } else {
+                        out.print("Error");
+                }%>
             </div>
             <div class="panel-body">
-                
+                <center>
+                    <%
+
+                        switch (resultado) {
+                            case 0:
+                                out.println("Se descont&oacute; un pasaje<br>");
+                                out.println("Nuevo saldo: <b>$" + c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).get(0).getSaldo() + "</b>");
+                                break;
+                            case 1:
+                                out.println("Saldo insuficiente: <b>$" + c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).get(0).getSaldo() + "</b>");
+                                break;
+                            default:
+                                out.println("Se ha generado un error inesperado en el programa");
+                        }
+
+
+                    %>
+
+                    <br></br>
+                    <button class="<%  if (resultado == 0) {
+                            out.print("btn btn-primary");
+                        } else {
+                            out.print("btn btn-danger");
+                    }%>" onclick="goBack();">Volver</button> </center>
             </div>
         </div>
 

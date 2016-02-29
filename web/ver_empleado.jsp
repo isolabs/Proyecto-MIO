@@ -26,7 +26,7 @@
     
     <div class="panel panel-primary">
         <div class ="panel-heading">
-            Edici&oacute;n de empleados<br>
+            Edici&oacute;n de empleados
         </div>
          <div class="panel-body">
              <form action="empleados.jsp" class="form-group"  >
@@ -90,8 +90,8 @@
                    <input type="submit" class="btn btn-primary" value="Regresar"></center>     
             <script>
 
-    document.getElementById("cargo").selectedIndex = "<%out.print(empleado.getCargo());%>";
-</script>
+                document.getElementById("cargo").selectedIndex = "<%out.print(empleado.getCargo());%>";
+            </script>
           
      </form>
 </div>

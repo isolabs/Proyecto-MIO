@@ -107,4 +107,27 @@ public class DaoPasajero {
         }
 
     }
+
+    public ArrayList<Pasajero> get_pasajerosTarjeta(int id_tarjeta) {
+        ArrayList<Pasajero> pasajeros_encontrados = new ArrayList<>();
+
+        Pasajero pasajero_temporal = new Pasajero();
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM pasajero WHERE id_tarjeta = " + id_tarjeta);
+        for (int i = 0; i < consulta.getColumna("id_pasajero").getFilas().size(); i++) {
+            pasajero_temporal.setId_pasajero(Integer.valueOf(consulta.getColumna("id_pasajero").getFila(i)));
+            pasajero_temporal.setId_tarjeta(Integer.valueOf(consulta.getColumna("id_tarjeta").getFila(i)));
+            pasajero_temporal.setNombres(consulta.getColumna("nombres").getFila(i));
+            pasajero_temporal.setApellidos(consulta.getColumna("apellidos").getFila(i));
+            pasajero_temporal.setFecha_nacimiento(consulta.getColumna("fecha_nacimiento").getFila(i));
+            pasajero_temporal.setDireccion(consulta.getColumna("direccion").getFila(i));
+            pasajero_temporal.setTelefono(consulta.getColumna("telefono").getFila(i));
+            pasajero_temporal.setCorreo_electronico(consulta.getColumna("correo_electronico").getFila(i));
+
+            pasajeros_encontrados.add(pasajero_temporal);
+            pasajero_temporal = new Pasajero();
+        }
+        return pasajeros_encontrados;
+
+    }
+
 }

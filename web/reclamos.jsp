@@ -1,8 +1,3 @@
-<%-- 
-    Document   : empleados
-    Created on : Feb 24, 2016, 11:43:04 AM
-    Author     : jeisonOS
---%>
 
 <%@page import="proyectomio.controlador.Controlador_Reclamo"%>
 <%@page import="proyectomio.modelo.Reclamo"%>
@@ -10,7 +5,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ include file="verificadorLogin.jsp" %>
 <%
-    ArrayList <Reclamo> reclamos;
+    ArrayList <Reclamo> reclamos = new ArrayList<Reclamo>();
     Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();
     reclamos = controlador_reclamo.obtenerReclamo(-1);
     
@@ -36,12 +31,12 @@
             
             function seleccionar(id){
                 
-                document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_empleado_" + id ).innerText;
-                document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_empleado_" + id ).innerText);
-                document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombres_" + id ).innerText + " " + document.getElementById ( "apellidos_" + id ).innerText ;
-                var editar_completo = "editar_empleado.jsp?id_empleado=";
+                document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_tiquete_" + id ).innerText;
+                document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_tiquete_" + id ).innerText);
+                document.getElementById('seleccion_motivo').innerHTML = document.getElementById ( "motivo_" + id ).innerText ;
+                var editar_completo = "manejador_reclamos.jsp?id_tiquete=";
                 var editar_con_id=editar_completo.concat(document.getElementById("seleccion_id").getAttribute("value"));
-                document.getElementById("boton_editar").setAttribute("href",editar_con_id);
+                document.getElementById("boton_gestion").setAttribute("href",editar_con_id);
             }
             
         </script>
@@ -53,14 +48,14 @@
                             <b>Selecci&oacute;n</b>
                             
                             <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
-                            <a href="#" onclick="goEdicion();" id="boton_editar" name="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
-                            <a href="ingresar_empleado.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
-                            
+                           
+                            <a href="ingresar_reclamo.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
+                            <a href="#" onclick="goEdicion();" type="submit" id="boton_gestion" name="boton_gestion" class="btn btn-default btn-xs" style="float: right;margin-right: 5px;">Gestionar Reclamo</a>
                         </div>
             <div class="panel-body">
                 <table>
-                    <tr><td align="right"><b>Identificaci&oacute;n:&nbsp;</b> </td><td id="seleccion_id" value = "" name="seleccion_id"></td></tr>
-                    <tr><td align="right"><b>Nombre:&nbsp;</b></td><td id="seleccion_nombre" name="seleccion_nombre"></td></tr>
+                    <tr><td align="right"><b>Id Reclamo: </b> </td><td id="seleccion_id" value = "" name="seleccion_id"></td></tr>
+                    <tr><td align="right"><b>Motivo: </b></td><td id="seleccion_motivo" name="seleccion_motivo"></td></tr>
                 </table>
                 
                 
@@ -71,7 +66,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-primary">
             <div class="panel-heading">
-                Empleados
+                Reclamos
             </div>
             <div class="panel-body">
                 
@@ -95,8 +90,8 @@
                                     
                                     out.println("<tr class=\"odd gradeX\">");
                                     out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"id_tiquete_" + i + "\">" + reclamos.get(i).getId_tiquete()+ "</td>");
-                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"fecha_" + i + "\">" + reclamos.get(i).getMotivo()+ "</td>");
-                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"motivo _" + i + "\">" + reclamos.get(i).getMotivo()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"fecha_" + i + "\">" + reclamos.get(i).getFecha()+ "</td>");
+                                    out.println("<td onClick=\"seleccionar(" + i + ");\" id=\"motivo_" + i + "\">" + reclamos.get(i).getMotivo()+ "</td>");
                                     out.println("<td onClick=\"seleccionar(" + i + ");\">" + reclamos.get(i).getEstado()+ "</td>");
                                     out.println("<td onClick=\"seleccionar(" + i + ");\">" + reclamos.get(i).getId_pasajero_interpone()+ "</td>");
                                     out.println("<td onClick=\"seleccionar(" + i + ");\" class=\"center\">" + reclamos.get(i).getId_empleado_anota()+ "</td>");
@@ -137,7 +132,7 @@
             });
             function goEdicion() {
                       if (document.getElementById("seleccion_id").getAttribute("value")=="") {
-                         alert("No ha seleccionado un empleado de la tabla");
+                         alert("No ha seleccionado un reclamo de la tabla");
                      }                        };
         </script>
         <!-- CUSTOM SCRIPTS -->

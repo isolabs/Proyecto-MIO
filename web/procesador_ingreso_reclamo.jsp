@@ -83,7 +83,7 @@
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("ingresar_reclamo.jsp");%> "<%}
+       location.href="<%out.print("reclamos.jsp");%> "<%}
     else{
     out.print("window.history.back()");
     }

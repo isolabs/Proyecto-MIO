@@ -21,19 +21,28 @@ public class DaoReclamo {
     
     public ArrayList<Reclamo> obtenerReclamo(int id_tiquete) {
         ArrayList<Reclamo> reclamos = new ArrayList<>();
+        int id_empleado_resuelve=0;
         if (id_tiquete == -1) {
             Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM reclamo");
             int cantidad_filas = consulta.getColumnas().get(0).getFilas().size();
             for (int i = 0; i < cantidad_filas; i++) {
                 Reclamo tmp = new Reclamo();
+                 try{
+                    id_empleado_resuelve=Integer.valueOf(consulta.getColumna("id_empleado_resuelve").getFila(i));
+                 }
+                 catch(NumberFormatException exc)
+                 {
+                     id_empleado_resuelve = 0;
+                 }
                 tmp.setId_tiquete(Integer.valueOf(consulta.getColumna("id_tiquete").getFila(i)));
                 tmp.setDescripcion(consulta.getColumna("descripcion").getFila(i));
                 tmp.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
                 tmp.setFecha(consulta.getColumna("fecha").getFila(i));
                 tmp.setId_empleado_anota(Integer.valueOf(consulta.getColumna("id_empleado_anota").getFila(i)));
                 tmp.setId_pasajero_interpone(Integer.valueOf(consulta.getColumna("id_pasajero_interpone").getFila(i)));
-                tmp.setId_empleado_resuelve(Integer.valueOf(consulta.getColumna("id_empleado_resuelve").getFila(i)));
-                tmp.setMotivo(consulta.getColumna("id_motivo").getFila(i));
+                tmp.setId_empleado_resuelve(id_empleado_resuelve);
+                tmp.setMotivo(consulta.getColumna("motivo").getFila(i));
+                tmp.setId_estacion_interpone(Integer.valueOf(consulta.getColumna("id_estacion_interpone").getFila(i)));
                 reclamos.add(tmp);
             }
         } else {
@@ -53,7 +62,8 @@ public class DaoReclamo {
                     tmp.setId_empleado_resuelve(-1);
                 }
                 
-                tmp.setMotivo(consulta.getColumna("id_motivo").getFila(i));
+                tmp.setMotivo(consulta.getColumna("motivo").getFila(i));
+                tmp.setId_estacion_interpone(Integer.valueOf(consulta.getColumna("id_estacion_interpone").getFila(i)));
                 reclamos.add(tmp);
             }
             //return CONTROLADOR_BD.consultarBD("SELECT * FROM reclamo WHERE id_reclamo = '" + id_tiquete + "'");
@@ -160,7 +170,7 @@ public class DaoReclamo {
         }
     }
 
-    public int resolverReclamo(int id_tiquete, int id_empleado_resuelve) {
+    public int cambiar_estado(int nuevo_estado, int id_tiquete, int id_empleado_resuelve) {
         
         if (obtenerReclamo(id_tiquete).isEmpty()){
         
@@ -171,8 +181,9 @@ public class DaoReclamo {
         
             return -2;
         } 
-        
-        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = 1,id_empleado_resuelve = '"+id_empleado_resuelve+"'  WHERE id_tiquete = '" + id_tiquete + " '");
+        if(nuevo_estado==2)
+        {
+        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = " + nuevo_estado + ",id_empleado_resuelve = '"+id_empleado_resuelve+"'  WHERE id_tiquete = '" + id_tiquete + " '");
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:
                 return 0;
@@ -182,6 +193,24 @@ public class DaoReclamo {
                 return 2;
             default:
                 return -1;
+        }
+        }
+        if(nuevo_estado==0 || nuevo_estado==1)
+        {
+        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = " + nuevo_estado + "  WHERE id_tiquete = '" + id_tiquete + " '");
+        switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
+            case -1:
+                return 0;
+            case 1062:
+                return 1;
+            case 1452:
+                return 2;
+            default:
+                return -1;
+        }
+        }
+        else{
+            return -1;
         }
     }
     

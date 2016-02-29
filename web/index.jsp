@@ -70,7 +70,12 @@
                 document.getElementById("contenedor").setAttribute('data', "ingresar_tarjeta.jsp");
             }
              
-
+            function goReclamos() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "reclamos.jsp");
+            }
+             
             <%}%>
 
 
@@ -124,7 +129,7 @@
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
                                 
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
-                                
+                                 out.print("<li><a  href=\"#\" onClick=\"goReclamos();\">Reclamos</a> </li>");
 
                             }
                         %>

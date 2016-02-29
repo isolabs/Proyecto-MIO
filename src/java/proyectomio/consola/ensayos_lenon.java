@@ -6,11 +6,13 @@
 package proyectomio.consola;
 
 //import proyectomio.controlador.Controlador_BD;
+import java.util.ArrayList;
 import proyectomio.accesoDatos.DaoBuses;
 import proyectomio.controlador.*;
 import proyectomio.controlador.operaciones.Controlador_Pasajero_operaciones;
 import proyectomio.controlador.operaciones.Controlador_login;
 import proyectomio.controlador.operaciones.Controlador_Director;
+import proyectomio.modelo.Reclamo;
 //import proyectomio.controlador.Controlador_Reclamo;
 //import proyectomio.modelo.Reclamo;
 
@@ -23,8 +25,11 @@ public class ensayos_lenon {
     public static void main(String [] args)
 	{
             
-           
-          Controlador_Estaciones controlador=new Controlador_Estaciones();
+          ArrayList <Reclamo> reclamos = new ArrayList<Reclamo>();
+    Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();
+    reclamos = controlador_reclamo.obtenerReclamo(-1);
+            System.out.println(reclamos.size());
+    
   //        System.out.println(controlador.modificar_estacion(1, "Universidades", "Carrera 54 calle 100", 1058847076));
           
            

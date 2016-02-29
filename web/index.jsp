@@ -2,10 +2,8 @@
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <%@page import="proyectomio.modelo.Empleado"%>
 <%@ include file="verificadorLogin.jsp" %>
-<%
-    
-    Controlador_Empleado controlador_empleado = new Controlador_Empleado();
-    ArrayList <Empleado> empleado = controlador_empleado.get_empleados(Integer.valueOf(session.getAttribute("userid").toString()));
+<%    Controlador_Empleado controlador_empleado = new Controlador_Empleado();
+    ArrayList<Empleado> empleado = controlador_empleado.get_empleados(Integer.valueOf(session.getAttribute("userid").toString()));
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,68 +19,68 @@
         <link href="assets/css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-        
-        <script> 
-            <%if(empleado.get(0).getCargo_String().equals("Director")){%>
-                        
-                        
-                        function goEmpleados() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "empleados.jsp");
-                        }
-                        
-                        function goEstaciones() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "estaciones.jsp");
-                          
-                        }
-                        
-                        function goRutas() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "rutas.jsp");
-                        }
-                        
-                        function goBuses() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "buses.jsp");
-                        }
-                        
-                        function goRecarga() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "recargar.jsp");
-                        }
-                         function goPasajeros() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "pasajeros.jsp");
-                        }
-                         function goAsignarBusConductor() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "asignar_bus_conductor.jsp");
-                        }
-                         function goVenderTarjeta() {
-                          if(!document.getElementById("contenedor")) 
-                          return false;
-                          document.getElementById("contenedor").setAttribute('data', "ingresar_tarjeta.jsp");
-                        }
-                        
-                  
-               <%}%>
-            
-            
+
+        <script>
+            <%if (empleado.get(0).getCargo_String().equals("Director")) {%>
+
+
+            function goEmpleados() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "empleados.jsp");
+            }
+
+            function goEstaciones() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "estaciones.jsp");
+
+            }
+
+            function goRutas() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "rutas.jsp");
+            }
+
+            function goBuses() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "buses.jsp");
+            }
+
+            function goRecarga() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "recargar.jsp");
+            }
+            function goPasajeros() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "pasajeros.jsp");
+            }
+            function goAsignarBusConductor() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "asignar_bus_conductor.jsp");
+            }
+            function goVenderTarjeta() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "ingresar_tarjeta.jsp");
+            }
+
+
+            <%}%>
+
+
         </script>
-        
-        
+
+
     </head>
     <body>
 
-       
+
 
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -98,7 +96,7 @@
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
                      float: right;
-                     font-size: 16px;"> Bienvenido: <%=empleado.get(0).getNombres() + " " + empleado.get(0).getApellidos() + " (" + empleado.get(0).getCargo_String() + ")" %> &nbsp; <a href="login/logout.jsp" class="btn btn-danger square-btn-adjust">Salir</a> </div>
+                     font-size: 16px;"> Bienvenido: <%=empleado.get(0).getNombres() + " " + empleado.get(0).getApellidos() + " (" + empleado.get(0).getCargo_String() + ")"%> &nbsp; <a href="login/logout.jsp" class="btn btn-danger square-btn-adjust">Salir</a> </div>
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
@@ -109,20 +107,30 @@
                         </li>
 
                         <%
-                            if(empleado.get(0).getCargo_String().equals("Director")){
-                                
+                            if (empleado.get(0).getCargo_String().equals("Director")) {
+
                                 out.print("<li><a  href=\"#\" onClick=\"goEmpleados();\">Empleados</a> </li>");
+                                
+                                out.print("<li><a href=\"#\"><i class= \"fa fa-sitemap fa-1x\"></i> Pasajeros</a><ul class=\"nav nav-second-level\">");
+                                
                                 out.print("<li><a  href=\"#\" onClick=\"goPasajeros();\">Pasajeros</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goVenderTarjeta();\">Vender tarjeta</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goRecarga();\">Recargar tarjetas</a> </li>");
+                                
+                                out.print("</ul></li>");
+                                
                                 out.print("<li><a  href=\"#\" onClick=\"goEstaciones();\">Estaciones</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goBuses();\">Buses</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
-                                out.print("<li><a  href=\"#\" onClick=\"goRecarga();\">Recargar tarjetas</a> </li>");
-                                out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
-                                out.print("<li><a  href=\"#\" onClick=\"goVenderTarjeta();\">Vender tarjeta</a> </li>");
                                 
+                                out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
+                                
+
                             }
                         %>
-                       
+
+                        
+
                     </ul>
 
                 </div>

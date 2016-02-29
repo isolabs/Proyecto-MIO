@@ -55,10 +55,10 @@
 
                                             switch (resultado) {
                                                 case 0:
-                                                    out.println("Se recarg&oacute; la tarjeta n&uacute;mero: '" + id_tarjeta + "' con $" + valor_Recargar);
+                                                    out.println("Se recarg&oacute; la tarjeta n&uacute;mero: <b>" + id_tarjeta + "</b> con <b>$" + valor_Recargar + "</b>");
                                                     break;
                                                 case 1:
-                                                    out.println("No existe la tarjeta n&uacute;mero '" + id_tarjeta + "' en nuestros registros");
+                                                    out.println("No existe la tarjeta n&uacute;mero: <b>" + id_tarjeta + "</b> en nuestros registros");
                                                     break;
                                                 default:
                                                     out.println("Se ha generado un error inesperado en el programa");

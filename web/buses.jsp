@@ -40,9 +40,12 @@
             function seleccionar(id){
                 
                 document.getElementById('seleccion_placa').innerHTML =  document.getElementById ( "placa_" + id ).innerText;
+                document.getElementById("seleccion_placa").setAttribute("value",document.getElementById ( "placa_" + id ).innerText);
                 document.getElementById('seleccion_tipo').innerHTML = document.getElementById ( "tipo_" + id ).innerText;
                 document.getElementById('seleccion_ruta').innerHTML = document.getElementById ( "ruta_" + id ).innerText;
-                
+                var editar_completo = "editar_bus.jsp?placa=";
+                var editar_con_id=editar_completo.concat(document.getElementById("seleccion_placa").getAttribute("value"));
+                document.getElementById("boton_editar").setAttribute("href",editar_con_id);
             }
             
         </script>
@@ -55,13 +58,13 @@
                             <b>Selecci&oacute;n</b>
                             
                             <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
-                            <a href="#" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
+                            <a href="#" id="boton_editar" name="boton_editar"onclick="goEdicion();" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
                             <a href="ingresar_bus.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             
                         </div>
             <div class="panel-body">
                 <table>
-                    <tr><td align="right"><b>Placa:&nbsp;</b> </td><td id="seleccion_placa" name="seleccion_placa"></td></tr>
+                    <tr><td align="right"><b>Placa:&nbsp;</b> </td><td id="seleccion_placa" value="" name="seleccion_placa"></td></tr>
                     <tr><td align="right"><b>Tipo:&nbsp;</b></td><td id="seleccion_tipo" name="seleccion_tipo"></td></tr>
                     <tr><td align="right"><b>Ruta:&nbsp;</b></td><td id="seleccion_ruta" name="seleccion_ruta"></td></tr>
                     
@@ -123,6 +126,10 @@
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
+            function goEdicion() {
+                      if (document.getElementById("seleccion_placa").getAttribute("value")=="") {
+                         alert("No ha seleccionado un empleado de la tabla");
+                     }                        };
         </script>
         <!-- CUSTOM SCRIPTS -->
         <script src="assets/js/custom.js"></script>

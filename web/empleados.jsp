@@ -133,7 +133,7 @@
             });
             function goEdicion() {
                       if (document.getElementById("seleccion_id").getAttribute("value")=="") {
-                         alert("No ha seleccionado un empleado");
+                         alert("No ha seleccionado un empleado de la tabla");
                      }                        };
         </script>
         <!-- CUSTOM SCRIPTS -->

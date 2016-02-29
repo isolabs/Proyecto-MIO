@@ -120,6 +120,8 @@ public class Controlador_Pasajero_operaciones {
                 + "(SELECT R.id_ruta,R.nombre,E.id_estacion \n"
                 + "FROM ruta R INNER JOIN ruta_estacion \n"
                 + "E ON R.id_ruta = E.id_ruta) R1 ON E.id_estacion = R1.id_estacion");
+        
+        ArrayList<Integer> rutas_encontradas = new ArrayList<>();
 
         ArrayList<Ruta_estacion> ruta_estacion = new ArrayList<>();
 
@@ -198,14 +200,25 @@ public class Controlador_Pasajero_operaciones {
                 int tmp_1 = estacion_final.getRutas().get(j);
                 if (tmp_0 == tmp_1){
                     rutas_interceptadas.add(tmp_0);
+                    rutas_encontradas.add(tmp_0);
                 }
                 
             }
             
         }
         
-        System.out.println(rutas_interceptadas);
+        //System.out.println(rutas_interceptadas);
         
+        for (int i = 0; i < rutas_una_estacion.size(); i++) {
+            System.out.print(rutas_una_estacion.get(i).getId_estacion());
+            System.out.println(rutas_una_estacion.get(i).getRutas());
+        }
+        
+        
+    }
+    
+    private void interceptar(ArrayList<Integer> ruta_a,ArrayList<Integer> ruta_b){
+    
     }
 
 }

@@ -5,10 +5,8 @@
  */
 package proyectomio.controlador.operaciones;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import proyectomio.accesoDatos.Controlador_BD;
-import proyectomio.modelo.Columna;
 import proyectomio.modelo.Consulta;
 
 /**
@@ -17,170 +15,24 @@ import proyectomio.modelo.Consulta;
  */
 public class Controlador_Pasajero_operaciones {
 
-    private class Nivel {
-
-        private int id_nivel;
-        private int id_estacion_atras;
-        private int id_actual;
-        private int ruta_mediadora;
-        private ArrayList<Nivel> hijos;
-
-        public Nivel() {
-        }
-
-        public Nivel(int id_nivel, int id_estacion_atras, int id_actual, int ruta_mediadora, ArrayList<Nivel> hijos) {
-            this.id_nivel = id_nivel;
-            this.id_estacion_atras = id_estacion_atras;
-            this.id_actual = id_actual;
-            this.ruta_mediadora = ruta_mediadora;
-            this.hijos = hijos;
-        }
-
-        public int getId_nivel() {
-            return id_nivel;
-        }
-
-        public void setId_nivel(int id_nivel) {
-            this.id_nivel = id_nivel;
-        }
-
-        public int getId_estacion_atras() {
-            return id_estacion_atras;
-        }
-
-        public void setId_estacion_atras(int id_estacion_atras) {
-            this.id_estacion_atras = id_estacion_atras;
-        }
-
-        public int getId_actual() {
-            return id_actual;
-        }
-
-        public void setId_actual(int id_actual) {
-            this.id_actual = id_actual;
-        }
-
-        public int getRuta_mediadora() {
-            return ruta_mediadora;
-        }
-
-        public void setRuta_mediadora(int ruta_mediadora) {
-            this.ruta_mediadora = ruta_mediadora;
-        }
-
-        public ArrayList<Nivel> getHijos() {
-            return hijos;
-        }
-
-        public void setHijos(ArrayList<Nivel> hijos) {
-            this.hijos = hijos;
-        }
-
-    }
-
-    private class Interseccion {
-
-        private int id_estacion_A;
-        private int id_estacion_b;
-        ArrayList<Integer> intersecciones;
-
-        public Interseccion() {
-        }
-
-        public Interseccion(int id_estacion_A, int id_estacion_b, ArrayList<Integer> intersecciones) {
-            this.id_estacion_A = id_estacion_A;
-            this.id_estacion_b = id_estacion_b;
-            this.intersecciones = intersecciones;
-        }
-
-        public int getId_estacion_A() {
-            return id_estacion_A;
-        }
-
-        public void setId_estacion_A(int id_estacion_A) {
-            this.id_estacion_A = id_estacion_A;
-        }
-
-        public int getId_estacion_b() {
-            return id_estacion_b;
-        }
-
-        public void setId_estacion_b(int id_estacion_b) {
-            this.id_estacion_b = id_estacion_b;
-        }
-
-        public ArrayList<Integer> getIntersecciones() {
-            return intersecciones;
-        }
-
-        public void setIntersecciones(ArrayList<Integer> intersecciones) {
-            this.intersecciones = intersecciones;
-        }
-
-    }
-
-    private class Rutas_Una_estacion {
-
-        private int id_estacion;
-        private ArrayList<Integer> rutas;
-
-        public Rutas_Una_estacion() {
-        }
-
-        public Rutas_Una_estacion(int id_estacion, ArrayList<Integer> rutas) {
-            this.id_estacion = id_estacion;
-            this.rutas = rutas;
-        }
-
-        public int getId_estacion() {
-            return id_estacion;
-        }
-
-        public void setId_estacion(int id_estacion) {
-            this.id_estacion = id_estacion;
-        }
-
-        public ArrayList<Integer> getRutas() {
-            return rutas;
-        }
-
-        public void setRutas(ArrayList<Integer> rutas) {
-            this.rutas = rutas;
-        }
-
-    }
-
-    private class Ruta_estacion {
-
-        private int id_estacion;
-        private String nombre_estacion;
+    private class Secuencia{
+        private int id_Estacion;
         private int id_ruta;
-        private String nombre_ruta;
 
-        public Ruta_estacion() {
+        public Secuencia() {
         }
 
-        public Ruta_estacion(int id_estacion, String nombre_estacion, int id_ruta, String nombre_ruta) {
-            this.id_estacion = id_estacion;
-            this.nombre_estacion = nombre_estacion;
+        public Secuencia(int id_Estacion, int id_ruta) {
+            this.id_Estacion = id_Estacion;
             this.id_ruta = id_ruta;
-            this.nombre_ruta = nombre_ruta;
         }
 
-        public int getId_estacion() {
-            return id_estacion;
+        public int getId_Estacion() {
+            return id_Estacion;
         }
 
-        public void setId_estacion(int id_estacion) {
-            this.id_estacion = id_estacion;
-        }
-
-        public String getNombre_estacion() {
-            return nombre_estacion;
-        }
-
-        public void setNombre_estacion(String nombre_estacion) {
-            this.nombre_estacion = nombre_estacion;
+        public void setId_Estacion(int id_Estacion) {
+            this.id_Estacion = id_Estacion;
         }
 
         public int getId_ruta() {
@@ -190,24 +42,7 @@ public class Controlador_Pasajero_operaciones {
         public void setId_ruta(int id_ruta) {
             this.id_ruta = id_ruta;
         }
-
-        public String getNombre_ruta() {
-            return nombre_ruta;
-        }
-
-        public void setNombre_ruta(String nombre_ruta) {
-            this.nombre_ruta = nombre_ruta;
-        }
-
-        private void print() {
-            System.out.println("{");
-            System.out.println("    nombre_estacion:" + this.nombre_estacion);
-            System.out.println("    id_estacion:" + this.id_estacion);
-            System.out.println("    nombre_ruta:" + this.nombre_ruta);
-            System.out.println("    id_ruta:" + this.id_ruta);
-            System.out.println("}");
-        }
-
+        
     }
 
     public final Controlador_BD CONTROLADOR_BD;
@@ -238,17 +73,63 @@ public class Controlador_Pasajero_operaciones {
 
     }
 
-    public void getRutaN(int id_estacion_inicial, int id_estacion_final) {
+    public ArrayList<Object> getRutaN(int id_estacion_inicial, int id_estacion_final) {
 
+        ArrayList<Object>rutas_encontradas = new ArrayList<>();
+        
         Consulta consulta = llegada(id_estacion_inicial, id_estacion_final, 1, "");
         System.out.println(consulta.getColumnas().size());
         for (int i = 0; i < consulta.getColumnas().get(0).getFilas().size(); i++) {
             int tmp_0 = Integer.valueOf(consulta.getColumnas().get(consulta.getColumnas().size() - 1).getFila(i));
             if (tmp_0 == id_estacion_inicial) {
                 consulta.imprimirFila(i);
+                ArrayList<String>estaciones = new ArrayList<>();
+                ArrayList<String>rutas = new ArrayList<>();
+                for (int j = (consulta.getColumnas().size() - 1); j > 0; j=j-2) {
+                    System.out.println(consulta.getColumnas().get(j).getFila(i));
+                    estaciones.add(consulta.getColumnas().get(j).getFila(i));
+                }
+                for (int j = (consulta.getColumnas().size() - 2); j > -1; j=j-2) {
+                    System.out.println(consulta.getColumnas().get(j).getFila(i));
+                    rutas.add(consulta.getColumnas().get(j).getFila(i));
+                }
+                
+                ArrayList<Integer>posiciones_tener_cuenta = new ArrayList<>();
+                for (int j = estaciones.size()-1; j > -1; j--) {
+                    String pivote = estaciones.get(j);
+                    int contador = 0;
+                    int posicion_ultima_repeticion = -1;
+                    for (int k = estaciones.size()-1; k > -1; k--) {
+                        if (estaciones.get(k).equals(pivote)){
+                            contador++;
+                            posicion_ultima_repeticion = k;
+                        }
+                        if ((estaciones.get(k).equals(pivote))&&(contador>1)){
+                            posicion_ultima_repeticion = k;
+                        }
+                        
+                    }
+                    if (!(posiciones_tener_cuenta.contains(posicion_ultima_repeticion))){
+                        posiciones_tener_cuenta.add(posicion_ultima_repeticion);
+                    }
+                }
+                System.out.println(posiciones_tener_cuenta);
+                ArrayList<Secuencia>secuencia_de_paradas = new ArrayList<>();
+                for (int j = posiciones_tener_cuenta.size()-1; j > -1; j--) {
+                    System.out.println(estaciones.get(posiciones_tener_cuenta.get(j)) + " RUTA " + rutas.get(posiciones_tener_cuenta.get(j)));
+                    Secuencia tmp = new Secuencia();
+                    tmp.setId_Estacion(Integer.valueOf(estaciones.get(posiciones_tener_cuenta.get(j))));
+                    tmp.setId_ruta(Integer.valueOf(rutas.get(posiciones_tener_cuenta.get(j))));
+                    secuencia_de_paradas.add(tmp);
+                    
+                }
+                rutas_encontradas.add(secuencia_de_paradas);
+                
             }
 
         }
+        
+        return rutas_encontradas;
     }
 
     private Consulta llegada(int id_estacion_inicial, int id_estacion_final, int contador, String consulta_anterior) {
@@ -291,9 +172,6 @@ public class Controlador_Pasajero_operaciones {
             String next = ")R \nON A.id_estacion = R.id_estacion_" + (contador_nivel - 1);
 
             String consulta_estacion = columnas_a_mostrar + "\n" + base + "\n" + next + "\n";
-            /*System.out.println(columnas_a_mostrar);
-            System.out.println(base);
-            System.out.println(next);*/
 
             //Ruta
             String columnas_a_mostrar_rutas = "SELECT ";

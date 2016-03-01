@@ -25,7 +25,7 @@ public class Consola {
             
            
             Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
-            controlador_poperaciones.getRutaN(100005, 100006);
+            controlador_poperaciones.getRutaN(100001, 100007);
            
             
             

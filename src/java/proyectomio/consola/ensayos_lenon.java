@@ -7,11 +7,13 @@ package proyectomio.consola;
 
 //import proyectomio.controlador.Controlador_BD;
 import java.util.ArrayList;
+import proyectomio.accesoDatos.Controlador_BD;
 import proyectomio.accesoDatos.DaoBuses;
 import proyectomio.controlador.*;
 import proyectomio.controlador.operaciones.Controlador_Pasajero_operaciones;
 import proyectomio.controlador.operaciones.Controlador_login;
 import proyectomio.controlador.operaciones.Controlador_Director;
+import proyectomio.modelo.Consulta;
 import proyectomio.modelo.Reclamo;
 //import proyectomio.controlador.Controlador_Reclamo;
 //import proyectomio.modelo.Reclamo;
@@ -24,12 +26,13 @@ public class ensayos_lenon {
     
     public static void main(String [] args)
 	{
-            
-          ArrayList <Reclamo> reclamos = new ArrayList<Reclamo>();
-    Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();
-    reclamos = controlador_reclamo.obtenerReclamo(-1);
-            System.out.println(reclamos.size());
-    
+        Controlador_BD CONTROLADOR_BD=new Controlador_BD();
+     Controlador_Empleado controladr_e = new Controlador_Empleado();
+        Consulta  consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM bus_empleado inner join bus on bus_empleado.placa_bus = bus.placa inner join ruta on ruta.id_ruta = bus.id_ruta");
+    for(int i =0; i< consulta.getColumna("turno").getFilas().size();i++)
+    {
+        System.out.println(consulta.getColumna("descripcion").getFila(i) );
+    }
   //        System.out.println(controlador.modificar_estacion(1, "Universidades", "Carrera 54 calle 100", 1058847076));
           
            

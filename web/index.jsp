@@ -75,7 +75,21 @@
                     return false;
                 document.getElementById("contenedor").setAttribute('data', "reclamos.jsp");
             }
-             
+              function goAsignacionBusesAdmin() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "procesador_consultar_buses_asignados_turno.jsp?id_conductor=0");
+            }
+                    <%}%>
+                        
+             <%if (empleado.get(0).getCargo_String().equals("Conductor")) {%>
+              function goAsignacionBusesEmpleado() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                var id_empleado = <%out.print(session.getAttribute("userid").toString());%>;
+                var url_id_empleado ="procesador_consultar_buses_asignados_turno.jsp?id_conductor="+ <%out.print(empleado.get(0).getId_empleado());%>; ;
+                document.getElementById("contenedor").setAttribute('data', "procesador_consultar_buses_asignados_turno.jsp?id_conductor="+id_empleado);
+            }
             <%}%>
 
 
@@ -129,9 +143,15 @@
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
                                 
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
-                                 out.print("<li><a  href=\"#\" onClick=\"goReclamos();\">Reclamos</a> </li>");
-
+                                out.print("<li><a  href=\"#\" onClick=\"goReclamos();\">Reclamos</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesAdmin();\">Buses asignados a conductores</a> </li>");
+                           
                             }
+                            
+                    if (empleado.get(0).getCargo_String().equals("Conductor")) {
+                        out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesEmpleado();\">Buses asignados</a> </li>"); 
+                    }
+                    
                         %>
 
                         
@@ -147,8 +167,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2>Panel de trabajo</h2>   
-
-                            <object id="contenedor" name="contenedor" data="empleados.jsp" frameborder="0" height="900px" width="100%" type="text/html"><p></p></object>
+                          
+                            <object id="contenedor" name="contenedor" data="<%
+                                if (empleado.get(0).getCargo_String().equals("Director")) {
+                                    out.print("empleados.jsp");
+                                } 
+                                 if (empleado.get(0).getCargo_String().equals("Conductor")) {
+                                    out.print("procesador_consultar_buses_asignados_turno.jsp?id_conductor="+empleado.get(0).getId_empleado());
+                                }
+                                 %>"
+                                frameborder="0" height="900px" width="100%" type="text/html"><p></p></object>
                         </div>
                     </div>
                     <!-- /. ROW  -->

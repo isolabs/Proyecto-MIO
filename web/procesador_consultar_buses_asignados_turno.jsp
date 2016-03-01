@@ -56,9 +56,23 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
+                                <%if(request.getParameter("id_conductor").equals("0"))
+
+                                {
+                                    
+                                    out.println("<th> Id Conductor</th>");
+                                    
+                                }
+                               %>
                                 <th>Placa</th>
                                 <th>Ruta</th>
-                                <th>Descripcion</th>
+                                  <%if(!request.getParameter("id_conductor").equals("0"))
+
+                                {
+                                    
+                                out.println("<th>Descripcion</th>");
+                                }
+                                  %>
                                 <th>Turno</th>
                             </tr>
                         </thead>
@@ -69,9 +83,22 @@
                                 for(int i = 0; i < consulta.getColumna("placa_bus").getFilas().size(); i++){
                                
                                     out.println("<tr class=\"odd gradeX\">");
+                                    
+                                     if(request.getParameter("id_conductor").equals("0"))
+                                {
+                                    
+                                    out.println("<td>"+ consulta.getColumna("id_empleado").getFila(i) +"</td>");
+                                    
+                                }
+                              
                                     out.println("<td>" + consulta.getColumna("placa_bus").getFila(i)+ "</td>");
                                     out.println("<td>" + consulta.getColumna("nombre").getFila(i) + "</td>");
+                                     if(!request.getParameter("id_conductor").equals("0"))
+
+                                {
+                                 
                                     out.println("<td>" + consulta.getColumna("descripcion").getFila(i) + "</td>");
+                                }
                                     out.println("<td>" + Turno.FinSemanaManiana.get_string_desde_int(Integer.valueOf(consulta.getColumna("turno").getFila(i)))+ "</td>");
                                     out.println("</tr>");
                                     

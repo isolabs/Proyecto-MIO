@@ -91,7 +91,15 @@
                 document.getElementById("contenedor").setAttribute('data', "procesador_consultar_buses_asignados_turno.jsp?id_conductor="+id_empleado);
             }
             <%}%>
-
+   <%if (empleado.get(0).getCargo_String().equals("Conductor")) {%>
+              function goAsignacionBusesEmpleado() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                var id_empleado = <%out.print(session.getAttribute("userid").toString());%>;
+                var url_id_empleado ="procesador_consultar_buses_asignados_turno.jsp?id_conductor="+ <%out.print(empleado.get(0).getId_empleado());%>; ;
+                document.getElementById("contenedor").setAttribute('data', "procesador_consultar_buses_asignados_turno.jsp?id_conductor="+id_empleado);
+            }
+            <%}%>
 
         </script>
 

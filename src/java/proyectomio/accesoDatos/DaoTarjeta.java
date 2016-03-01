@@ -310,11 +310,16 @@ public class DaoTarjeta {
        
     }
     
-    public int ver_saldo_tarjeta (int id_tarjeta){
+   public int ver_saldo_tarjeta (int id_tarjeta){
+        
            Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT saldo FROM tarjeta WHERE id_tarjeta="+id_tarjeta);
-           int saldo = Integer.parseInt(consulta1.getColumna("saldo").getFila(0));
-           return saldo;
-       }
+           if ("-1".equals(consulta1.getColumna("saldo").getFila(0))){
+               return -7456321;
+           }else{
+                int saldo = Integer.parseInt(consulta1.getColumna("saldo").getFila(0));
+                return saldo;
+            }
+    }
        
     /*
     valor total de tarjetas (una tarjeta cuesta 3200)  vendidas en una estacion

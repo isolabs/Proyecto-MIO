@@ -61,7 +61,7 @@ Controlador_Estaciones uncontrolador = new Controlador_Estaciones();
        
    
        switch(resultado){
-           case 0: out.println("la estaci&oacute;n con el nombre "+ nombre_estacion_eliminar +" ha sido eliminado");break;
+           case 0: out.println("la estaci&oacute;n con el nombre "+ nombre_estacion_eliminar +" ha sido eliminada");break;
            case 1: out.println("la estaci&oacute;n con el nombre "+ nombre_estacion_eliminar +" no existe en nuestros registros");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }

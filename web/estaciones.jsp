@@ -40,9 +40,12 @@
                 
                 document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_estacion_" + id ).innerText;
                 document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_estacion_" + id ).innerText);
+                document.getElementById("seleccion_nombre").setAttribute("value",document.getElementById ( "nombre_" + id ).innerText);
                 document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombre_" + id ).innerText ;
                 var url = "editar_estacion.jsp?id_estacion=";
                 var url_id = url.concat(document.getElementById("seleccion_id").getAttribute("value"));
+                var url_borrar = "procesador_eliminar_estacion.jsp?nombre="+document.getElementById("seleccion_nombre").getAttribute("value");
+                document.getElementById("boton_borrar").setAttribute("href",url_borrar);
                 document.getElementById("boton_editar").setAttribute("href",url_id);
             }
             
@@ -54,7 +57,7 @@
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
-                            <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
+                            <a href="#" id="boton_borrar" name="boton_borrar" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
                             <a href="#" onclick="goEdicion();" id="boton_editar" name="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
                             <a href="ingresar_estacion.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             

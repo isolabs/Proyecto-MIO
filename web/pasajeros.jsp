@@ -41,7 +41,9 @@
                 document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombres_" + id ).innerText + " " + document.getElementById ( "apellidos_" + id ).innerText ;
                 var url = "editar_pasajero.jsp?id_pasajero="
                 var url_id = url.concat(document.getElementById("seleccion_id").getAttribute("value").toString());
+                var url_borrar="procesador_eliminar_pasajero.jsp?id_pasajero="+document.getElementById("seleccion_id").getAttribute("value");
                 document.getElementById("boton_editar").setAttribute("href",url_id);
+                document.getElementById("boton_borrar").setAttribute("href",url_borrar);
             }
             
         </script>
@@ -52,7 +54,7 @@
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
-                            <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
+                            <a href="#" id="boton_borrar" name="boton_borrar" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
                             <a href="#" onclick="goEdicion();" id="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
                             <a href="ingresar_tarjeta.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             

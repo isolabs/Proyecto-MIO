@@ -67,7 +67,7 @@ Bus bus_modificar=controlador_buses.get_bus(request.getParameter("placa"));
                     <select class="form-control" name="tipo_bus" id="tipo_bus" required="required">
                         <option>Articulado</option>
                         <option>Padron</option>
-                        <option>Complementario</option>
+                        <option>Alimentador</option>
                     </select>
 
 

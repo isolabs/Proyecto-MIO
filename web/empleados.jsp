@@ -41,10 +41,13 @@
                 document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombres_" + id ).innerText + " " + document.getElementById ( "apellidos_" + id ).innerText ;
                 var editar_completo = "editar_empleado.jsp?id_empleado=";
                 var ver = "ver_empleado.jsp?id_empleado=";
+                var eliminar = "procesador_eliminar_empleado.jsp?id_empleado="
                 var editar_con_id=editar_completo.concat(document.getElementById("seleccion_id").getAttribute("value"));
                 var ver_con_id=ver.concat(document.getElementById("seleccion_id").getAttribute("value"));
+                var eliminar_con_id = eliminar.concat(document.getElementById("seleccion_id").getAttribute("value"));
                 document.getElementById("boton_editar").setAttribute("href",editar_con_id);
                 document.getElementById("boton_ver").setAttribute("href",ver_con_id);
+                document.getElementById("boton_eliminar").setAttribute("href",eliminar_con_id);
             }
             
         </script>
@@ -55,7 +58,7 @@
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
-                            <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
+                            <a href="#" id="boton_eliminar" name="boton_eliminar" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
                             <a href="#" onclick="goEdicion();" id="boton_editar" name="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
                             <a href="ingresar_empleado.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             <a href="#" type="submit" id="boton_ver" name="boton_ver" class="btn btn-default btn-xs" style="float: right;margin-right: 5px;">Ver completo</a>

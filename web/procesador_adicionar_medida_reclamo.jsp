@@ -1,23 +1,17 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="proyectomio.modelo.Reclamo"%>
+<%@page import="proyectomio.modelo.Reclamo_medida"%>
 <%@page import="proyectomio.controlador.Controlador_Reclamo"%>
-<%@page import="proyectomio.controlador.Controlador_Empleado"%> 
-
 <%
-  
-        java.util.Date today = new java.util.Date();
-        Timestamp s = new java.sql.Timestamp(today.getTime());
-        String fecha = s.toString();
-        Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
-        Controlador_Empleado controlador_empleado = new Controlador_Empleado();
-        Reclamo unReclamo = new Reclamo();
+  Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
+      Reclamo_medida medida = new Reclamo_medida();
+      String descipcion = request.getParameter("descripcion");
 
-        String motivo = request.getParameter("motivo");
-        String descripcion = request.getParameter("descripcion");
-        int id_pasajero_interpone = Integer.valueOf(request.getParameter("id_pasajero_interpone"));
-        int id_estacion_interpone = Integer.valueOf(request.getParameter("id_estacion_interpone"));
-        int id_empleado_anota=Integer.valueOf(session.getAttribute("userid").toString());
-        int resultado = uncontrolador.ingresarReclamo(fecha, motivo, descripcion, 0,id_pasajero_interpone,id_empleado_anota , 0, id_estacion_interpone);     %>
+       java.util.Date today = new java.util.Date();
+        Timestamp s = new java.sql.Timestamp(today.getTime());
+        String hora_fecha_registro = s.toString();
+       
+       int resultado = uncontrolador.ingresarMedida(Integer.valueOf(request.getParameter("id_tiquete")),descipcion, hora_fecha_registro );%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,7 +27,8 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
- <body>
+<body>
+    
     <div class="<% 
          if(resultado==0){      
           out.print("panel panel-primary");
@@ -56,22 +51,21 @@
                 
       
         <center>
-    <h5>
- 
     <%
         
        
-       
+     
        
        switch(resultado){
-           case 0: out.println("El reclamo interpuesto por el usuario con identifiaci&oacute;n "+id_pasajero_interpone+"  ha sido ingresado con exito");break;
-           case 2: out.println("El usuario con n&uacute;mero de identifiaci&oacute;n "+id_pasajero_interpone+" no es un pasajero registrado");break;
+           case 0: out.println("Se ha adicionado la medida");break;
+           case 1: out.println("La medida no puede ser a la misma hora y al mismo tiquete");break;
+           case 2: out.println("El tiquete que se esta referenciando no existe");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        
     
     %>
-     <br></br>
+    <br></br>
         <button class="<%
             if(resultado==0){
                 out.print("btn btn-primary");
@@ -80,10 +74,14 @@
             {
                 out.print("btn btn-danger");
             }%>" onclick="goBack()">Volver</button> </center>
+
+       <br>
+        </div>
+</div> 
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("ingresar_reclamo.jsp");%> "<%}
+       location.href="<%out.print("manejador_reclamos.jsp?id_tiquete="+request.getParameter("id_tiquete")); %>"<%}
     else{
     out.print("window.history.back()");
     }
@@ -92,10 +90,6 @@ function goBack() {
     
 }
 </script>  
-        </h5>
-</div>
-    
-    
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <script src="assets/js/jquery-1.10.2.js"></script>

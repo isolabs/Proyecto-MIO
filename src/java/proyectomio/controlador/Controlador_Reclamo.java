@@ -56,10 +56,11 @@ public class Controlador_Reclamo {
         return DATA_ACCES_OBJECT.cambiar_estado(nuevo_estado, id_tiquete, id_empleado_resuelve);
     }
     
-    public int ingresarMedida(int id_tiquete, String descripcion){
-        
-        return 0;
+     public int ingresarMedida(int id_tiquete, String descripcion, String hora_fecha_registro)
+     {    
+        return DATA_ACCES_OBJECT.ingresarMedida(id_tiquete, descripcion, hora_fecha_registro);
     }
+     
     public ArrayList<Reclamo_medida> obtenerMedida(int id_reclamo, String hora_fecha_registro) {
         return DATA_ACCES_OBJECT.obtenerMedida(id_reclamo, hora_fecha_registro);
     }

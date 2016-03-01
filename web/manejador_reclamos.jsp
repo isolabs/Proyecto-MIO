@@ -40,7 +40,7 @@
     Registro de reclamos<br>
         </div>
          <div class="panel-body">
-        <form action="procesador_ingreso_reclamo.jsp" class="form-group" method="post" >
+             <form action="procesador_modificar_reclamo.jsp" class="form-group" method="post" >
            
          <label for="id_tiquete">
               Id reclamo:
@@ -96,20 +96,13 @@
     Adicionar de medida<br>
         </div>
          <div class="panel-body">
-        <form action="adicionar_medida_reclamo.jsp?id_tiquete=<%out.print(request.getParameter("id_tiquete"));%>" class="form-group" method="post" >
+        <form action="procesador_adicionar_medida_reclamo.jsp?id_tiquete=<%out.print(request.getParameter("id_tiquete"));%>" class="form-group" method="post" >
             <label for="id_tiquete">
                 Descripci&oacute;n:
                </label>
-            <input type="text" name="id_tiquete"  id="id_tiquete" class ="form-control" required> </input>
-              <! <label for="estado">
-                    Estado:
-               </label>    
-          <select class="form-control" name="estado" id="estado"  required="required">
-                    <option value="0" <%if(reclamo.getEstado()==0){out.print("selected");}%>>Iniciada </option>
-                    <option value="1" <%if(reclamo.getEstado()==1){out.print("selected");}%>>En proceso </option>
-                    <option value="2" <%if(reclamo.getEstado()==2){out.print("selected");}%>>Implementada </option>
-                    <option value="3" <%if(reclamo.getEstado()==3){out.print("selected");}%>>Fallida </option>
-                     </select>
+            <textarea  name="descripcion"  id="descripcion" class ="form-control" required> </textarea>
+         
+       
                      
                       <br></br>
                      <center>
@@ -129,7 +122,7 @@
             <label for="descripcion">
                 Descripci&oacute;n:
                </label>
-            <textarea name="descripcion"  id="descripcion" class ="form-control" readonly><%out.print(medidas.get(i).getDescripcion());%> </textarea>>
+            <textarea name="descripcion"  id="descripcion" class ="form-control" readonly><%out.print(medidas.get(i).getDescripcion());%> </textarea>
                  
                  <label for="fecha">
                 Fecha de registro:

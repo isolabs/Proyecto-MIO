@@ -5,19 +5,14 @@
 
 <%
   
-        java.util.Date today = new java.util.Date();
-        Timestamp s = new java.sql.Timestamp(today.getTime());
-        String fecha = s.toString();
-        Controlador_Reclamo uncontrolador = new Controlador_Reclamo();
-        Controlador_Empleado controlador_empleado = new Controlador_Empleado();
-        Reclamo unReclamo = new Reclamo();
-
+       Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();
         String motivo = request.getParameter("motivo");
         String descripcion = request.getParameter("descripcion");
-        int id_pasajero_interpone = Integer.valueOf(request.getParameter("id_pasajero_interpone"));
-        int id_estacion_interpone = Integer.valueOf(request.getParameter("id_estacion_interpone"));
-        int id_empleado_anota=Integer.valueOf(session.getAttribute("userid").toString());
-        int resultado = uncontrolador.ingresarReclamo(fecha, motivo, descripcion, 0,id_pasajero_interpone,id_empleado_anota , 0, id_estacion_interpone);     %>
+        int nuevo_estado = Integer.valueOf(request.getParameter("estado"));
+        int id_tiquete = Integer.valueOf(request.getParameter("id_tiquete"));
+        int id_empleado_resuelve=Integer.valueOf(session.getAttribute("userid").toString());
+        int resultado = controlador_reclamo.cambiar_estado(nuevo_estado, id_tiquete, id_empleado_resuelve); 
+        %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -64,8 +59,7 @@
        
        
        switch(resultado){
-           case 0: out.println("El reclamo interpuesto por el usuario con identifiaci&oacute;n "+id_pasajero_interpone+"  ha sido ingresado con exito");break;
-           case 2: out.println("El usuario con n&uacute;mero de identifiaci&oacute;n "+id_pasajero_interpone+" no es un pasajero registrado");break;
+           case 0: out.println("El reclamo interpuesto  ha sido modificado.");break;
            default: out.println("Se ha generado un error inesperado en el programa");
        }
        
@@ -83,7 +77,7 @@
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("ingresar_reclamo.jsp");%> "<%}
+       location.href="<%out.print("manejador_reclamos.jsp?id_tiquete="+id_tiquete);%> "<%}
     else{
     out.print("window.history.back()");
     }
@@ -108,4 +102,7 @@ function goBack() {
     
    
 </body>
-</html>
+</html>  
+
+
+  

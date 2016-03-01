@@ -138,10 +138,10 @@ public class DaoReclamo {
         return medidas;
     }
 
-    public int ingresarMedida(int id_tiquete, String descripcion){
+    public int ingresarMedida(int id_tiquete, String descripcion,String hora_fecha_registro){
         Consulta consulta = CONTROLADOR_BD.consultarBD("INSERT INTO medida_reclamo"
-                + "(id_reclamo,descripcion,estado)"
-                + "VALUES( '" + id_tiquete + "','" + descripcion + "','0' )");
+                + "(id_reclamo,descripcion,estado, hora_fecha_registro) "
+                + "VALUES( '" + id_tiquete + "','" + descripcion + "',0,'"+hora_fecha_registro+"' )");
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:
                 return 0;

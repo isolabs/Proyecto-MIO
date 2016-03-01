@@ -54,8 +54,8 @@
                         </div>
             <div class="panel-body">
                 <table>
-                    <tr><td align="right"><b>Id Reclamo: </b> </td><td id="seleccion_id" value = "" name="seleccion_id"></td></tr>
-                    <tr><td align="right"><b>Motivo: </b></td><td id="seleccion_motivo" name="seleccion_motivo"></td></tr>
+                    <tr><td align="right"><b>Id Reclamo:&nbsp </b> </td><td id="seleccion_id" value = "" name="seleccion_id"></td></tr>
+                    <tr><td align="right"><b>Motivo:&nbsp </b></td><td id="seleccion_motivo" name="seleccion_motivo"></td></tr>
                 </table>
                 
                 

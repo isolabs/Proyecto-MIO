@@ -51,6 +51,12 @@ public class Consulta {
         }
         return retorno;
     }
+
+    public void setColumnas(ArrayList<Columna> columnas) {
+        this.columnas = columnas;
+    }
+    
+    
     public void imprimirFila(int pos){
          System.out.print("{");
         for (int i = 0; i < this.columnas.size(); i++) {

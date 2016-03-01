@@ -20,14 +20,12 @@ import proyectomio.controlador.operaciones.Controlador_Director;
  */
 public class Consola {
     
-    public static void main(String [] args)
+    public static void main(String [] args) 
 	{
             
-           Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
-            int resultado = uncontrolador.adicionar_tarjeta(100001);
-            System.out.println(resultado);
-            /*Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
-            controlador_poperaciones.getRuta(100001, 100002);/
+           
+            Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
+            controlador_poperaciones.getRutaN(100005, 100006);
            
             
             

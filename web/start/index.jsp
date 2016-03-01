@@ -25,9 +25,9 @@
             <div class="wrapper">
                 <div class="wrap">
                     
-                    <div  class="btn-big white">
+                     <a href="programar_viaje.jsp"><div  class="btn-big white">
                         <i class="fa fa-2x"></i>
-                        <span class="label bottom">Programar viaje</span> </div>
+                        <span  class="label bottom">Programar viaje</span> </div></a>
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Consultar rutas</span> </div>

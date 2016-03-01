@@ -11,14 +11,15 @@
         int nuevo_estado = Integer.valueOf(request.getParameter("estado"));
         int id_tiquete = Integer.valueOf(request.getParameter("id_tiquete"));
         int id_empleado_resuelve=Integer.valueOf(session.getAttribute("userid").toString());
-        int resultado = controlador_reclamo.cambiar_estado(nuevo_estado, id_tiquete, id_empleado_resuelve); 
+        String fecha = request.getParameter("fecha");
+        int resultado = controlador_reclamo.cambiar_estado(nuevo_estado, id_tiquete, id_empleado_resuelve, fecha); 
         %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Procesador de ingreso de buses</title>
+    <title>Procesador modificar reclamo</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->

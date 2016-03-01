@@ -154,9 +154,9 @@ public class DaoReclamo {
         }
     }
     
-    public int resolverMedida(int id_reclamo, String hora_fecha_registro){
+    public int resolverMedida(int id_reclamo, String hora_fecha_registro, int nuevo_estado){
         Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE medida_reclamo "
-                + "SET estado = 1 WHERE id_reclamo = '" + id_reclamo + "' AND "
+                + "SET estado = "+nuevo_estado+" WHERE id_reclamo = '" + id_reclamo + "' AND "
                 + "hora_fecha_registro = '" + hora_fecha_registro + "'");
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:
@@ -170,7 +170,7 @@ public class DaoReclamo {
         }
     }
 
-    public int cambiar_estado(int nuevo_estado, int id_tiquete, int id_empleado_resuelve) {
+    public int cambiar_estado(int nuevo_estado, int id_tiquete, int id_empleado_resuelve, String fecha) {
         
         if (obtenerReclamo(id_tiquete).isEmpty()){
         
@@ -183,7 +183,7 @@ public class DaoReclamo {
         } 
         if(nuevo_estado==2)
         {
-        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = " + nuevo_estado + ",id_empleado_resuelve = '"+id_empleado_resuelve+"'  WHERE id_tiquete = '" + id_tiquete + " '");
+        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = " + nuevo_estado + ",id_empleado_resuelve = '"+id_empleado_resuelve+"',fecha = '"+ fecha+"'  WHERE id_tiquete = '" + id_tiquete + " '");
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:
                 return 0;
@@ -197,7 +197,7 @@ public class DaoReclamo {
         }
         if(nuevo_estado==0 || nuevo_estado==1)
         {
-        Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = " + nuevo_estado + "  WHERE id_tiquete = '" + id_tiquete + " '");
+          Consulta consulta = CONTROLADOR_BD.consultarBD("UPDATE reclamo SET estado = " + nuevo_estado +",fecha = '"+ fecha+"'  WHERE id_tiquete = '" + id_tiquete + " '");
         switch (consulta.getColumna("Error").getCodigo_tipo_de_dato()) {
             case -1:
                 return 0;

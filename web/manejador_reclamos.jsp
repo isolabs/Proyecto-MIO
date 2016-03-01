@@ -16,6 +16,7 @@
    reclamo = controlador_reclamo.obtenerReclamo(Integer.valueOf(request.getParameter("id_tiquete"))).get(0);
    Empleado empleado_anota = controlador_empleado.get_empleados(reclamo.getId_empleado_anota()).get(0);
    Pasajero pasajero_reclamo = controlador_pasajero.get_pasajeros(reclamo.getId_pasajero_interpone()).get(0);
+   String fecha = reclamo.getFecha();
    ArrayList<Reclamo_medida> medidas = controlador_reclamo.obtenerMedida(Integer.valueOf(request.getParameter("id_tiquete")), "");
    %>
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
     Registro de reclamos<br>
         </div>
          <div class="panel-body">
-             <form action="procesador_modificar_reclamo.jsp" class="form-group" method="post" >
+             <form action="procesador_modificar_reclamo.jsp?fecha=<%out.print(fecha);%>"  <%if(reclamo.getEstado()==2) out.print("disabled");%> class="form-group" method="post" >
            
          <label for="id_tiquete">
               Id reclamo:
@@ -62,7 +63,7 @@
                 <label for="estado">
                     Estado:
                </label>    
-          <select class="form-control" name="estado" id="estado"  required="required">
+          <select class="form-control" name="estado" id="estado"  required="required" <%if(reclamo.getEstado()==2) out.print("readonly");%>>
                     <option value="0" <%if(reclamo.getEstado()==0){out.print("selected");}%>>Iniciado </option>
                     <option value="1" <%if(reclamo.getEstado()==1){out.print("selected");}%>>En proceso </option>
                     <option value="2" <%if(reclamo.getEstado()==2){out.print("selected");}%>> Solucionado </option>
@@ -86,7 +87,7 @@
            
            <br></br>
                      <center>
-                   <input type="submit" class="btn btn-primary" value="Modificar estado"></center>
+                   <input type="submit" class="btn btn-primary" value="Modificar estado" <%if(reclamo.getEstado()==2) out.print("disabled");%>></center>
      </form>
 </div>
 </div>
@@ -106,7 +107,7 @@
                      
                       <br></br>
                      <center>
-                   <input type="submit" class="btn btn-success" value="Adicionar medida"></center>
+                   <input type="submit" class="btn btn-success" value="Adicionar medida" <%if(reclamo.getEstado()==2) out.print("disabled");%>></center>
      </form>
 </div>
 
@@ -127,7 +128,7 @@
                  <label for="fecha">
                 Fecha de registro:
                </label>
-                 <input type="text" value ="<%out.print(medidas.get(i).getFecha_hora().subSequence(0, 16));%> "name="fecha"  id="fecha" class ="form-control" readonly> </input>
+                 <input type="text" value ="<%out.print(medidas.get(i).getFecha_hora().subSequence(0, 19));%> "name="fecha"  id="fecha" class ="form-control" readonly> </input>
                <label for="estado">
                     Estado:
                </label>    
@@ -140,7 +141,7 @@
                      
                       <br></br>
                      <center>
-                   <input type="submit" class="btn btn-info" value="Cambiar estado"></center>
+                   <input type="submit" class="btn btn-info" value="Cambiar estado" <%if(reclamo.getEstado()==2) out.print("disabled");%>></center>
      </form>
 </div>
 </div>

@@ -208,7 +208,7 @@
                         <br></br>
                         <center>
                             <input type="submit" class="<%if (codigo_de_error == 0) {
-                                                out.print("btn btn-primary");
+                                                out.print("btn btn-success");
                                             } else {
                                                 out.print("btn btn-danger");
                             }%>" onclick="<%if (codigo_de_error == 0) {} else {out.print("goBack();");
@@ -218,6 +218,12 @@
                                             } else {
                                                 out.print("Atras");
                                             }%>">
+                                
+                                <%if (codigo_de_error == 0) {
+                                                out.print("<input type=\"submit\" onclick=\"goBack();\" class=\"btn btn-primary\" value=\"Regresar\">");
+                                            }%>
+                                
+                                
                         </center>     
 
                 </form>

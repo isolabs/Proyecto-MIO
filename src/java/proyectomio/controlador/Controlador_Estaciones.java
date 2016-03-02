@@ -8,6 +8,7 @@ package proyectomio.controlador;
 import proyectomio.accesoDatos.DaoEstaciones;
 import java.util.ArrayList;
 import proyectomio.modelo.Estacion;
+import proyectomio.modelo.Ruta;
 
 /**
  *
@@ -83,5 +84,12 @@ public class Controlador_Estaciones {
         ArrayList<Estacion> estaciones_encontradas = new ArrayList<>();
        estaciones_encontradas = DATA_ACCES_OBJECT.get_estaciones();
        return estaciones_encontradas;
+    }
+    
+     public ArrayList<Ruta> get_rutas_estacion(int id_estacion)
+    {
+        ArrayList<Ruta> rutas_encontradas = new ArrayList<>();
+       rutas_encontradas = DATA_ACCES_OBJECT.get_rutas_estacion(id_estacion);
+       return rutas_encontradas;
     }
 }

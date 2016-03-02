@@ -11,6 +11,7 @@ import proyectomio.controlador.*;
 import proyectomio.controlador.operaciones.Controlador_Pasajero_operaciones;
 import proyectomio.controlador.operaciones.Controlador_login;
 import proyectomio.controlador.operaciones.Controlador_Director;
+import proyectomio.controlador.operaciones.Viajes_encontrados;
 //import proyectomio.controlador.Controlador_Reclamo;
 //import proyectomio.modelo.Reclamo;
 
@@ -25,8 +26,8 @@ public class Consola {
             
            
             Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
-            controlador_poperaciones.getRutaN(100001, 100007);
-           
+            Viajes_encontrados x = controlador_poperaciones.getRutaN(100001, 100007);
+            System.out.println(x.getSecuencias().get(0));
             
             
             /*Controlador_BD controlador = new Controlador_BD();

@@ -71,7 +71,7 @@
                         %>
                     </select>
                         
-                    <label for="id_Estacion_actual">
+                    <label for="id_Estacion_llegada">
                         Seleccione la estaci&oacute;n de destino:
                     </label>
 
@@ -84,7 +84,7 @@
 
                         %>
                         
-                        
+                       
                     </select>
                         
                         <br></br>

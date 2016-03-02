@@ -1,10 +1,61 @@
 
+<%@page import="proyectomio.controlador.operaciones.Secuencia"%>
+<%@page import="proyectomio.controlador.operaciones.Viajes_encontrados"%>
+<%@page import="proyectomio.controlador.operaciones.Controlador_Pasajero_operaciones.*"%>
+<%@page import="proyectomio.controlador.operaciones.Controlador_Pasajero_operaciones"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<%@page import="proyectomio.controlador.Controlador_Rutas"%>
+<%@page import="java.util.Enumeration"%>
 <%
+
+    /*Enumeration<String> x = request.getParameterNames();
+
+    out.println(x.nextElement());
+    out.println(x.nextElement());
+    out.println(x.nextElement());*/
 
     String id_estacion_inicial = request.getParameter("id_Estacion_actual");
     String id_estacion_final = request.getParameter("id_Estacion_llegada");
-    out.print(id_estacion_inicial + " " + id_estacion_final);
+    
+    int codigo_de_error = 0;
+    
+    Controlador_Estaciones c_estaciones = new Controlador_Estaciones();
+    
+    
+    Controlador_Pasajero_operaciones c_poperaciones = new Controlador_Pasajero_operaciones();
+    
 
+    int tmp_0 =c_estaciones.get_rutas_estacion(Integer.valueOf(id_estacion_inicial)).size();
+    int tmp_1 =c_estaciones.get_rutas_estacion(Integer.valueOf(id_estacion_final)).size();
+   
+    
+    
+    
+    if((tmp_0>0)&&(tmp_1>0)){
+        
+        Viajes_encontrados v_enc = new Viajes_encontrados();
+        v_enc =  c_poperaciones.getRutaN(Integer.valueOf(id_estacion_inicial),Integer.valueOf(id_estacion_final));
+    
+        //viajes = c_poperaciones.getRutaN(Integer.valueOf(id_estacion_inicial), Integer.valueOf(id_estacion_final));
+         for (int i = 0; i < v_enc.getSecuencias().size(); i++){
+            ArrayList<Secuencia> viajes_rutas = new ArrayList<Secuencia>();
+                viajes_rutas =    v_enc.getSecuencias().get(i);
+            
+           for (int j = 0; j < viajes_rutas.size(); j++){
+                
+                out.print(viajes_rutas.get(i).getId_Estacion() + " - " + viajes_rutas.get(i).getId_ruta());
+                
+            }
+            
+        }
+        
+    }else{
+        codigo_de_error = -1;
+        out.print(codigo_de_error);
+    }
+    
+    
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

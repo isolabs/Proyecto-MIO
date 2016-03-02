@@ -8,6 +8,7 @@ package proyectomio.accesoDatos;
 import java.util.ArrayList;
 import proyectomio.modelo.Consulta;
 import proyectomio.modelo.Estacion;
+import proyectomio.modelo.Ruta;
 
 /**
  *
@@ -127,6 +128,19 @@ public class DaoEstaciones {
             estacion_temporal = new Estacion();
         }
         return estaciones_encontradas;
+    }
+    
+     public ArrayList<Ruta> get_rutas_estacion(int id_estacion) {
+        ArrayList<Ruta> rutas_encontradas = new ArrayList<>();
+       
+        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM ruta_estacion WHERE id_estacion = " + id_estacion);
+        for (int i = 0; i < consulta.getColumnas().get(0).getFilas().size(); i++) {
+            Ruta ruta = new Ruta();
+            ruta.setId_ruta(Integer.valueOf(consulta.getColumna("id_ruta").getFila(i)));
+            ruta.setId_estacion_asociada(Integer.valueOf(consulta.getColumna("id_estacion").getFila(i)));
+            rutas_encontradas.add(ruta);
+        }
+        return rutas_encontradas;
     }
 
 }

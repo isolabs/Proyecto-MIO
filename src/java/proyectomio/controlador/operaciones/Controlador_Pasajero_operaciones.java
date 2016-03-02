@@ -14,36 +14,10 @@ import proyectomio.modelo.Consulta;
  * @author jeisonOS
  */
 public class Controlador_Pasajero_operaciones {
+    
+    
 
-    private class Secuencia{
-        private int id_Estacion;
-        private int id_ruta;
-
-        public Secuencia() {
-        }
-
-        public Secuencia(int id_Estacion, int id_ruta) {
-            this.id_Estacion = id_Estacion;
-            this.id_ruta = id_ruta;
-        }
-
-        public int getId_Estacion() {
-            return id_Estacion;
-        }
-
-        public void setId_Estacion(int id_Estacion) {
-            this.id_Estacion = id_Estacion;
-        }
-
-        public int getId_ruta() {
-            return id_ruta;
-        }
-
-        public void setId_ruta(int id_ruta) {
-            this.id_ruta = id_ruta;
-        }
-        
-    }
+   
 
     public final Controlador_BD CONTROLADOR_BD;
 
@@ -73,9 +47,10 @@ public class Controlador_Pasajero_operaciones {
 
     }
 
-    public ArrayList<Object> getRutaN(int id_estacion_inicial, int id_estacion_final) {
+    public Viajes_encontrados getRutaN(int id_estacion_inicial, int id_estacion_final) {
 
-        ArrayList<Object>rutas_encontradas = new ArrayList<>();
+        //ArrayList<Object>rutas_encontradas = new ArrayList<>();
+        Viajes_encontrados v_encontrados = new Viajes_encontrados();
         
         Consulta consulta = llegada(id_estacion_inicial, id_estacion_final, 1, "");
         System.out.println(consulta.getColumnas().size());
@@ -123,13 +98,13 @@ public class Controlador_Pasajero_operaciones {
                     secuencia_de_paradas.add(tmp);
                     
                 }
-                rutas_encontradas.add(secuencia_de_paradas);
+                v_encontrados.addSecuencias(secuencia_de_paradas);
                 
             }
 
         }
         
-        return rutas_encontradas;
+        return v_encontrados;
     }
 
     private Consulta llegada(int id_estacion_inicial, int id_estacion_final, int contador, String consulta_anterior) {

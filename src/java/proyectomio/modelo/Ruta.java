@@ -14,6 +14,7 @@ public class Ruta {
     private int id_ruta;
     private String nombre;
     private String descripcion;
+    private int id_estacion_asociada;
 
     public Ruta(int id_ruta, String nombre, String descripcion) {
 
@@ -22,6 +23,23 @@ public class Ruta {
         this.descripcion = descripcion;
 
     }
+
+    public Ruta(int id_ruta, String nombre, String descripcion, int id_estacion_asociada) {
+        this.id_ruta = id_ruta;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.id_estacion_asociada = id_estacion_asociada;
+    }
+
+    public int getId_estacion_asociada() {
+        return id_estacion_asociada;
+    }
+
+    public void setId_estacion_asociada(int id_estacion_asociada) {
+        this.id_estacion_asociada = id_estacion_asociada;
+    }
+    
+    
 
     public Ruta() {
         this.id_ruta = 0;

@@ -31,6 +31,30 @@ Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
  <body>
+      <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="start/index.jsp">MIO</a> 
+                </div>
+                <div style="color: white;
+                     padding: 15px 50px 5px 50px;
+                     float: right;
+                     font-size: 16px;"> Bienvenido &nbsp; </div>
+                   
+            </nav>   
+        </div>
+    <br></br>
+
+
+
+
+        
     <div class="<% 
          if(resultado!=-7456321){      
           out.print("panel panel-primary");
@@ -39,7 +63,7 @@ Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
              out.print("panel panel-danger");
          }
 
-          %>">
+          %>" style="margin: auto;width:87%; margin-top: 3%;">
         <div class ="panel-heading">
             <% if(resultado!=-7456321){
         out.print("Mensaje");
@@ -79,11 +103,7 @@ Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
             }%>" onclick="goBack()">Volver</button> </center>
   <script>
 function goBack() {
-    <%if(resultado!=-7456321) {%>
-       location.href="<%out.print("tarjetas.jsp");%> "<%}
-    else{
-    out.print("window.history.back()");
-    }%>;
+window.history.back();
     
     
 }

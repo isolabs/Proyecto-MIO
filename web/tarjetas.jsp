@@ -38,11 +38,11 @@
             function seleccionar(id){
                 
                 document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_tarjeta_" + id ).innerText;
-                //document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_empleado_" + id ).innerText);
+                document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_tarjeta_" + id ).innerText);
                 //document.getElementById('seleccion_nombre').innerHTML = document.getElementById ( "nombres_" + id ).innerText + " " + document.getElementById ( "apellidos_" + id ).innerText ;
-                //var editar_completo = "editar_empleado.jsp?id_empleado=";
+                var cambiar_estado_tarjeta = "procesador_cambiar_estado_tarjeta.jsp?id_tarjeta="+document.getElementById("seleccion_id").getAttribute("value");
                 //var editar_con_id=editar_completo.concat(document.getElementById("seleccion_id").getAttribute("value"));
-                //document.getElementById("boton_editar").setAttribute("href",editar_con_id);
+                document.getElementById("boton_bloquear").setAttribute("href",cambiar_estado_tarjeta);
             }
             
         </script>
@@ -53,9 +53,9 @@
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
-                            <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Cambiar estado</a>
-                            <a href="#" onclick="goEdicion();" id="boton_editar" name="boton_editar" type="submit" class="btn btn-primary btn-xs" style="float: right;margin-right: 5px;">Editar</a>
-                            <a href="ingresar_empleado.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
+                            <a href="#" id="boton_bloquear" name="boton_bloquear" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Bloquear/Desbloquear</a>
+                          
+                            <a href="ingresar_tarjeta.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             
                         </div>
             <div class="panel-body">
@@ -72,7 +72,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-primary">
             <div class="panel-heading">
-                Empleados
+                Tarjetas
             </div>
             <div class="panel-body">
                 

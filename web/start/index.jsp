@@ -49,7 +49,7 @@
                          </a>
                    
                         
-                    <a href="../recargar.jsp"><div class="btn-big white">
+                    <a href="../recargar_pasajero.jsp"><div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Recargar</span> </div></a>
                    

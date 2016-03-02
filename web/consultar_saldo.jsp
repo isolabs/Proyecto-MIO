@@ -32,7 +32,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.jsp">MIO</a> 
+                    <a class="navbar-brand" href="start/index.jsp">MIO</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
@@ -45,7 +45,7 @@
         <div class="panel panel-primary" style="margin: auto;width: 50%; margin-top: 10%;" >
 
             <div class ="panel-heading">
-                Identificaci&o&oacute;n de la tarjeta
+                Identificaci&oacute;n de la tarjeta
             </div>
             <div class="panel-body">
                 <form action="procesador_saldo_tarjeta_externo.jsp" class="form-group" method="post" >

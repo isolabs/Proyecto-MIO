@@ -38,6 +38,9 @@
                             <span  class="label bottom">Mi perfil  </span> </div></a> 
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
+                        
+                         
+                        
                         <span class="label bottom">Consultar saldo</span> </div>
                     <a href="recargar.jsp"><div class="btn-big white">
                         <i class="fa fa-2x"></i>
@@ -45,7 +48,10 @@
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Abordar</span> </div>
-
+                        
+                      <a href="../consulta_estado_reclamo_index.jsp"><div  class="btn-big white">
+                        <i class="fa fa-2x"></i>
+                        <span  class="label bottom">Mis Reclamos</span> </div></a>
 
 
 

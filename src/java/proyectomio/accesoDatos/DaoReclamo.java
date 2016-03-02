@@ -18,7 +18,57 @@ import proyectomio.modelo.Reclamo_medida;
 public class DaoReclamo {
     
     private final Controlador_BD CONTROLADOR_BD = new Controlador_BD();
-    
+    public ArrayList<Reclamo> obtenerReclamoIdPasajero(int id_tiquete, int id_pasajero) {
+        ArrayList<Reclamo> reclamos = new ArrayList<>();
+        int id_empleado_resuelve=0;
+        if (id_tiquete == -1) {
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM reclamo where id_pasajero_interpone="+id_pasajero);
+            int cantidad_filas = consulta.getColumnas().get(0).getFilas().size();
+            for (int i = 0; i < cantidad_filas; i++) {
+                Reclamo tmp = new Reclamo();
+                 try{
+                    id_empleado_resuelve=Integer.valueOf(consulta.getColumna("id_empleado_resuelve").getFila(i));
+                 }
+                 catch(NumberFormatException exc)
+                 {
+                     id_empleado_resuelve = 0;
+                 }
+                tmp.setId_tiquete(Integer.valueOf(consulta.getColumna("id_tiquete").getFila(i)));
+                tmp.setDescripcion(consulta.getColumna("descripcion").getFila(i));
+                tmp.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
+                tmp.setFecha(consulta.getColumna("fecha").getFila(i));
+                tmp.setId_empleado_anota(Integer.valueOf(consulta.getColumna("id_empleado_anota").getFila(i)));
+                tmp.setId_pasajero_interpone(Integer.valueOf(consulta.getColumna("id_pasajero_interpone").getFila(i)));
+                tmp.setId_empleado_resuelve(id_empleado_resuelve);
+                tmp.setMotivo(consulta.getColumna("motivo").getFila(i));
+                tmp.setId_estacion_interpone(Integer.valueOf(consulta.getColumna("id_estacion_interpone").getFila(i)));
+                reclamos.add(tmp);
+            }
+        } else {
+            Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT * FROM reclamo WHERE id_tiquete = '" + id_tiquete + "' AND id_pasajero_interpone="+id_pasajero);
+            int cantidad_filas = consulta.getColumnas().get(0).getFilas().size();
+            for (int i = 0; i < cantidad_filas; i++) {
+                Reclamo tmp = new Reclamo();
+                tmp.setId_tiquete(Integer.valueOf(consulta.getColumna("id_tiquete").getFila(i)));
+                tmp.setDescripcion(consulta.getColumna("descripcion").getFila(i));
+                tmp.setEstado(Integer.valueOf(consulta.getColumna("estado").getFila(i)));
+                tmp.setFecha(consulta.getColumna("fecha").getFila(i));
+                tmp.setId_empleado_anota(Integer.valueOf(consulta.getColumna("id_empleado_anota").getFila(i)));
+                tmp.setId_pasajero_interpone(Integer.valueOf(consulta.getColumna("id_pasajero_interpone").getFila(i)));
+                try {
+                    tmp.setId_empleado_resuelve(Integer.valueOf(consulta.getColumna("id_empleado_resuelve").getFila(i)));
+                }catch(Exception ex){
+                    tmp.setId_empleado_resuelve(-1);
+                }
+                
+                tmp.setMotivo(consulta.getColumna("motivo").getFila(i));
+                tmp.setId_estacion_interpone(Integer.valueOf(consulta.getColumna("id_estacion_interpone").getFila(i)));
+                reclamos.add(tmp);
+            }
+            //return CONTROLADOR_BD.consultarBD("SELECT * FROM reclamo WHERE id_reclamo = '" + id_tiquete + "'");
+        }
+        return reclamos;
+    }
     public ArrayList<Reclamo> obtenerReclamo(int id_tiquete) {
         ArrayList<Reclamo> reclamos = new ArrayList<>();
         int id_empleado_resuelve=0;

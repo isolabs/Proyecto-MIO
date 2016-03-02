@@ -78,7 +78,7 @@
   <script>
 function goBack() {
     <%if(resultado == 0) {%>
-       location.href="<%out.print("manejador_reclamos.jsp?id_tiquete="+id_tiquete);%> "<%}
+       location.href="<%out.print("manejador_reclamos.jsp?opcion=0&id_tiquete="+id_tiquete);%> "<%}
     else{
     out.print("window.history.back()");
     }

@@ -39,7 +39,13 @@
   
     <div class="panel panel-primary">
         <div class ="panel-heading">
-    Registro de reclamos<br>
+     <%  if(Integer.valueOf(request.getParameter("opcion"))==0) {
+         out.print("Registro de reclamos");
+         
+     }
+if(Integer.valueOf(request.getParameter("opcion"))==1){
+         out.print("Consulta de reclamos");
+}%> <br>
         </div>
          <div class="panel-body">
              <form action="procesador_modificar_reclamo.jsp?fecha=<%out.print(fecha);%>"  <%if(reclamo.getEstado()==2) out.print("disabled");%> class="form-group" method="post" >
@@ -64,7 +70,7 @@
                 <label for="estado">
                     Estado:
                </label>    
-          <select class="form-control" name="estado" id="estado"  required="required" <%if(reclamo.getEstado()==2) out.print("readonly");%>>
+                   <select class="form-control" name="estado" id="estado"  required="required" <%if(reclamo.getEstado()==2 || Integer.valueOf(request.getParameter("opcion"))==1) out.print("disabled");%>>
                     <option value="0" <%if(reclamo.getEstado()==0){out.print("selected");}%>>Iniciado </option>
                     <option value="1" <%if(reclamo.getEstado()==1){out.print("selected");}%>>En proceso </option>
                     <option value="2" <%if(reclamo.getEstado()==2){out.print("selected");}%>> Solucionado </option>
@@ -88,11 +94,13 @@
            
            <br></br>
                      <center>
-                   <input type="submit" class="btn btn-primary" value="Modificar estado" <%if(reclamo.getEstado()==2) out.print("disabled");%>></center>
+                        
+                   <input type="submit" class="btn btn-primary" value="Modificar estado" <%if(reclamo.getEstado()==2) out.print("disabled"); if(Integer.valueOf(request.getParameter("opcion"))==1) out.print(" style='display:none;'");%>></center>
+                   
      </form>
 </div>
 </div>
-                  
+                 <%  if(Integer.valueOf(request.getParameter("opcion"))==0) {%>
      <div class="panel panel panel-success">
         <div class ="panel-heading">
     Adicionar de medida<br>
@@ -113,6 +121,8 @@
 </div>
 
                      </div>
+     
+     <%}%>
             <% for(int i =0; i<medidas.size();i++){ %>    
             <div class="col-md-6">
                          <div class="panel panel-info">
@@ -133,7 +143,7 @@
                <label for="estado">
                     Estado:
                </label>    
-          <select class="form-control" name="estado" id="estado"  required="required">
+          <select class="form-control" name="estado" id="estado" <%if(Integer.valueOf(request.getParameter("opcion"))==1) out.print("disabled");%>  required="required">
               <option value="0" <%if(medidas.get(i).getEstado()==0){out.print("selected");}%>>Iniciada </option>
                     <option value="1" <%if(medidas.get(i).getEstado()==1){out.print("selected");}%>>En proceso </option>
                     <option value="2" <%if(medidas.get(i).getEstado()==2){out.print("selected");}%>>Implementada </option>
@@ -142,7 +152,7 @@
                      
                       <br></br>
                      <center>
-                   <input type="submit" class="btn btn-info" value="Cambiar estado" <%if(reclamo.getEstado()==2) out.print("disabled");%>></center>
+                   <input type="submit" class="btn btn-info" value="Cambiar estado" <%if(reclamo.getEstado()==2) out.print("disabled"); if(Integer.valueOf(request.getParameter("opcion"))==1) out.print(" style='display:none;'");%>></center>
      </form>
 </div>
 </div>

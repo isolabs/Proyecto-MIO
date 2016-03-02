@@ -32,6 +32,14 @@ public class Pasajero {
     }
 
     public Pasajero() {
+        this.id_pasajero=0;
+        this.id_tarjeta=0;
+        this.nombres="";
+        this.apellidos="";
+        this.fecha_nacimiento="";
+        this.direccion="";
+        this.telefono="";
+        this.correo_electronico="";
     }
 
     public int getId_pasajero() {

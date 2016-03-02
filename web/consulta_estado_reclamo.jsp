@@ -3,18 +3,18 @@
 <%@page import="proyectomio.modelo.Reclamo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="verificadorLogin.jsp" %>
+
 <%
     ArrayList <Reclamo> reclamos = new ArrayList<Reclamo>();
     Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();
-    reclamos = controlador_reclamo.obtenerReclamo(-1);
+    reclamos = controlador_reclamo.obtenerReclamoIdPasajero(-1,Integer.valueOf(request.getParameter("id_pasajero")));
     
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Reclamos interpuestos</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
@@ -34,7 +34,7 @@
                 document.getElementById('seleccion_id').innerHTML =  document.getElementById ( "id_tiquete_" + id ).innerText;
                 document.getElementById("seleccion_id").setAttribute("value",document.getElementById ( "id_tiquete_" + id ).innerText);
                 document.getElementById('seleccion_motivo').innerHTML = document.getElementById ( "motivo_" + id ).innerText ;
-                var editar_completo = "manejador_reclamos.jsp?opcion=0&id_tiquete=";
+                var editar_completo = "manejador_reclamos.jsp?opcion=1&id_tiquete=";
                 var editar_con_id=editar_completo.concat(document.getElementById("seleccion_id").getAttribute("value"));
                 document.getElementById("boton_gestion").setAttribute("href",editar_con_id);
             }
@@ -47,10 +47,7 @@
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
-                            <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
-                           
-                            <a href="ingresar_reclamo.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
-                            <a href="#" onclick="goEdicion();" type="submit" id="boton_gestion" name="boton_gestion" class="btn btn-default btn-xs" style="float: right;margin-right: 5px;">Gestionar Reclamo</a>
+                            <a href="#" onclick="goEdicion();" type="submit" id="boton_gestion" name="boton_gestion" class="btn btn-default btn-xs" style="float: right;margin-right: 5px;">Ver estado</a>
                         </div>
             <div class="panel-body">
                 <table>

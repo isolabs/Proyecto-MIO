@@ -32,7 +32,9 @@ public class Controlador_Reclamo {
     public ArrayList<Reclamo> obtenerReclamo(int id_tiquete) {
         return DATA_ACCES_OBJECT.obtenerReclamo(id_tiquete);
     }
-
+ public ArrayList<Reclamo> obtenerReclamoIdPasajero(int id_tiquete, int id_pasajero) {
+        return DATA_ACCES_OBJECT.obtenerReclamoIdPasajero(id_tiquete,id_pasajero);
+    }
     public int ingresarReclamo(String fecha,String motivo,
                                 String descripcion, int estado,
                                 int id_pasajero_interpone,

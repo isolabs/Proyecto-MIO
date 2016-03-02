@@ -42,6 +42,9 @@
         
     }
     
+    for (int i = 0; i < rutas.size(); i++){
+        out.print(rutas.get(i) + "<br>");
+    }
     
     
 

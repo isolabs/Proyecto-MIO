@@ -17,6 +17,7 @@
 
     String id_estacion_inicial = request.getParameter("id_Estacion_actual");
     String id_estacion_final = request.getParameter("id_Estacion_llegada");
+    String id_tarjeta = request.getParameter("id_tarjeta");
     
     int codigo_de_error = 0;
     
@@ -29,30 +30,73 @@
     int tmp_0 =c_estaciones.get_rutas_estacion(Integer.valueOf(id_estacion_inicial)).size();
     int tmp_1 =c_estaciones.get_rutas_estacion(Integer.valueOf(id_estacion_final)).size();
    
+    ArrayList<String> secuencia_usuario = new ArrayList<String>();
+    ArrayList<String> secuencia_formateada = new ArrayList<String>();
     
+    if (id_estacion_final.equals(id_estacion_inicial)){
     
+        codigo_de_error = -2;
+    
+    }else{
     
     if((tmp_0>0)&&(tmp_1>0)){
+        
+        
+        
+        Controlador_Estaciones c_estacion = new Controlador_Estaciones();
+        Controlador_Rutas c_ruta = new Controlador_Rutas();
+        
         
         Viajes_encontrados v_enc = new Viajes_encontrados();
         v_enc =  c_poperaciones.getRutaN(Integer.valueOf(id_estacion_inicial),Integer.valueOf(id_estacion_final));
     
         //viajes = c_poperaciones.getRutaN(Integer.valueOf(id_estacion_inicial), Integer.valueOf(id_estacion_final));
-         for (int i = 0; i < v_enc.getSecuencias().size(); i++){
+        int cantidad = -1;
+            if ( v_enc.getSecuencias().size()>5){
+               cantidad = 5;
+            }else{
+                cantidad =  v_enc.getSecuencias().size();
+            }
+         String una_secuencia_usuario = "";
+         String una_secuencia_formateada = "";
+         for (int i = 0; i < cantidad; i++){
             ArrayList<Secuencia> viajes_rutas = new ArrayList<Secuencia>();
                 viajes_rutas =    v_enc.getSecuencias().get(i);
+               
+            
             
            for (int j = 0; j < viajes_rutas.size(); j++){
                 
-                out.print(viajes_rutas.get(i).getId_Estacion() + " - " + viajes_rutas.get(i).getId_ruta());
+                String tmp_string_0 = c_estacion.getEstacion(Integer.valueOf(viajes_rutas.get(j).getId_Estacion())).getNombre();
+                String tmp_ruta_0 = c_ruta.getRuta(Integer.valueOf(viajes_rutas.get(j).getId_ruta())).getNombre();
+                
+                
+                
+                if (j == (viajes_rutas.size()-1)){
+                
+                    una_secuencia_formateada = una_secuencia_formateada + viajes_rutas.get(j).getId_Estacion() + "&[END]";
+                    una_secuencia_usuario = una_secuencia_usuario  + tmp_string_0;
+
+                }else{
+                    una_secuencia_usuario = una_secuencia_usuario  + tmp_string_0 + ": (" + c_ruta.getRuta(Integer.valueOf(viajes_rutas.get(j+1).getId_ruta())).getNombre() + ")  =>  ";
+                    una_secuencia_formateada = una_secuencia_formateada + viajes_rutas.get(j).getId_Estacion() + "," + viajes_rutas.get(j+1).getId_ruta() + "&";
+
+                
+                }
                 
             }
-            
+           
+            secuencia_formateada.add(una_secuencia_formateada);
+            secuencia_usuario.add(una_secuencia_usuario);
+            //out.print(una_secuencia_usuario + "<br>" + una_secuencia_formateada + "<br><br>");
+            una_secuencia_usuario = "";
+            una_secuencia_formateada = "";
         }
         
     }else{
         codigo_de_error = -1;
-        out.print(codigo_de_error);
+        //out.print(codigo_de_error);
+    }
     }
     
     
@@ -96,14 +140,41 @@
             </nav>   
         </div>
         <!-- /. WRAPPER  -->
-        <div class="panel panel-primary" style="margin: auto;width: 50%; margin-top: 10%;">
+        <div class="<%
+            if (codigo_de_error == 0) {
+                out.print("panel panel-primary");
+            } else {
+                out.print("panel panel-danger");
+            }
+
+             %>" style="margin: auto;width: 50%; margin-top: 10%;">
             <div class ="panel-heading">
-                Abordar
+                <%
+            if (codigo_de_error == 0) {
+                out.print("Mensaje");
+            } else {
+                out.print("Error");
+            }
+
+             %>
             </div>
             <div class="panel-body">
-                <form action="procesador_abordar.jsp" class="form-group" method="post"  >
-                    <label>Costo del pasaje: $1800</label><br><br>
-
+                <form <%if (codigo_de_error == 0) {
+                                                out.print("action=\"procesador_abordar.jsp\"");
+                                            }%>  class="form-group" <%if (codigo_de_error == 0) {
+                                                out.print("method=\"post\"");
+                                            }%>   >
+                    
+                    
+                    <%
+            if (codigo_de_error == 0) {%>
+                
+                  <label>Costo del pasaje: $1800</label><br><br>
+                    
+                    <label for="id_tarjeta">
+                        N&uacute;mero de tarjeta:
+                    </label>
+                            <input type="text" value="<% out.print(id_tarjeta); %>" name="id_tarjeta" pattern="[0-9]{4,}" id="id_tarjeta" class ="form-control" required="required">
                         
                     <label for="seleccion_viaje">
                         Seleccione la opci&oacute;n de viaje:
@@ -112,25 +183,58 @@
                     <select class="form-control" name="seleccion_viaje" id="seleccion_viaje" required="required">
                         
                         <%
-                                
-                                    out.print("<option value=\"\"> </option>");
-                               
+                                for (int i = 0; i < secuencia_usuario.size(); i++){
+                                    out.print("<option value=\"" + secuencia_formateada.get(i) + "\"> " + secuencia_usuario.get(i) + " </option><br>");
+                                }
 
                         %>
                         
-                        
-                    </select>
+                    </select><%
+                
+            } else if (codigo_de_error == -1) {
+                        out.print("<center>No se encontraron rutas.</center>");
+                } else 
+            {
+                out.print("<center>Ha seleccionado la estaci&oacute;n de partida igual a la de llegada.</center>");
+            }
+
+             %>
+                    
+                    
+                    
+                    
+                    
                         
                         <br></br>
                         <center>
-                            <input type="submit" class="btn btn-primary" value="Abordar">
+                            <input type="submit" class="<%if (codigo_de_error == 0) {
+                                                out.print("btn btn-success");
+                                            } else {
+                                                out.print("btn btn-danger");
+                            }%>" onclick="<%if (codigo_de_error == 0) {} else {out.print("goBack();");
+                                                
+                                            }%>" value="<%if (codigo_de_error == 0) {
+                                                out.print("Abordar");
+                                            } else {
+                                                out.print("Atras");
+                                            }%>">
+                                
+                                <%if (codigo_de_error == 0) {
+                                                out.print("<input type=\"submit\" onclick=\"goBack();\" class=\"btn btn-primary\" value=\"Regresar\">");
+                                            }%>
+                                
+                                
                         </center>     
 
                 </form>
             </div>
         </div>
 
-
+        <script>
+            function goBack() {
+                location.href = window.history.back();
+            }
+        </script>                
 
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
         <!-- JQUERY SCRIPTS -->

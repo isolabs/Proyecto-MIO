@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="proyectomio.controlador.Controlador_Rutas"%>
 <%@page import="proyectomio.modelo.Ruta"%>
+<%@ include file="verificadorLogin.jsp" %>
 <!DOCTYPE html>
 
 <!--  Bus( placa, tipo, id_ruta,  numero_pasajeros); -->

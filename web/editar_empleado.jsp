@@ -1,6 +1,6 @@
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <%@page import="proyectomio.modelo.Empleado"%>
-
+<%@ include file="verificadorLogin.jsp" %>
 
 
 <!DOCTYPE html>

@@ -3,6 +3,7 @@
     Created on : 27-feb-2016, 12:39:59
     Author     : Alejandro
 --%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
     int id_usuario = Integer.valueOf(request.getParameter("id_usuario"));
     int id_tarjeta = Integer.valueOf(request.getParameter("id_tarjeta"));

@@ -1,6 +1,6 @@
 <%@page import="proyectomio.controlador.operaciones.Controlador_Director"%>
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
-
+<%@ include file="verificadorLogin.jsp" %>
 <%
     
   Controlador_Director uncontrolador = new Controlador_Director();

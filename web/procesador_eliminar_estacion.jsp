@@ -7,6 +7,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="proyectomio.modelo.Estacion"%>
 <%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
 Controlador_Estaciones uncontrolador = new Controlador_Estaciones();
        Estacion unEmpleado = new Estacion();

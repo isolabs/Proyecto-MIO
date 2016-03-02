@@ -6,6 +6,7 @@
 
 <%@page import="proyectomio.controlador.Controlador_Tarjeta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
 
     Controlador_Tarjeta controlador_tarjeta = new Controlador_Tarjeta();

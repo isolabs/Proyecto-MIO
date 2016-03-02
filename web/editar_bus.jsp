@@ -3,7 +3,7 @@
 <%@page import="proyectomio.controlador.Controlador_Buses"%>
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page import="proyectomio.modelo.Bus"%>
-
+<%@ include file="verificadorLogin.jsp" %>
 <%  
 Controlador_Buses controlador_buses = new Controlador_Buses();
 Bus bus_modificar=controlador_buses.get_bus(request.getParameter("placa"));

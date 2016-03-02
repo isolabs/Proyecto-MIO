@@ -26,8 +26,8 @@ public class Consola {
             
            
             Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
-            Viajes_encontrados x = controlador_poperaciones.getRutaN(100001, 100007);
-            System.out.println(x.getSecuencias().get(0));
+            Viajes_encontrados x = controlador_poperaciones.getRutaN(100001, 100006);
+            
             
             
             /*Controlador_BD controlador = new Controlador_BD();

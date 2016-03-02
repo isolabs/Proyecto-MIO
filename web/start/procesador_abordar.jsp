@@ -17,12 +17,17 @@
             lineas.add(tmp);
             boolean flag = false;
             for(int j = 0; j < tmp.length(); j++){
-            
+               
                if (tmp.toCharArray()[j] == ','){
                    flag = true;
-               } else if(tmp.toCharArray()[j] == '&'){
+               } else if(j == (tmp.length()-1)){
+                   
+                   tmp2 = tmp2 + tmp.toCharArray()[j];
+                   
                    rutas.add(tmp2);
                    tmp2="";
+                   flag = false;
+                   
                
                }else if(flag){
                    tmp2 = tmp2 + tmp.toCharArray()[j];
@@ -42,12 +47,13 @@
         
     }
     
-    for (int i = 0; i < rutas.size(); i++){
-        out.print(rutas.get(i) + "<br>");
+    ArrayList<String>rutas_finales = new ArrayList<String>();
+    
+    for (int i = 0; i < rutas.size()-1; i++){
+        rutas_finales.add(rutas.get(i));
     }
     
     
-
     Controlador_Tarjeta c_tarjeta = new Controlador_Tarjeta();
     Controlador_Pasajero c_pasajero = new Controlador_Pasajero();
 
@@ -58,7 +64,13 @@
          
          resultado = c_tarjeta.tres_pasajes_adicionales(Integer.valueOf(id_tarjeta));
         if (resultado == 0){
+            
+            for (int i = 0; i < rutas_finales.size(); i++){
+                    c_tarjeta.registrar_uso_tarjeta(Integer.valueOf(rutas_finales.get(i)), Integer.valueOf(id_tarjeta));
+            }
             resultado = 0;
+            
+            
         }else{
             resultado = 1;
         }
@@ -67,8 +79,14 @@
     } else if (c_tarjeta.get_una_tarjeta(Integer.valueOf(id_tarjeta)).size() == 1) {
 
         resultado = c_tarjeta.descontar_pasaje_tarjeta(Integer.valueOf(id_tarjeta));
+        
         if (resultado == 7){
+            
+            for (int i = 0; i < rutas_finales.size(); i++){
+                    c_tarjeta.registrar_uso_tarjeta(Integer.valueOf(rutas_finales.get(i)), Integer.valueOf(id_tarjeta));
+            }
             resultado = 0;
+            
         }else{
             resultado = 1;
         }

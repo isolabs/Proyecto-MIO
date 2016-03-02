@@ -46,7 +46,7 @@
     <br></br>
     <div class="panel panel-primary" style="margin: auto;width:70%; margin-top: 10%;">
         <div class ="panel-heading">
-    Modificar datos de usuario<br>
+    Consultar estado de reclamos<br>
         </div>
          <div class="panel-body">
         <form name = "form" id = "form" action="consulta_estado_reclamo.jsp" class="form-group" method="post" >

@@ -53,7 +53,7 @@
                      padding: 15px 50px 5px 50px;
                      float: right;
                      font-size: 16px;"> Bienvenido &nbsp; </div>
-                    style="margin: auto;width:87%; margin-top: 3%;
+                   
             </nav>   
         </div>
     <br></br>
@@ -115,8 +115,14 @@ if(Integer.valueOf(request.getParameter("opcion"))==1){
            
            <br></br>
                      <center>
-                        
+                         <div>
                    <input type="submit" class="btn btn-primary" value="Modificar estado" <%if(reclamo.getEstado()==2) out.print("disabled"); if(Integer.valueOf(request.getParameter("opcion"))==1) out.print(" style='display:none;'");%>></center>
+               <% if(Integer.valueOf(request.getParameter("opcion"))==1){ %>
+               <center>
+                   <input type="submit" class="btn btn-primary" value="Volver" onclick="window.history.back();">
+               </center>
+               <%}%>
+                   </div>         
                    
      </form>
 </div>

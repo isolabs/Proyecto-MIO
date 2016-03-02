@@ -17,6 +17,7 @@
 
     String id_estacion_inicial = request.getParameter("id_Estacion_actual");
     String id_estacion_final = request.getParameter("id_Estacion_llegada");
+    String id_tarjeta = request.getParameter("id_tarjeta");
     
     int codigo_de_error = 0;
     
@@ -34,19 +35,31 @@
     
     if((tmp_0>0)&&(tmp_1>0)){
         
+        ArrayList<String> secuencia_usuario = new ArrayList<String>();
+        ArrayList<String> secuencia_formateada = new ArrayList<String>();
+        
+        
         Viajes_encontrados v_enc = new Viajes_encontrados();
         v_enc =  c_poperaciones.getRutaN(Integer.valueOf(id_estacion_inicial),Integer.valueOf(id_estacion_final));
     
         //viajes = c_poperaciones.getRutaN(Integer.valueOf(id_estacion_inicial), Integer.valueOf(id_estacion_final));
-         for (int i = 0; i < v_enc.getSecuencias().size(); i++){
+        int cantidad = -1;
+            if ( v_enc.getSecuencias().size()>5){
+               cantidad = 5;
+            }else{
+                cantidad =  v_enc.getSecuencias().size();
+            }
+         for (int i = 0; i < cantidad; i++){
             ArrayList<Secuencia> viajes_rutas = new ArrayList<Secuencia>();
                 viajes_rutas =    v_enc.getSecuencias().get(i);
             
+            
            for (int j = 0; j < viajes_rutas.size(); j++){
                 
-                out.print(viajes_rutas.get(i).getId_Estacion() + " - " + viajes_rutas.get(i).getId_ruta());
+                out.println(viajes_rutas.get(j).getId_Estacion() + " - " + viajes_rutas.get(j).getId_ruta() + "\n");
                 
             }
+           out.println("----------------");
             
         }
         

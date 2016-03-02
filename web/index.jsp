@@ -23,7 +23,11 @@
         <script>
             <%if (empleado.get(0).getCargo_String().equals("Director")) {%>
 
-
+function goTarjetas(){
+            if (!document.getElementById("contenedor"))
+                    return false;
+            document.getElementById("contenedor").setAttribute('data', "tarjetas.jsp");
+            }
             function goEmpleados() {
                 if (!document.getElementById("contenedor"))
                     return false;
@@ -124,6 +128,11 @@
                     return false;
             document.getElementById("contenedor").setAttribute('data', "recargar.jsp");
             }
+            function goTarjetas(){
+            if (!document.getElementById("contenedor"))
+                    return false;
+            document.getElementById("contenedor").setAttribute('data', "tarjetas.jsp");
+            }
             <%}%>
         </script>
 
@@ -177,6 +186,7 @@
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goReclamos();\">Reclamos</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesAdmin();\">Buses asignados a conductores</a> </li>");
+                                out.print("<li><a  href=\"#\" onClick=\"goTarjetas();\">Gesti&oacute;n Tarjetas</a> </li>");
                            
                             }
                             
@@ -187,6 +197,7 @@
                           out.print("<li><a  href=\"#\" onClick=\"goRecargarTarjeta();\">Recargar tarjeta</a> </li>");              
                         out.print("<li><a  href=\"#\" onClick=\"goVenderTarjeta();\">Vender tarjeta</a> </li>");
                         out.print("<li><a  href=\"#\" onClick=\"adicionar_reclamo();\">Adicionar Reclamo</a> </li>"); 
+                          out.print("<li><a  href=\"#\" onClick=\"goTarjetas();\">Gesti&oacute;n Tarjetas</a> </li>");
       
                     }
                         %>

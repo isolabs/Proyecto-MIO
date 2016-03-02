@@ -49,10 +49,7 @@
                     <a href="../recargar.jsp"><div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Recargar</span> </div></a>
-                    <div class="btn-big white">
-                        <i class="fa fa-2x"></i>
-                        <span class="label bottom">Abordar</span> </div>
-                        
+                   
                       <a href="../consulta_estado_reclamo_index.jsp"><div  class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span  class="label bottom">Mis Reclamos</span> </div></a>

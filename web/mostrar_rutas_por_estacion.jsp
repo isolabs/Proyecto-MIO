@@ -8,7 +8,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="proyectomio.controlador.Controlador_Rutas"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="verificadorLogin.jsp" %>
 <%
     
     Controlador_Rutas controlador_rutas = new Controlador_Rutas();
@@ -19,7 +18,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title></title>
         <!-- BOOTSTRAP STYLES-->
         <link href="assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->

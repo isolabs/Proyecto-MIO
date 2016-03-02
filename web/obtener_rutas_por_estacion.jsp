@@ -3,7 +3,6 @@
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page import="proyectomio.controlador.Controlador_Estaciones"%>
 <%@page import="proyectomio.modelo.Estacion"%>
-<%@ include file="verificadorLogin.jsp" %>
 <!DOCTYPE html>
 
 <!--  Bus( placa, tipo, id_ruta,  numero_pasajeros); -->

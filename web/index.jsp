@@ -2,8 +2,11 @@
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <%@page import="proyectomio.modelo.Empleado"%>
 <%@ include file="verificadorLogin.jsp" %>
-<%    Controlador_Empleado controlador_empleado = new Controlador_Empleado();
+<%@page errorPage="login/login.jsp" %>
+<%    
+    Controlador_Empleado controlador_empleado = new Controlador_Empleado();
     ArrayList<Empleado> empleado = controlador_empleado.get_empleados(Integer.valueOf(session.getAttribute("userid").toString()));
+    
 %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -151,7 +154,7 @@ function goTarjetas(){
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">MIO</a> 
+                    <a class="navbar-brand" href="index.jsp">MIO</a> 
                 </div>
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;

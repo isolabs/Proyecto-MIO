@@ -31,9 +31,11 @@
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Consultar rutas</span> </div>
+                         <a href= "../editar_pasajero_id_tarjeta.jsp">
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
-                        <span class="label bottom">Mi perfil</span> </div>
+                       
+                            <span  class="label bottom">Mi perfil  </span> </div></a> 
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Consultar saldo</span> </div>

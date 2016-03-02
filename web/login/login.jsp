@@ -122,7 +122,7 @@
         </script>
 
         <div class="login-page">
-            <div class="form">
+            <div class="form"><img src="User.png" /><br>
                 
                 <form action="procesador_login.jsp" class="login-form" method="post">
                     

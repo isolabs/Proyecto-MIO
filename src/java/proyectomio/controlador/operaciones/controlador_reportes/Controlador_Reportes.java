@@ -10,14 +10,25 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import proyectomio.controlador.Controlador_Tarjeta;
+import proyectomio.modelo.ConexionBD;
 
 /**
  *
@@ -70,7 +81,47 @@ public class Controlador_Reportes {
     }
     public void reportesPasajerosTarjetas(){
     
+        try {
             
-        
+            ConexionBD conexionDB = new ConexionBD("localhost", "ProyectoMIO", "root", "root");
+            
+            Connection conn = null;
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                
+            }
+            
+            try {
+                conn = DriverManager.getConnection(conexionDB.getDb_URL(), conexionDB.getUser(), conexionDB.getPass());
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            JasperReport jasperReport = JasperCompileManager.compileReport("report.jrxml");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,new HashMap(), new JREmptyDataSource());
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "sample.pdf");
+            
+            /*JasperReport jasperReport;
+            JasperPrint jasperPrint = null;
+            System.out.println(new File("/home/jeisonOS/Proyecto/Proyecto-MIO/src/java/proyectomio/controlador/operaciones/controlador_reportes/ListadosPasajerosTarjetas.jasper").exists());
+            try
+            {
+            //se carga el reporte
+            URL  in=this.getClass().getResource( "/home/jeisonOS/Proyecto/Proyecto-MIO/src/java/proyectomio/controlador/operaciones/controlador_reportes/ListadosPasajerosTarjetas.jasper" );
+            jasperReport=(JasperReport)JRLoader.loadObject(in);
+            //se procesa el archivo jasper
+            jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), conn );
+            //se crea el archivo PDF
+            JasperExportManager.exportReportToPdfFile( jasperPrint, "reporte.pdf");
+            }
+            catch (JRException ex)
+            {
+            System.err.println( "Error iReport: " + ex.getMessage() );
+            }*/
+        } catch (JRException ex) {
+            Logger.getLogger(Controlador_Reportes.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
     }
 }

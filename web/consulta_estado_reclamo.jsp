@@ -42,14 +42,32 @@
         </script>
     </head>
     <body>
-        
-        <div class="panel panel-info">
+             <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="start/index.jsp">MIO</a> 
+                </div>
+                <div style="color: white;
+                     padding: 15px 50px 5px 50px;
+                     float: right;
+                     font-size: 16px;"> Bienvenido &nbsp; </div>
+                    
+            </nav>   
+        </div>
+    <br></br>
+        <div class="panel panel-info" style="margin: auto;width:87%; margin-top: 3%;">
                         <div class="panel-heading">
                             <b>Selecci&oacute;n</b>
                             
                             <a href="#" onclick="goEdicion();" type="submit" id="boton_gestion" name="boton_gestion" class="btn btn-default btn-xs" style="float: right;margin-right: 5px;">Ver estado</a>
                         </div>
-            <div class="panel-body">
+            <div class="panel-body" style="margin: auto;width:87%;">
                 <table>
                     <tr><td align="right"><b>Id Reclamo:&nbsp </b> </td><td id="seleccion_id" value = "" name="seleccion_id"></td></tr>
                     <tr><td align="right"><b>Motivo:&nbsp </b></td><td id="seleccion_motivo" name="seleccion_motivo"></td></tr>
@@ -61,7 +79,7 @@
         </div>
 
         <!-- Advanced Tables -->
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" style="margin: auto;width:87%;">
             <div class="panel-heading">
                 Reclamos
             </div>

@@ -36,7 +36,28 @@
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
-  
+    <%if(Integer.valueOf(request.getParameter("opcion"))==1){%>
+      <body>
+             <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="start/index.jsp">MIO</a> 
+                </div>
+                <div style="color: white;
+                     padding: 15px 50px 5px 50px;
+                     float: right;
+                     font-size: 16px;"> Bienvenido &nbsp; </div>
+                    style="margin: auto;width:87%; margin-top: 3%;
+            </nav>   
+        </div>
+    <br></br>
+    <%}%>
     <div class="panel panel-primary">
         <div class ="panel-heading">
      <%  if(Integer.valueOf(request.getParameter("opcion"))==0) {

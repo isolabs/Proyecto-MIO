@@ -40,15 +40,34 @@ Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
  <body>
+     <%if(Integer.valueOf(request.getParameter("origen"))==1){%>
+         <div id="wrapper">
+            <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="start/index.jsp">MIO</a> 
+                </div>
+                
+                     
+                    
+            </nav>   
+        </div>
+    <br></br>
+    <%}%>
     <div class="<% 
          if(resultado==0){      
-          out.print("panel panel-primary");
+          out.print("panel panel-primary  " );
                    }
          else{
-             out.print("panel panel-danger");
+             out.print("panel panel-danger  ");
          }
 
-          %>">
+          %>" style="margin: auto;width:70%; margin-top: 10%;">
         <div class ="panel-heading">
             <% if(resultado ==0){
         out.print("Mensaje");

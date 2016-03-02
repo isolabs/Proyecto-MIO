@@ -1,8 +1,4 @@
-<%-- 
-    Document   : editar_pasajero
-    Created on : 28-feb-2016, 19:06:50
-    Author     : Alejandro
---%>
+
 
 <%@page import="proyectomio.controlador.Controlador_Pasajero"%>
 <%@page import="proyectomio.modelo.Pasajero"%>
@@ -12,7 +8,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>Editar datos personales</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -25,21 +21,64 @@
 <body>
     <% Controlador_Pasajero controlador = new Controlador_Pasajero();
    Pasajero pasajero = new Pasajero();
+   int resultado =0;
+   try{
    pasajero = controlador.get_pasajerosTarjeta(Integer.parseInt(request.getParameter("id_tarjeta"))).get(0);
-   %>
+   resultado =0;
+   }
+   catch(Exception eo)
+   {%>
+     <div class="panel panel-danger">
+       
+         <div class ="panel-heading">
+               <%
+                out.print("Error");
+            %>
+        </div>
+            <div class="panel-body">
+                
+      
+        <center>
+    <h5>
+ 
+    <%
+        
+       
+
+           out.println("El pasajero  con n&uacute;mero de tarjeta "+ request.getParameter("id_tarjeta") +" no existe");
+           resultado  = -1;
+       
+       
     
+    %>
+  
+     <br></br>
+        <button class="btn btn-danger"onclick="goBack()">Volver </button> </center>
+  <script>
+function goBack() {
+       location.href="editar_pasajero_id_tarjeta.jsp";
+
+    out.print("window.history.back()");
+    }
+    
+</script>  
+        </h5>
+</div>
+         </div>    
+   <%}%>
+      <% if(resultado == 0){%>
     <div class="panel panel-primary">
         <div class ="panel-heading">
             Edici&oacute;n de pasajeros<br>
         </div>
          <div class="panel-body">
-        <form action="procesador_editar_pasajero.jsp?id_pasajero=<%out.print(pasajero.getId_pasajero());%>&id_tarjeta=<%out.println(pasajero.getId_tarjeta());%>" class="form-group" method="post" >
+        <form action="procesador_editar_pasajero.jsp?id_pasajero=<%out.print(pasajero.getId_pasajero());%>&id_tarjeta=<%out.println(pasajero.getId_tarjeta());%>&origen=1" class="form-group" method="post" >
            
            
           <label for="id_pasajero">
               N&uacute;mero de identificaci&oacute;n:
                </label>
-            <input type="text" value="<%out.println(request.getParameter("id_pasajero"));%>" name="id_pasajero" pattern="[0-9]{4,}" id="id_pasajero" class ="form-control" disabled>
+            <input type="text" value="<%out.println(pasajero.getId_pasajero());%>" name="id_pasajero" pattern="[0-9]{4,}" id="id_pasajero" class ="form-control" disabled>
                
                 <label for="id_tarjeta">
               N&uacute;mero de identificaci&oacute;n de la tarjeta:
@@ -106,3 +145,4 @@
    
 </body>
 </html>
+<%}%>

@@ -15,7 +15,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>Modificar datos de pasajero</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -28,7 +28,7 @@
 <body>
     <div class="panel panel-primary">
         <div class ="panel-heading">
-    Modificar datos<br>
+    Modificar datos de usuario<br>
         </div>
          <div class="panel-body">
         <form name = "form" id = "form" action="procesador_editar_empleado_tarjeta.jsp" class="form-group" method="post" >
@@ -47,7 +47,7 @@
                   
                    <br></br>
                      <center>
-                   <input type="submit" class="btn btn-primary" value="Registrar uso de la tarjeta"></center>
+                   <input type="submit" class="btn btn-primary" value="Modificar datos"></center>
                                 
            
           

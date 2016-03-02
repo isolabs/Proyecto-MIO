@@ -75,6 +75,12 @@
                     return false;
                 document.getElementById("contenedor").setAttribute('data', "reclamos.jsp");
             }
+              
+            function goAsignaRutaEstacion() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "asignar_ruta_estacion.jsp");
+            }
               function goAsignacionBusesAdmin() {
                 if (!document.getElementById("contenedor"))
                     return false;
@@ -149,7 +155,7 @@
                                 out.print("<li><a  href=\"#\" onClick=\"goEstaciones();\">Estaciones</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goBuses();\">Buses</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goRutas();\">Rutas</a> </li>");
-                                
+                                out.print("<li><a  href=\"#\" onClick=\"goAsignaRutaEstacion();\">Asignar ruta - Estaci&oacute;n</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignarBusConductor();\">Asignar bus a un conductor</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goReclamos();\">Reclamos</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesAdmin();\">Buses asignados a conductores</a> </li>");

@@ -88,8 +88,12 @@ Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
             }%>" onclick="goBack()">Volver</button> </center>
   <script>
 function goBack() {
-    <%if(resultado == 0) {%>
-       location.href="<%out.print("pasajeros.jsp");%> "<%}
+<%if(resultado == 0&& request.getParameter("origen").equals("0")) {%>
+       location.href="<%out.print("pasajeros.jsp");%> "
+<%}
+    if(resultado == 0&& request.getParameter("origen").equals("1")) {%>
+       location.href="<%out.print("editar_pasajero_id_tarjeta.jsp");%> "
+<%}
     else{
     out.print("window.history.back()");
     }%>;

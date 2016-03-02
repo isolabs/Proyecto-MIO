@@ -7,6 +7,7 @@ package proyectomio.controlador;
 
 import proyectomio.accesoDatos.DaoRutas;
 import java.util.ArrayList;
+import proyectomio.modelo.Consulta;
 import proyectomio.modelo.Ruta;
 
 /**
@@ -68,10 +69,9 @@ public class Controlador_Rutas {
         return resultado;
     }
 
-    public ArrayList<String> get_nombre_rutas() {
-        ArrayList<String> lista_rutas = new ArrayList<>();
-        lista_rutas = DATA_ACCES_OBJECT.get_nombre_rutas();
-        return lista_rutas;
+    public ArrayList<Ruta>  get_ruta_id_estacion(int id_estacion) {
+        return DATA_ACCES_OBJECT.get_ruta_id_estacion(id_estacion);
+       
 
     }
 }

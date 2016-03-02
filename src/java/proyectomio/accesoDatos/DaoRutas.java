@@ -103,15 +103,18 @@ public class DaoRutas {
         return 0;
     }
 
-    public ArrayList<String> get_nombre_rutas() {
-        ArrayList<String> lista_rutas = new ArrayList<>();
-        Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta;");
-        if ("-1".equals(consulta.getColumna("id_ruta").getFila(0))) {
-            return lista_rutas;
-        } else {
-            lista_rutas = consulta.getColumna("nombre").getFilas();
-            return lista_rutas;
+    public ArrayList<Ruta> get_ruta_id_estacion(int id_estacion) {
+         ArrayList<Ruta> rutas_encontradas = new ArrayList<>();
+        Ruta ruta_temporal = new Ruta();
+         Consulta consulta = CONTROLADOR_BD.consultarBD("SELECT *  FROM ruta_estacion where id_estacion ="+id_estacion);
+        for (int i = 0; i < consulta.getColumna("id_estacion").getFilas().size(); i++) {
+            
+            ruta_temporal =getRuta(Integer.valueOf(consulta.getColumna("id_ruta").getFila(i)));
+            rutas_encontradas.add(ruta_temporal);
+            ruta_temporal = new Ruta();
         }
+        return rutas_encontradas;
+       
 
     }
 

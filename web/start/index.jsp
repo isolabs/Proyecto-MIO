@@ -34,18 +34,21 @@
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Consultar rutas</span> </div>
                          </a>
-                        
-                         <a href= "../editar_pasajero_id_tarjeta.jsp">
+                    
+                     <a href= "../editar_pasajero_id_tarjeta.jsp">
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
-                       
-                            <span  class="label bottom">Mi perfil  </span> </div></a> 
+                        <span class="label bottom">Mi perfil</span> </div>
+                         </a>
+                     
+                        
+                    <a href= "../consultar_saldo.jsp">
                     <div class="btn-big white">
                         <i class="fa fa-2x"></i>
-                        
-                         
-                        
                         <span class="label bottom">Consultar saldo</span> </div>
+                         </a>
+                   
+                        
                     <a href="../recargar.jsp"><div class="btn-big white">
                         <i class="fa fa-2x"></i>
                         <span class="label bottom">Recargar</span> </div></a>

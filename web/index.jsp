@@ -106,7 +106,15 @@
                 document.getElementById("contenedor").setAttribute('data', "procesador_consultar_buses_asignados_turno.jsp?id_conductor="+id_empleado);
             }
             <%}%>
-
+  <%if (empleado.get(0).getCargo_String().equals("Auxiliar")) {%>
+              function adicionar_reclamo() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                var id_empleado = <%out.print(session.getAttribute("userid").toString());%>;
+              
+                document.getElementById("contenedor").setAttribute('data', "ingresar_reclamo.jsp?opcion=1");
+            }
+            <%}%>
         </script>
 
 
@@ -165,7 +173,9 @@
                     if (empleado.get(0).getCargo_String().equals("Conductor")) {
                         out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesEmpleado();\">Buses asignados</a> </li>"); 
                     }
-                    
+                     if (empleado.get(0).getCargo_String().equals("Auxiliar")) {
+                        out.print("<li><a  href=\"#\" onClick=\"adicionar_reclamo();\">Adicionar Reclamo</a> </li>"); 
+                    }
                         %>
 
                         

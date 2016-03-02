@@ -23,7 +23,7 @@
     Registro de reclamos<br>
         </div>
          <div class="panel-body">
-        <form action="procesador_ingreso_reclamo.jsp" class="form-group" method="post" >
+             <form action="procesador_ingreso_reclamo.jsp?opcion=<%out.print(request.getParameter("opcion"));%>" class="form-group" method="post" >
            
            
           <label for="motivo">

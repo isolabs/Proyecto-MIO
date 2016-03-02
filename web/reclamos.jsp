@@ -49,7 +49,7 @@
                             
                             <a href="#" type="submit" class="btn btn-danger btn-xs" style="float: right;margin-right: 5px;">Borrar</a>
                            
-                            <a href="ingresar_reclamo.jsp" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
+                            <a href="ingresar_reclamo.jsp?opcion=0" type="submit" class="btn btn-success btn-xs" style="float: right;margin-right: 5px;">Adicionar</a>
                             <a href="#" onclick="goEdicion();" type="submit" id="boton_gestion" name="boton_gestion" class="btn btn-default btn-xs" style="float: right;margin-right: 5px;">Gestionar Reclamo</a>
                         </div>
             <div class="panel-body">

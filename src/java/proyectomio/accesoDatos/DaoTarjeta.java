@@ -320,7 +320,11 @@ public class DaoTarjeta {
                 return saldo;
             }
     }
-       
+      public Consulta ver_uso_tarjeta_ruta(int id_tarjeta){
+        
+           Consulta consulta1 = CONTROLADOR_BD.consultarBD("SELECT * FROM reg_uso_tarjeta natural join pasajero WHERE id_tarjeta="+id_tarjeta);
+           return consulta1;
+    }   
     /*
     valor total de tarjetas (una tarjeta cuesta 3200)  vendidas en una estacion
     

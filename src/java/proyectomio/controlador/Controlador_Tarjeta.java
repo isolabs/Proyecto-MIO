@@ -9,6 +9,7 @@ import proyectomio.accesoDatos.DaoTarjeta;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import proyectomio.modelo.Consulta;
 import proyectomio.modelo.Reg_uso_tarjeta;
 import proyectomio.modelo.Ruta;
 import proyectomio.modelo.Tarjeta;
@@ -122,6 +123,10 @@ public class Controlador_Tarjeta {
     public int ver_saldo_tarjeta(int id_tarjeta){
         int resultado = data_acces_object.ver_saldo_tarjeta(id_tarjeta);
         return resultado;
+    }
+    public Consulta ver_uso_tarjeta_ruta(int id_tarjeta)
+    {
+        return data_acces_object.ver_uso_tarjeta_ruta(id_tarjeta);
     }
 }
 

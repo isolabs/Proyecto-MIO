@@ -36,6 +36,11 @@ function goTarjetas(){
                     return false;
                 document.getElementById("contenedor").setAttribute('data', "empleados.jsp");
             }
+              function goSeguimiento() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "mostrar_usos_tarjeta_index.jsp");
+            }
 
             function goEstaciones() {
                 if (!document.getElementById("contenedor"))
@@ -136,6 +141,12 @@ function goTarjetas(){
                     return false;
             document.getElementById("contenedor").setAttribute('data', "tarjetas.jsp");
             }
+            
+            function goSeguimiento() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "mostrar_usos_tarjeta_index.jsp");
+            }
             <%}%>
         </script>
 
@@ -190,7 +201,7 @@ function goTarjetas(){
                                 out.print("<li><a  href=\"#\" onClick=\"goReclamos();\">Reclamos</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesAdmin();\">Buses asignados a conductores</a> </li>");
                                 out.print("<li><a  href=\"#\" onClick=\"goTarjetas();\">Gesti&oacute;n Tarjetas</a> </li>");
-                           
+                           out.print("<li><a  href=\"#\" onClick=\"goSeguimiento();\">Seguimiento de pasajeros</a> </li>");
                             }
                             
                     if (empleado.get(0).getCargo_String().equals("Conductor")) {
@@ -201,7 +212,7 @@ function goTarjetas(){
                         out.print("<li><a  href=\"#\" onClick=\"goVenderTarjeta();\">Vender tarjeta</a> </li>");
                         out.print("<li><a  href=\"#\" onClick=\"adicionar_reclamo();\">Adicionar Reclamo</a> </li>"); 
                           out.print("<li><a  href=\"#\" onClick=\"goTarjetas();\">Gesti&oacute;n Tarjetas</a> </li>");
-      
+                           out.print("<li><a  href=\"#\" onClick=\"goSeguimiento();\">Seguimiento de pasajeros</a> </li>");
                     }
                         %>
 

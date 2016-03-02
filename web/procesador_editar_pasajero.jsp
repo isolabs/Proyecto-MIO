@@ -7,7 +7,6 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="proyectomio.modelo.Pasajero"%>
 <%@page import="proyectomio.controlador.Controlador_Pasajero"%>
-<%@ include file="verificadorLogin.jsp" %>
 <%
 Controlador_Pasajero uncontrolador = new Controlador_Pasajero();
        Pasajero unPasajero = new Pasajero();

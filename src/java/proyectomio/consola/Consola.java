@@ -31,7 +31,7 @@ public class Consola {
             Viajes_encontrados x = controlador_poperaciones.getRutaN(100001, 100006);*/
             
             Controlador_Reportes c_reportes = new Controlador_Reportes();
-           
+           c_reportes.reportesPasajerosTarjetas();;
             
             
             

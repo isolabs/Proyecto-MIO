@@ -6,12 +6,14 @@
 package proyectomio.consola;
 
 //import proyectomio.controlador.Controlador_BD;
+import net.sf.jasperreports.engine.JRException;
 import proyectomio.accesoDatos.DaoBuses;
 import proyectomio.controlador.*;
 import proyectomio.controlador.operaciones.Controlador_Pasajero_operaciones;
 import proyectomio.controlador.operaciones.Controlador_login;
 import proyectomio.controlador.operaciones.Controlador_Director;
 import proyectomio.controlador.operaciones.Viajes_encontrados;
+import proyectomio.controlador.operaciones.controlador_reportes.Controlador_Reportes;
 //import proyectomio.controlador.Controlador_Reclamo;
 //import proyectomio.modelo.Reclamo;
 
@@ -25,8 +27,11 @@ public class Consola {
 	{
             
            
-            Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
-            Viajes_encontrados x = controlador_poperaciones.getRutaN(100001, 100006);
+            /*Controlador_Pasajero_operaciones controlador_poperaciones = new Controlador_Pasajero_operaciones();
+            Viajes_encontrados x = controlador_poperaciones.getRutaN(100001, 100006);*/
+            
+            Controlador_Reportes c_reportes = new Controlador_Reportes();
+           
             
             
             

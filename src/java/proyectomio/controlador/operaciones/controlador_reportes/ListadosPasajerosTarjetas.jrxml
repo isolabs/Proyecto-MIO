@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fbdbf2c3-6f79-4cff-adb8-56166420e7d8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pasajero.`id_pasajero` AS pasajero_id_pasajero,
+     pasajero.`id_tarjeta` AS pasajero_id_tarjeta,
+     pasajero.`nombres` AS pasajero_nombres,
+     pasajero.`apellidos` AS pasajero_apellidos,
+     pasajero.`fecha_nacimiento` AS pasajero_fecha_nacimiento,
+     pasajero.`direccion` AS pasajero_direccion,
+     pasajero.`telefono` AS pasajero_telefono,
+     pasajero.`correo_electronico` AS pasajero_correo_electronico
+FROM
+     `pasajero` pasajero]]>
+	</queryString>
+	<field name="pasajero_id_pasajero" class="java.lang.String"/>
+	<field name="pasajero_id_tarjeta" class="java.lang.Integer"/>
+	<field name="pasajero_nombres" class="java.lang.String"/>
+	<field name="pasajero_apellidos" class="java.lang.String"/>
+	<field name="pasajero_fecha_nacimiento" class="java.sql.Date"/>
+	<field name="pasajero_direccion" class="java.lang.String"/>
+	<field name="pasajero_telefono" class="java.lang.String"/>
+	<field name="pasajero_correo_electronico" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="844" height="92" backcolor="#006699" uuid="e42ea71c-a26e-4f15-8cbd-36a6642b15e9"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="ee1324fa-9a6b-4199-85de-b95e82770905"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pasajeros]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26">
+			<line>
+				<reportElement x="-20" y="20" width="822" height="1" forecolor="#666666" uuid="f72486aa-7139-41d3-8b6a-c11ecfc08393"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="90" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e7214588-1611-4eea-aac2-9ac9298e9103"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="0" width="69" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0b851240-2c1e-43e1-a23f-e1eb4e8905da"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID.Tarjeta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="187" y="0" width="79" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0e04e512-39a2-439b-97f2-76144d820c6e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="276" y="0" width="88" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="7eb4fe40-a045-4f57-9622-19e6e623d30a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="375" y="0" width="99" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="448cc6f9-ff00-4ad7-a61a-44acf27c0364"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F.Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="486" y="0" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e7689a0f-81ff-4bbe-90bb-cdbdc310cd15"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="612" y="0" width="69" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b4072704-3859-4dea-9bae-f27b1fa1cb4a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="692" y="0" width="110" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="bb55f8da-7fc6-4932-87db-7d4499090efd"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="802" height="1" uuid="04aaed62-c461-440f-8513-2c0c88f718df"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="90" height="20" uuid="3f0bc4de-7ab3-4184-b0b4-53eaa6685a48"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_id_pasajero}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="100" y="0" width="69" height="20" uuid="de715308-c0b1-43cd-85de-27230bc40f20"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_id_tarjeta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="187" y="0" width="79" height="20" uuid="f8e78831-41bf-4b45-91b8-2bb76608872b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_nombres}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="276" y="0" width="88" height="20" uuid="e882b89f-3612-42b8-a434-e4ef5a0099a2"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_apellidos}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="612" y="0" width="69" height="20" uuid="f20e7695-0453-4c49-940a-ac090014a35f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_telefono}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="692" y="0" width="93" height="20" uuid="7e60235e-b8bf-407b-888b-0771d98a5190"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_correo_electronico}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="486" y="0" width="114" height="20" uuid="1cb3388a-5b86-47bc-8ca1-469492a7d16a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_direccion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="375" y="0" width="99" height="20" uuid="4e0b831d-d9a2-44d5-a7d1-c47ee8361f1a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pasajero_fecha_nacimiento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="762" height="13" backcolor="#E6E6E6" uuid="79bc3a68-98dc-44e2-b3c1-0529af6670b4"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="762" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="9d32e026-4474-46ab-8c99-68fedc663656"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="b0e9f5ca-2b8a-4972-9554-a79f4c5100fc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

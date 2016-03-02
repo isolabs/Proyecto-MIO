@@ -1,6 +1,6 @@
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page import="proyectomio.controlador.Controlador_Rutas"%>
-
+<%@ include file="verificadorLogin.jsp" %>
 <%
 Controlador_Rutas controlador_rutas = new Controlador_Rutas();
 Ruta ruta = new Ruta();

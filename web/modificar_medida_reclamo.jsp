@@ -2,7 +2,7 @@
 <%@page import="proyectomio.modelo.Reclamo"%>
 <%@page import="proyectomio.controlador.Controlador_Reclamo"%>
 <%@page import="proyectomio.controlador.Controlador_Empleado"%> 
-
+<%@ include file="verificadorLogin.jsp" %>
 <%
   
        Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();

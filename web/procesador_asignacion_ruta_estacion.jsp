@@ -1,6 +1,7 @@
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page import="proyectomio.modelo.Estacion"%>
 <%@page import="proyectomio.controlador.operaciones.Controlador_Director"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
   Controlador_Director controlador_director = new Controlador_Director();
  

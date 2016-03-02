@@ -8,6 +8,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="proyectomio.modelo.Tarjeta"%>
 <%@page import="proyectomio.controlador.Controlador_Tarjeta"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
 Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
        Tarjeta unaTarjeta = new Tarjeta();

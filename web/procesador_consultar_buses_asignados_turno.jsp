@@ -10,6 +10,7 @@
 <%@page import="proyectomio.modelo.Turno"%>
 <%@page import="proyectomio.modelo.Ruta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
     
     Controlador_Conductor controlador_conductor = new Controlador_Conductor();

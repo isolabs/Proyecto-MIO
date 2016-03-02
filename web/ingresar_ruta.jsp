@@ -1,3 +1,4 @@
+<%@ include file="verificadorLogin.jsp" %>
 <!DOCTYPE html>
 
 <!--  Bus( placa, tipo, id_ruta,  numero_pasajeros); -->

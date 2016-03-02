@@ -2,7 +2,7 @@
 <%@page import="proyectomio.modelo.Reclamo"%>
 <%@page import="proyectomio.controlador.Controlador_Reclamo"%>
 <%@page import="proyectomio.controlador.Controlador_Empleado"%> 
-
+<%@ include file="verificadorLogin.jsp" %>
 <%
   
         java.util.Date today = new java.util.Date();

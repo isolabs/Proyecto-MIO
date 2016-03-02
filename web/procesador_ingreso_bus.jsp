@@ -1,5 +1,6 @@
 <%@page import="proyectomio.modelo.Bus"%>
 <%@page import="proyectomio.controlador.Controlador_Buses"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
   Controlador_Buses uncontrolador = new Controlador_Buses();
        Bus unbus = new Bus();

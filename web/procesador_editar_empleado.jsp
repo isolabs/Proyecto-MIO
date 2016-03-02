@@ -1,6 +1,7 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="proyectomio.modelo.Empleado"%>
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
+<%@ include file="verificadorLogin.jsp" %>
 <%
 Controlador_Empleado uncontrolador = new Controlador_Empleado();
        Empleado unEmpleado = new Empleado();

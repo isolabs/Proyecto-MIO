@@ -1,4 +1,5 @@
-ï»¿<!DOCTYPE html>
+<%@ include file="verificadorLogin.jsp" %>
+?<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -30,12 +31,12 @@
                    <label for="nombres">
                     Nombres:
                </label>
-               <input type="text" name="nombres" pattern="[a-z Ã± A-Z]{4,}" id="nombres" class ="form-control" required="required">
+               <input type="text" name="nombres" pattern="[a-z ñ A-Z]{4,}" id="nombres" class ="form-control" required="required">
          
                <label for="apellidos">
                     Apellidos:
                </label>
-               <input type="text" name="apellidos" pattern="[a-z Ã± A-Z]{4,}"  id="apellidos" class ="form-control" required="required">
+               <input type="text" name="apellidos" pattern="[a-z ñ A-Z]{4,}"  id="apellidos" class ="form-control" required="required">
                 
                <label for="fecha_nacimiento">
                     Fecha de nacimiento:
@@ -72,7 +73,7 @@
 
              
             <label for="password">
-                   ContraseÃ±a del sistema:
+                   Contraseña del sistema:
                </label>
                <input type="password" name="password"  id="password" class ="form-control" required="required">        
                    <br></br>

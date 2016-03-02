@@ -8,6 +8,7 @@
 <%@page import="proyectomio.controlador.Controlador_Pasajero"%>
 <%@page import="proyectomio.modelo.Pasajero"%>
 <%@page import="proyectomio.controlador.Controlador_Tarjeta"%>
+<%@ include file="verificadorLogin.jsp" %>
 <% Controlador_Tarjeta uncontrolador = new Controlador_Tarjeta();
        
     

@@ -1,5 +1,6 @@
 <%@page import="proyectomio.modelo.Estacion"%>
 <%@page import="proyectomio.controlador.Controlador_Estaciones"%>
+<%@ include file="verificadorLogin.jsp" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

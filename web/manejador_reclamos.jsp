@@ -8,6 +8,7 @@
 <%@page import="proyectomio.controlador.Controlador_Empleado"%>
 <%@page import="proyectomio.modelo.Pasajero"%>
 <%@page import="proyectomio.controlador.Controlador_Pasajero"%>
+<%@ include file="verificadorLogin.jsp" %>
 
 <% Controlador_Reclamo controlador_reclamo = new Controlador_Reclamo();
    Controlador_Empleado controlador_empleado = new Controlador_Empleado();

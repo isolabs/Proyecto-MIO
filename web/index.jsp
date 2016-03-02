@@ -114,6 +114,16 @@
               
                 document.getElementById("contenedor").setAttribute('data', "ingresar_reclamo.jsp?opcion=1");
             }
+              function goVenderTarjeta() {
+                if (!document.getElementById("contenedor"))
+                    return false;
+                document.getElementById("contenedor").setAttribute('data', "ingresar_tarjeta.jsp");
+            }
+            function goRecargarTarjeta(){
+            if (!document.getElementById("contenedor"))
+                    return false;
+            document.getElementById("contenedor").setAttribute('data', "recargar.jsp");
+            }
             <%}%>
         </script>
 
@@ -174,7 +184,10 @@
                         out.print("<li><a  href=\"#\" onClick=\"goAsignacionBusesEmpleado();\">Buses asignados</a> </li>"); 
                     }
                      if (empleado.get(0).getCargo_String().equals("Auxiliar")) {
+                          out.print("<li><a  href=\"#\" onClick=\"goRecargarTarjeta();\">Recargar tarjeta</a> </li>");              
+                        out.print("<li><a  href=\"#\" onClick=\"goVenderTarjeta();\">Vender tarjeta</a> </li>");
                         out.print("<li><a  href=\"#\" onClick=\"adicionar_reclamo();\">Adicionar Reclamo</a> </li>"); 
+      
                     }
                         %>
 
@@ -198,6 +211,9 @@
                                 } 
                                  if (empleado.get(0).getCargo_String().equals("Conductor")) {
                                     out.print("procesador_consultar_buses_asignados_turno.jsp?id_conductor="+empleado.get(0).getId_empleado());
+                                }
+                                  if (empleado.get(0).getCargo_String().equals("Auxiliar")) {
+                                    out.print("recargar.jsp");
                                 }
                                  %>"
                                 frameborder="0" height="900px" width="100%" type="text/html"><p></p></object>
